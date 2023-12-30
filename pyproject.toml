@@ -1,0 +1,37 @@
+[project]
+name = "signwriting"
+description = "Python utilities for SignWriting."
+version = "0.0.1"
+authors = [
+    { name = "Amit Moryossef", email = "amitmoryossef@gmail.com" }
+]
+readme = "README.md"
+dependencies = [
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pylint"
+]
+
+[tool.yapf]
+based_on_style = "google"
+column_limit = 120
+
+[tool.pylint]
+max-line-length = 120
+disable = [
+    "C0114", # Missing module docstring
+    "C0115", # Missing class docstring
+    "C0116", # Missing function or method docstring
+]
+
+[tool.setuptools]
+packages = [
+    "signwriting"
+]
+
+[tool.pytest.ini_options]
+addopts = "-v"
+testpaths = ["signwriting"]

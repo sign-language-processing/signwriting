@@ -1,0 +1,1 @@
+from signwriting.tokenizer.signwriting_tokenizer import SignWritingTokenizer
