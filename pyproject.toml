@@ -29,7 +29,10 @@ disable = [
 
 [tool.setuptools]
 packages = [
-    "signwriting"
+    "signwriting",
+    "signwriting.formats",
+    "signwriting.tokenizer",
+    "signwriting.utils"
 ]
 
 [tool.pytest.ini_options]
