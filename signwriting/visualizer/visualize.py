@@ -24,6 +24,7 @@ def clone_repo_if_needed():
 def signwriting_to_image(fsw: str):
     clone_repo_if_needed()
 
+    # pylint: disable=consider-using-with
     temp_output = tempfile.NamedTemporaryFile(suffix='.png').name
     cmd = f'node {REPO_DIR}/fsw/fsw-sign-png "{fsw}" {temp_output}'
     subprocess.run(cmd, shell=True, check=True)

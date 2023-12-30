@@ -1,7 +1,7 @@
 import unittest
+from pathlib import Path
 
 from PIL import Image
-from pathlib import Path
 
 from signwriting.visualizer.visualize import signwriting_to_image
 
