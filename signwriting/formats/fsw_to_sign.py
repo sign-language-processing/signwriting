@@ -4,7 +4,8 @@ from signwriting.types import Sign
 
 
 def fsw_to_sign(fsw: str) -> Sign:
-    box = re.match(r'([BLMR])(\d{3})x(\d{3})', fsw)
+    boxes = re.finditer(r'([BLMR])(\d{3})x(\d{3})', fsw)
+    box = next(boxes, None)
     # pylint: disable=invalid-name
     box_symbol, x, y = box.groups() if box is not None else ("M", 500, 500)
 

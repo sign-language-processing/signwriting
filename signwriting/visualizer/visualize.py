@@ -1,32 +1,38 @@
 # This should be reimplemented in python https://github.com/sign-language-processing/signwriting/issues/1
-import os
-import subprocess
-import tempfile
+from functools import lru_cache
 
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 
-TMPDIR = os.getenv('TMPDIR', '/tmp')
-REPO_URL = 'https://github.com/sutton-signwriting/font-db.git'
-REPO_DIR = os.path.join(TMPDIR, 'font-db')
+from signwriting.formats.fsw_to_sign import fsw_to_sign
+from signwriting.formats.fsw_to_swu import key2id, symbol_line, symbol_fill
 
 
-def clone_repo_if_needed():
-    if not os.path.exists(REPO_DIR):
-        print(f"Cloning repository into {REPO_DIR}...")
-        subprocess.run(["git", "clone", REPO_URL, REPO_DIR], check=True)
-
-    # check if node_modules exists
-    if not os.path.exists(os.path.join(REPO_DIR, 'node_modules')):
-        print("Installing dependencies...")
-        subprocess.run(["npm", "install"], cwd=REPO_DIR, check=True)
+@lru_cache(maxsize=None)
+def get_font(font_name: str):
+    return ImageFont.truetype(f'{font_name}.ttf', 30)
 
 
-def signwriting_to_image(fsw: str):
-    clone_repo_if_needed()
+def signwriting_to_image(fsw: str) -> Image:
+    sign = fsw_to_sign(fsw)
+    if len(sign['symbols']) == 0:
+        return Image.new('RGBA', (1, 1), (0, 0, 0, 0))
 
-    # pylint: disable=consider-using-with
-    temp_output = tempfile.NamedTemporaryFile(suffix='.png').name
-    cmd = f'node {REPO_DIR}/fsw/fsw-sign-png "{fsw}" {temp_output}'
-    subprocess.run(cmd, shell=True, check=True)
+    positions = [s["position"] for s in sign['symbols']]
+    min_x = min(positions, key=lambda p: p[0])[0]
+    min_y = min(positions, key=lambda p: p[1])[1]
+    max_x, max_y, = sign["box"]["position"]
+    size = (max_x - min_x, max_y - min_y)
+    img = Image.new('RGBA', size, (255, 255, 255, 0))
+    draw = ImageDraw.Draw(img)
 
-    return Image.open(temp_output)  # this is RGBA
+    line_font = get_font('SuttonSignWritingLine')
+    fill_font = get_font('SuttonSignWritingFill')
+
+    for symbol in sign['symbols']:
+        x, y = symbol["position"]
+        x, y = x - min_x, y - min_y
+        symbol_id = key2id(symbol["symbol"])
+        draw.text((x, y), symbol_line(symbol_id), font=line_font, fill=(0, 0, 0))
+        draw.text((x, y), symbol_fill(symbol_id), font=fill_font, fill=(255, 255, 255))
+
+    return img

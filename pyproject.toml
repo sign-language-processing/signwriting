@@ -37,6 +37,9 @@ packages = [
     "signwriting.visualizer",
 ]
 
+[tool.setuptools.package-data]
+signwriting = ["*.ttf"]
+
 [tool.pytest.ini_options]
 addopts = "-v"
 testpaths = ["signwriting"]
