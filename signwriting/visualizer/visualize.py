@@ -21,8 +21,7 @@ def signwriting_to_image(fsw: str) -> Image:
     min_x = min(positions, key=lambda p: p[0])[0]
     min_y = min(positions, key=lambda p: p[1])[1]
     max_x, max_y, = sign["box"]["position"]
-    size = (max_x - min_x, max_y - min_y)
-    img = Image.new('RGBA', size, (255, 255, 255, 0))
+    img = Image.new('RGBA', (max_x - min_x, max_y - min_y), (255, 255, 255, 0))
     draw = ImageDraw.Draw(img)
 
     line_font = get_font('SuttonSignWritingLine')

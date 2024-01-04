@@ -9,9 +9,9 @@ def key2id(key: str) -> int:
     return ((base - 0x100) * 96) + (fill * 16) + rotation + 1
 
 
-def symbol_line(id: int) -> str:
-    return chr(id + 0xF0000)
+def symbol_line(symbol_id: int) -> str:
+    return chr(symbol_id + 0xF0000)
 
 
-def symbol_fill(id: int) -> str:
-    return chr(id + 0x100000)
+def symbol_fill(symbol_id: int) -> str:
+    return chr(symbol_id + 0x100000)
