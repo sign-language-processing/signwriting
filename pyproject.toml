@@ -40,7 +40,7 @@ packages = [
 ]
 
 [tool.setuptools.package-data]
-signwriting = ["*.ttf"]
+signwriting = ["**/*.ttf"]
 
 [tool.pytest.ini_options]
 addopts = "-v"
