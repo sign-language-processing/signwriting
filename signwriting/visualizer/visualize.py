@@ -2,6 +2,7 @@
 from functools import lru_cache
 
 from PIL import Image, ImageDraw, ImageFont
+from pathlib import Path
 
 from signwriting.formats.fsw_to_sign import fsw_to_sign
 from signwriting.formats.fsw_to_swu import key2id, symbol_line, symbol_fill
@@ -9,7 +10,8 @@ from signwriting.formats.fsw_to_swu import key2id, symbol_line, symbol_fill
 
 @lru_cache(maxsize=None)
 def get_font(font_name: str):
-    return ImageFont.truetype(f'{font_name}.ttf', 30)
+    font_path = Path(__file__).parent / f'{font_name}.ttf'
+    return ImageFont.truetype(str(font_path), 30)
 
 
 def signwriting_to_image(fsw: str) -> Image:
