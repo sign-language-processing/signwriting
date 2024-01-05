@@ -1,8 +1,7 @@
-# This should be reimplemented in python https://github.com/sign-language-processing/signwriting/issues/1
 from functools import lru_cache
+from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
-from pathlib import Path
 
 from signwriting.formats.fsw_to_sign import fsw_to_sign
 from signwriting.formats.fsw_to_swu import key2id, symbol_line, symbol_fill

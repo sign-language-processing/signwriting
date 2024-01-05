@@ -1,0 +1,15 @@
+repos:
+  - repo: local
+    files: ^signwriting/
+    hooks:
+      - id: pylint
+        name: pylint
+        entry: pylint
+        language: system
+        types: [python]
+      - id: pytest
+        name: pytest
+        entry: pytest signwriting
+        language: system
+        types: [python]
+
