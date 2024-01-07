@@ -19,6 +19,16 @@ class VisualizeCase(unittest.TestCase):
         self.assertEqual(reference_image.size, image.size)
         assert_array_equal(np.array(image), np.array(reference_image))
 
+    def test_image_without_antialiasing(self):
+        fsw = "M528x526S1ce40506x474S1ce48472x474S22a04507x511S22a14480x510"
+        image = signwriting_to_image(fsw, antialiasing=False)
+
+        assets_path = Path(__file__).parent / "test_assets" / f"{fsw}.png"
+        reference_image = Image.open(assets_path)
+
+        self.assertEqual(reference_image.size, image.size)
+        assert_array_equal(np.array(image), np.array(reference_image))
+
     def test_image_invalid_fsw(self):
         fsw = "S20555"
         image = signwriting_to_image(fsw)
