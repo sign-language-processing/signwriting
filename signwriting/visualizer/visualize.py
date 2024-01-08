@@ -25,7 +25,8 @@ def signwriting_to_image(fsw: str, antialiasing=True) -> Image:
     max_x, max_y, = sign["box"]["position"]
     img = Image.new('RGBA', (max_x - min_x, max_y - min_y), (255, 255, 255, 0))
     draw = ImageDraw.Draw(img)
-    draw.fontmode = 'L' if antialiasing else '1'
+    if not antialiasing:
+        draw.fontmode = '1'
 
     fill_font = get_font('SuttonSignWritingFill')
     line_font = get_font('SuttonSignWritingLine')
