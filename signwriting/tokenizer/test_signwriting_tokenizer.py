@@ -25,20 +25,30 @@ class TokenizeCase(unittest.TestCase):
 
         fsw = 'M123x456S1f720487x492 M124x456S1f210488x493'
         tokens = list(tokenizer.text_to_tokens(fsw, box_position=True))
-        self.assertEqual(tokens, [
+        self.assertEqual([
             'M', 'p123', 'p456', 'S1f7', 'c2', 'r0', 'p487', 'p492',
             'M', 'p124', 'p456', 'S1f2', 'c1', 'r0', 'p488', 'p493'
-        ])
+        ], tokens)
 
     def test_tokenization_multiple_signs_no_space(self):
         tokenizer = SignWritingTokenizer()
 
         fsw = 'M123x456S1f720487x492M124x456S1f210488x493'
         tokens = list(tokenizer.text_to_tokens(fsw, box_position=True))
-        self.assertEqual(tokens, [
-            'M', 'p123', 'p456', 'S1f7', 'c2', 'r0', 'p487', 'p492', 'M', 'p124', 'p456', 'S1f2', 'c1', 'r0', 'p488',
-            'p493'
-        ])
+        self.assertEqual([
+            'M', 'p123', 'p456', 'S1f7', 'c2', 'r0', 'p487', 'p492',
+            'M', 'p124', 'p456', 'S1f2', 'c1', 'r0', 'p488', 'p493'
+        ], tokens)
+
+    def test_tokenization_with_a(self):
+        tokenizer = SignWritingTokenizer()
+
+        fsw = "AS1f720M123x456S1f720487x492"
+
+        tokens = list(tokenizer.text_to_tokens(fsw, box_position=True))
+        self.assertEqual([
+            'M', 'p123', 'p456', 'S1f7', 'c2', 'r0', 'p487', 'p492',
+        ], tokens)
 
     def test_not_failing_for_r_box(self):
         tokenizer = SignWritingTokenizer()
