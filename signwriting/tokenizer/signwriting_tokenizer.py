@@ -51,6 +51,8 @@ class SignWritingTokenizer(BaseTokenizer):
             yield "p" + str(symbol["position"][1])
 
     def text_to_tokens(self, text: str, box_position=False) -> List[str]:
+        text = re.sub(r'([MLBR])', r' \1', text).strip() # add spaces
+        text = re.sub(r' +', r' ', text) # remove consecutive spaces
         signs = [fsw_to_sign(f) for f in text.split(" ")]
         for sign in signs:
             yield from SignWritingTokenizer.tokenize_symbol(sign["box"], box_position=box_position)
