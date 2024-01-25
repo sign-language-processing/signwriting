@@ -64,6 +64,14 @@ tokenizer.tokenize(fsw, bos=False, eos=False)
 # [6, 932, 932, 255, 678, 660, 919, 924, 255, 678, 660, 919, 924]
 ```
 
+4. Or to remove 'A' information, and separate signs by spaces, we can use:
+
+```python
+from signwriting.tokenizer import normalize_signwriting
+
+normalize_signwriting(fsw)
+```
+
 ### `signwriting.visualizer`
 
 This module is used to visualize SignWriting strings as images.
