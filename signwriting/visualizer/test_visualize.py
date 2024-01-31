@@ -38,6 +38,22 @@ class VisualizeCase(unittest.TestCase):
 
         assert_array_equal(np.array(image), np.array(reference_image))
 
+    def test_image_small_box(self):
+        fsw = "M500x500S2ff00407x501S1ce20436x535S2e300413x552S22b04418x565S36520420x523"
+
+        with self.assertRaises(ValueError):
+            signwriting_to_image(fsw)
+
+    def test_image_small_box_is_corrected(self):
+        fsw = "M500x500S2ff00407x501S1ce20436x535S2e300413x552S22b04418x565S36520420x523"
+
+        image = signwriting_to_image(fsw, trust_box=False)
+
+        assets_path = Path(__file__).parent / "test_assets" / f"{fsw}.png"
+        reference_image = Image.open(assets_path)
+
+        assert_array_equal(np.array(image), np.array(reference_image))
+
 
 if __name__ == '__main__':
     unittest.main()
