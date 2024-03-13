@@ -23,6 +23,13 @@ class NormalizeCase(unittest.TestCase):
         normalized = normalize_signwriting(fsw_1 + fsw_2)
         self.assertEqual(f"{fsw_1} {fsw_2}", normalized)
 
+    def test_normalization_is_identity_regression_4(self):
+        # https://github.com/sign-language-processing/signwriting/issues/4
+        fsw_1 = "M511x510S2c734490x490"
+        fsw_2 = "M510x518S2c105490x483"
+        self.assertEqual(fsw_1, normalize_signwriting(fsw_1))
+        self.assertEqual(fsw_2, normalize_signwriting(fsw_2))
+
 
 if __name__ == '__main__':
     unittest.main()

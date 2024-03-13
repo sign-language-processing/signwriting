@@ -63,10 +63,10 @@ class SignWritingTokenizer(BaseTokenizer):
 
     def tokens_to_text(self, tokens: List[str]) -> str:
         tokenized = " ".join(tokens)
-        tokenized = re.sub(r'p(\d*) p(\d*)', r'\1x\2', tokenized)
-        tokenized = re.sub(r'c(\d)\d? r(.)', r'\1\2', tokenized)
-        tokenized = re.sub(r'c(\d)\d?', r'\1 0', tokenized)
-        tokenized = re.sub(r'r(.)', r'0\1', tokenized)
+        tokenized = re.sub(r' p(\d*) p(\d*)', r'\1x\2', tokenized)
+        tokenized = re.sub(r' c(\d)\d? r(.)', r'\1\2', tokenized)
+        tokenized = re.sub(r' c(\d)\d?', r'\1 0', tokenized)
+        tokenized = re.sub(r' r(.)', r'0\1', tokenized)
 
         tokenized = tokenized.replace(' ', '')
         tokenized = re.sub(r'(\d)([MBLR])', r'\1 \2', tokenized)
