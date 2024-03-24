@@ -1,3 +1,4 @@
 .idea/
 build/
 signwriting.egg-info/
+__pycache__/
