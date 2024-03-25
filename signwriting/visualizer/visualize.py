@@ -21,7 +21,8 @@ def get_symbol_size(symbol: str):
 
 
 # pylint: disable=too-many-locals
-def signwriting_to_image(fsw: str, antialiasing=True, trust_box=True) -> Image:
+def signwriting_to_image(fsw: str, antialiasing=True, trust_box=True,
+                         line_color: tuple[int, int , int, int]=(0, 0, 0, 255), embedded_color=False) -> Image:
     sign = fsw_to_sign(fsw)
     if len(sign['symbols']) == 0:
         return Image.new('RGBA', (1, 1), (0, 0, 0, 0))
@@ -41,7 +42,7 @@ def signwriting_to_image(fsw: str, antialiasing=True, trust_box=True) -> Image:
             max_y = max(max_y, symbol_y + symbol_height)
 
     img = Image.new('RGBA', (max_x - min_x, max_y - min_y), (255, 255, 255, 0))
-    draw = ImageDraw.Draw(img)
+    draw = ImageDraw.Draw(img, 'RGBA')
     if not antialiasing:
         draw.fontmode = '1'
 
@@ -52,7 +53,7 @@ def signwriting_to_image(fsw: str, antialiasing=True, trust_box=True) -> Image:
         x, y = symbol["position"]
         x, y = x - min_x, y - min_y
         symbol_id = key2id(symbol["symbol"])
-        draw.text((x, y), symbol_fill(symbol_id), font=fill_font, fill=(255, 255, 255))
-        draw.text((x, y), symbol_line(symbol_id), font=line_font, fill=(0, 0, 0))
+        draw.text((x, y), symbol_fill(symbol_id), (255, 255, 255, 255), fill_font)
+        draw.text((x, y), symbol_line(symbol_id), line_color, line_font, embedded_color=embedded_color)
 
     return img
