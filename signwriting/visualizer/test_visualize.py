@@ -54,6 +54,17 @@ class VisualizeCase(unittest.TestCase):
 
         assert_array_equal(np.array(image), np.array(reference_image))
 
+    def test_image_with_line_and_embedded_color(self):
+        fsw = "M518x518S30a00482x483S33e00482x483"
+
+        image = signwriting_to_image("M518x518S30a00482x483S33e00482x483",
+                                     line_color=(144, 70, 180, 255), embedded_color=True)
+
+        assets_path = Path(__file__).parent / "test_assets" / f"{fsw}.png"
+        reference_image = Image.open(assets_path)
+
+        assert_array_equal(np.array(image), np.array(reference_image))
+
 
 if __name__ == '__main__':
     unittest.main()
