@@ -7,6 +7,9 @@ from PIL import Image, ImageDraw, ImageFont
 from signwriting.formats.fsw_to_sign import fsw_to_sign
 from signwriting.formats.fsw_to_swu import key2id, symbol_line, symbol_fill
 
+# Type alias representing a tuple of four integers: Red, Green, Blue, Alpha
+RGBA = Tuple[int, int, int, int]
+
 
 @lru_cache(maxsize=None)
 def get_font(font_name: str) -> ImageFont.FreeTypeFont:
@@ -23,8 +26,8 @@ def get_symbol_size(symbol: str):
 
 # pylint: disable=too-many-locals, too-many-arguments
 def signwriting_to_image(fsw: str, antialiasing=True, trust_box=True, embedded_color=False,
-                         line_color: Tuple[int, int, int, int] = (0, 0, 0, 255),
-                         fill_color: Tuple[int, int, int, int] = (255, 255, 255, 255)) -> Image:
+                         line_color: RGBA = (0, 0, 0, 255),
+                         fill_color: RGBA = (255, 255, 255, 255)) -> Image:
     sign = fsw_to_sign(fsw)
     if len(sign['symbols']) == 0:
         return Image.new('RGBA', (1, 1), (0, 0, 0, 0))
@@ -55,7 +58,9 @@ def signwriting_to_image(fsw: str, antialiasing=True, trust_box=True, embedded_c
         x, y = symbol["position"]
         x, y = x - min_x, y - min_y
         symbol_id = key2id(symbol["symbol"])
-        draw.text((x, y), symbol_fill(symbol_id), fill_color, fill_font, embedded_color=embedded_color)
-        draw.text((x, y), symbol_line(symbol_id), line_color, line_font, embedded_color=embedded_color)
+        draw.text((x, y), symbol_fill(symbol_id), fill=fill_color,
+                  font=fill_font, embedded_color=embedded_color)
+        draw.text((x, y), symbol_line(symbol_id), fill=line_color,
+                  font=line_font, embedded_color=embedded_color)
 
     return img
