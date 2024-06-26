@@ -103,6 +103,17 @@ result_sign = join_signs(char_a, char_b)
 # M500x500S1f720487x493S14720493x508
 ```
 
+## Cite
+
+```bibtex
+@misc{moryossef2024-signwriting, 
+    title={Utilities for SignWriting},
+    author={Moryossef, Amit},
+    howpublished={\url{https://github.com/sign-language-processing/signwriting}},
+    year={2024}
+}
+```
+
 ## References
 
 [^1]: Amit Moryossef, Zifan Jiang.

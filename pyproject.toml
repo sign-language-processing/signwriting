@@ -24,6 +24,7 @@ column_limit = 120
 [tool.pylint]
 max-line-length = 120
 disable = [
+    "C0103", # Invalid variable name (doesn't conform to UPPER_CASE naming style)
     "C0114", # Missing module docstring
     "C0115", # Missing class docstring
     "C0116", # Missing function or method docstring
