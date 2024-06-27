@@ -27,14 +27,14 @@ This also helps in developing specialized word lists for educational purposes.
 | d͡ʒ |  | Dsch | Dschungel | judge |
 | eː |  | e, ee, eh | Esel, Schnee, Mehl | long „e” similar to „a” in Northern English „gate” |
 | ə | ![M518x518S34700482x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x518S34700482x483&pad=10&size=2) | e | Silbe, Hilfe, eine, kostet, Nadel, Nagel | like the final syllable of the English word „brother” |
-| f |  | f, ff, v | Fisch, Affe, fragen, Vater, voll, frisch | as „f“ in „fun“ |
+| f | ![M524x518S36500482x483S33500476x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M524x518S36500482x483S33500476x483&pad=10&size=2) | f, ff, v | Fisch, Affe, fragen, Vater, voll, frisch | as „f“ in „fun“ |
 | ɡ | ![M518x518S35d04482x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x518S35d04482x483&pad=10&size=2) | g, gg | gut, Gras, Gurke, Bagger | like the „g“ in the English word „good“ or „go“ |
 | ʒ |  | g, j | Garage, Jalousie | like „sh“ but with voice |
-| h |  | H, h | Haus, Hund,hallo, heute | house, he, hat |
-| iː |  | i, ie, ih, ieh | Igel, Tier, ihm, Vieh | long „ee” as in „bee” or „teeth” |
-| ɪ |  | i | ich, Milch, wichtig | short „i“ as in „fit”; never as in „bite” |
+| h | ![M524x518S33500476x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M524x518S33500476x483&pad=10&size=2) | H, h | Haus, Hund,hallo, heute | house, he, hat |
+| iː | ![M518x518S34800482x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x518S34800482x483&pad=10&size=2) | i, ie, ih, ieh | Igel, Tier, ihm, Vieh | long „ee” as in „bee” or „teeth” |
+| ɪ | ![M518x518S35700482x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x518S35700482x483&pad=10&size=2) | i | ich, Milch, wichtig | short „i“ as in „fit”; never as in „bite” |
 | j |  | j, y | Junge, ja, Jo – Jo, Yacht | like the „y“ in the English word „yes” |
-| k |  | k, ck, kk, c, ch, g | Kind, Zucker, Mokka, Clown, Chaos, Flug, krank, dick, trinken | like the „k“ in English |
+| k | ![M524x518S35d04482x483S33500476x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M524x518S35d04482x483S33500476x483&pad=10&size=2) | k, ck, kk, c, ch, g | Kind, Zucker, Mokka, Clown, Chaos, Flug, krank, dick, trinken | like the „k“ in English |
 | l | ![M518x518S35c00482x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x518S35c00482x483&pad=10&size=2) | l, ll | Lampe, Ball, lesen, leise, alt | like „l” in „little” |
 | m | ![M518x518S33b00482x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x518S33b00482x483&pad=10&size=2) | m, mm | Mutter, Maus, Hammer, Nummer, machen | like „m“ as in English „mother“ |
 | n | ![M518x518S35d00482x483S33110499x490S20500503x493](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x518S35d00482x483S33110499x490S20500503x493&pad=10&size=2) | n, nn | Name, Nase, Hand, Tante, rennen, Kanne, Susanne, nie | like „n“ in „no“ or „name“ |
@@ -44,24 +44,24 @@ This also helps in developing specialized word lists for educational purposes.
 | øː |  | ö, öh | König, Löwe, blöd, Öl | similar to „eu” in French „peu”; long, say a long e and purse your lips |
 | œ |  | ö | Öffnung, östlich | short, cross between „i” in „dirt” and „eu” in French „peu” |
 | ɔː |  |  |  | call, four, saw |
-| p |  | p (b - am Silbenende, oder vor s oder vor t ) | Papa, Puppe, pusten, ab, Obst, Bobtail | like „p“ in „Paula“ |
-| p͡f |  | pf | Pfanne, Pfeffer, Pfau | like „pf“ in „upfront“ |
+| p | ![M524x518S35000482x483S33500476x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M524x518S35000482x483S33500476x483&pad=10&size=2) | p (b - am Silbenende, oder vor s oder vor t ) | Papa, Puppe, pusten, ab, Obst, Bobtail | like „p“ in „Paula“ |
+| p͡f | ![M537x518S35000469x483S36500495x483S33520463x483S33510495x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M537x518S35000469x483S36500495x483S33520463x483S33510495x483&pad=10&size=2) | pf | Pfanne, Pfeffer, Pfau | like „pf“ in „upfront“ |
 | r | ![M518x520S34700482x481S36140493x516](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x520S34700482x481S36140493x516&pad=10&size=2) | r, rr, rh | Raupe, Karre, Rhabarber, rudern, rot | „rrr” as if the speaker were gargling (there is another „r” produced with the tip of the tongue) |
-| ɹ |  | r | run, red, car | like the „r” in „run” or „red” |
-| z |  | s | Saft, Rasen, Riese, Rose | like an English „z” |
-| s | ![M518x518S36100482x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x518S36100482x483&pad=10&size=2) | s, ss, ß, c | Glas, Klasse, groß, City, Bus, muss, Wasser | like an English „s” |
-| ʃ |  | sch s(t), s(p), sh, ch | Schule, Stein, Spinne, Shampoo, Chance | like the „sh” at the beginning of „show” or „short” |
+| ɹ | ![M518x518S36000482x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x518S36000482x483&pad=10&size=2) | r | run, red, car | like the „r” in „run” or „red” |
+| z | ![M518x518S36100482x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x518S36100482x483&pad=10&size=2) | s | Saft, Rasen, Riese, Rose | like an English „z” |
+| s | ![M524x518S36100482x483S33500476x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M524x518S36100482x483S33500476x483&pad=10&size=2) | s, ss, ß, c | Glas, Klasse, groß, City, Bus, muss, Wasser | like an English „s” |
+| ʃ | ![M524x518S33500476x483S34500482x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M524x518S33500476x483S34500482x483&pad=10&size=2) | sch s(t), s(p), sh, ch | Schule, Stein, Spinne, Shampoo, Chance | like the „sh” at the beginning of „show” or „short” |
 | ð | ![M518x518S36300482x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x518S36300482x483&pad=10&size=2) | th | the, mother, father, with | like the „th” in „this” or „mother” |
-| θ |  | th | three, youth, club, month | like the „th” in „think” or „both” |
-| t |  | t, tt, th, dt, d | Tasse, Ratte, Theater, Stadt, Wand, Hund, turnen, tot, traurig | same as in English „Tom“ |
-| tʃ |  | tsch, ch | klatschen, Tschüs,knutschen | like „ch” in „church” |
+| θ | ![M524x518S36300482x483S33500476x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M524x518S36300482x483S33500476x483&pad=10&size=2) | th | three, youth, club, month | like the „th” in „think” or „both” |
+| t | ![M524x518S35d00482x483S33500476x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M524x518S35d00482x483S33500476x483&pad=10&size=2) | t, tt, th, dt, d | Tasse, Ratte, Theater, Stadt, Wand, Hund, turnen, tot, traurig | same as in English „Tom“ |
+| tʃ | ![M537x518S35d00469x483S34500495x483S33520463x483S33510495x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M537x518S35d00469x483S34500495x483S33520463x483S33510495x483&pad=10&size=2) | tsch, ch | klatschen, Tschüs,knutschen | like „ch” in „church” |
 | uː | ![M518x518S34d00482x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x518S34d00482x483&pad=10&size=2) | u, uh | Buch, Tube, Huhn, Stuhl | long „oo” as in „boot” with the lips much more rounded |
 | ʊ | ![M518x518S34600482x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x518S34600482x483&pad=10&size=2) | u | Hund, Stunde, Unfall | short „o“ like in „foot” or „push” |
 | yː | ![M518x518S36000482x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x518S36000482x483&pad=10&size=2) | ü, üh, y | Gefühl, Kühltruhe, üben, Mühe, Mühle | try to say a long German „ie“ sound and then purse your lips |
 | y | ![M518x518S36010482x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x518S36010482x483&pad=10&size=2) | ü | Glück, zurück, Küste, dünn, Mücke | short, like „u“ in French „une“ or English „dune“, but with lips pressed much closer together |
 | v | ![M518x518S36500482x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x518S36500482x483&pad=10&size=2) | w, v | Wand, Wüste, wohnen, abwaschen, weit, Vase | like „v“ in „very“, not English „w“ |
-| ks |  | x, ks, gs, chs, cks | Wachs, Taxi, Ochse, werktags, Luchs, Text, Knacks | like the „x“ in the English word „oxen“ as a „ks” sound |
-| t͡s |  | z, tz, zz, ts, ds | Zahn, Katze, Pizza, Rätsel, Schiedsrichter | like the „ts“ sound in the English words „lots” and „cats” (tsetse) |
+| ks | ![M537x518S35d04469x483S36100495x483S33520463x483S33510495x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M537x518S35d04469x483S36100495x483S33520463x483S33510495x483&pad=10&size=2) | x, ks, gs, chs, cks | Wachs, Taxi, Ochse, werktags, Luchs, Text, Knacks | like the „x“ in the English word „oxen“ as a „ks” sound |
+| t͡s | ![M524x529S36100482x483S33500476x483S20600489x518](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M524x529S36100482x483S33500476x483S20600489x518&pad=10&size=2) | z, tz, zz, ts, ds | Zahn, Katze, Pizza, Rätsel, Schiedsrichter | like the „ts“ sound in the English words „lots” and „cats” (tsetse) |
 | a͡ʊ | ![M531x518S34c00469x483S34d00495x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M531x518S34c00469x483S34d00495x483&pad=10&size=2) | au, ao | Auto, Stau, laut, Haus, Kakao | „ow” as in English „cow” but in a more brief and clipped manner |
 | ɔ͡ø |  | äu, eu, oi | Feuer, Eule, Gebäude, aufräumen, Konvoi | „oy“ as in English „toy“ |
 | a͡ɪ |  | ei, ai, ay, ey, eih | Hai, Eimer, leise, Meyer, Reihe, Karl May | English „i“ as in „high“ or „mine” |

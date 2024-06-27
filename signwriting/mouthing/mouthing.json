@@ -66,7 +66,7 @@
     "description": "like the final syllable of the English word „brother”"
   },
   "f": {
-    "writing": "",
+    "writing": "M524x518S36500482x483S33500476x483",
     "grapheme": "f, ff, v",
     "example": "Fisch, Affe, fragen, Vater, voll, frisch",
     "description": "as „f“ in „fun“"
@@ -84,19 +84,19 @@
     "description": "like „sh“ but with voice"
   },
   "h": {
-    "writing": "",
+    "writing": "M524x518S33500476x483",
     "grapheme": "H, h",
     "example": "Haus, Hund,hallo, heute",
     "description": "house, he, hat"
   },
   "iː": {
-    "writing": "",
+    "writing": "M518x518S34800482x483",
     "grapheme": "i, ie, ih, ieh",
     "example": "Igel, Tier, ihm, Vieh",
     "description": "long „ee” as in „bee” or „teeth”"
   },
   "ɪ": {
-    "writing": "",
+    "writing": "M518x518S35700482x483",
     "grapheme": "i",
     "example": "ich, Milch, wichtig",
     "description": "short „i“ as in „fit”; never as in „bite”"
@@ -108,7 +108,7 @@
     "description": "like the „y“ in the English word „yes”"
   },
   "k": {
-    "writing": "",
+    "writing": "M524x518S35d04482x483S33500476x483",
     "grapheme": "k, ck, kk, c, ch, g",
     "example": "Kind, Zucker, Mokka, Clown, Chaos, Flug, krank, dick, trinken",
     "description": "like the „k“ in English"
@@ -168,13 +168,13 @@
     "description": "call, four, saw"
   },
   "p": {
-    "writing": "",
+    "writing": "M524x518S35000482x483S33500476x483",
     "grapheme": "p (b - am Silbenende, oder vor s oder vor t )",
     "example": "Papa, Puppe, pusten, ab, Obst, Bobtail",
     "description": "like „p“ in „Paula“"
   },
   "p͡f": {
-    "writing": "",
+    "writing": "M537x518S35000469x483S36500495x483S33520463x483S33510495x483",
     "grapheme": "pf",
     "example": "Pfanne, Pfeffer, Pfau",
     "description": "like „pf“ in „upfront“"
@@ -186,25 +186,25 @@
     "description": "„rrr” as if the speaker were gargling (there is another „r” produced with the tip of the tongue)"
   },
   "ɹ": {
-    "writing": "",
+    "writing": "M518x518S36000482x483",
     "grapheme": "r",
     "example": "run, red, car",
     "description": "like the „r” in „run” or „red”"
   },
   "z": {
-    "writing": "",
+    "writing": "M518x518S36100482x483",
     "grapheme": "s",
     "example": "Saft, Rasen, Riese, Rose",
     "description": "like an English „z”"
   },
   "s": {
-    "writing": "M518x518S36100482x483",
+    "writing": "M524x518S36100482x483S33500476x483",
     "grapheme": "s, ss, ß, c",
     "example": "Glas, Klasse, groß, City, Bus, muss, Wasser",
     "description": "like an English „s”"
   },
   "ʃ": {
-    "writing": "",
+    "writing": "M524x518S33500476x483S34500482x483",
     "grapheme": "sch s(t), s(p), sh, ch",
     "example": "Schule, Stein, Spinne, Shampoo, Chance",
     "description": "like the „sh” at the beginning of „show” or „short”"
@@ -216,19 +216,19 @@
     "description": "like the „th” in „this” or „mother”"
   },
   "θ": {
-    "writing": "",
+    "writing": "M524x518S36300482x483S33500476x483",
     "grapheme": "th",
     "example": "three, youth, club, month",
     "description": "like the „th” in „think” or „both”"
   },
   "t": {
-    "writing": "",
+    "writing": "M524x518S35d00482x483S33500476x483",
     "grapheme": "t, tt, th, dt, d",
     "example": "Tasse, Ratte, Theater, Stadt, Wand, Hund, turnen, tot, traurig",
     "description": "same as in English „Tom“"
   },
   "tʃ": {
-    "writing": "",
+    "writing": "M537x518S35d00469x483S34500495x483S33520463x483S33510495x483",
     "grapheme": "tsch, ch",
     "example": "klatschen, Tschüs,knutschen",
     "description": "like „ch” in „church”"
@@ -264,13 +264,13 @@
     "description": "like „v“ in „very“, not English „w“"
   },
   "ks": {
-    "writing": "",
+    "writing": "M537x518S35d04469x483S36100495x483S33520463x483S33510495x483",
     "grapheme": "x, ks, gs, chs, cks",
     "example": "Wachs, Taxi, Ochse, werktags, Luchs, Text, Knacks",
     "description": "like the „x“ in the English word „oxen“ as a „ks” sound"
   },
   "t͡s": {
-    "writing": "",
+    "writing": "M524x529S36100482x483S33500476x483S20600489x518",
     "grapheme": "z, tz, zz, ts, ds",
     "example": "Zahn, Katze, Pizza, Rätsel, Schiedsrichter",
     "description": "like the „ts“ sound in the English words „lots” and „cats” (tsetse)"
