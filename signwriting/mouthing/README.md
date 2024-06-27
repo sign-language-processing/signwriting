@@ -1,4 +1,4 @@
-# Mouthing (Mundbildschrift)
+# SpeechWriting (Mundbildschrift)
 
 Mundbildschrift is a phonetic notation system designed to assist in the articulation training of deaf children. 
 It assigns specific symbols to different sounds of the German language. 
