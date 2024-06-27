@@ -1,6 +1,6 @@
 {
   "ɑː": {
-    "writing": "",
+    "writing": "M518x518S34c00482x483",
     "grapheme": "a, aa, ah",
     "example": "Aal, Abend, Bahn",
     "description": "long „a” as in „bar” – or „calm”",
@@ -14,7 +14,7 @@
     "instruction": "Keep your tongue in the center of your mouth, slightly raised, with your mouth open and lips relaxed while voicing."
   },
   "ɛː": {
-    "writing": "",
+    "writing": "M518x518S34a00482x483",
     "grapheme": "ä, äh",
     "example": "Käse, spät, Nähmaschine, Fähre, Mähne",
     "description": "long as in „air“",
@@ -35,14 +35,14 @@
     "instruction": "Press your lips together, build up pressure, then release while voicing."
   },
   "ç": {
-    "writing": "",
+    "writing": "M518x518S35800482x483",
     "grapheme": "ch – nach e, i, ä, ö, ü, eu, äu, l,n,r, ei, „ig“ am Wortende",
     "example": "ich, Teich, euch, Elch, Männchen, echt, nächste, möchte, Storch",
     "description": "Imagine saying the English word „humor“ but breath with the tip of the tongue touching the back of the lower front teeth.",
     "instruction": "Raise the middle of your tongue close to the hard palate, and push air through without vibrating the vocal cords."
   },
   "x": {
-    "writing": "",
+    "writing": "M518x518S35800482x483",
     "grapheme": "ch nach „a“, „o“, „u“ und „au“",
     "example": "acht, Tochter, Bauch, Buch, tauchen, Krach",
     "description": "Imagine the rasping guttural sound made in the back of your throat before you spit.",
@@ -63,7 +63,7 @@
     "instruction": "Place the tip of your tongue against the ridge behind your upper front teeth, then release it while simultaneously voicing and passing air through a narrow gap."
   },
   "eː": {
-    "writing": "",
+    "writing": "M518x518S34700482x483",
     "grapheme": "e, ee, eh",
     "example": "Esel, Schnee, Mehl",
     "description": "long „e” similar to „a” in Northern English „gate”",
@@ -119,7 +119,7 @@
     "instruction": "Raise the front of your tongue high in the mouth, but not as high as for /iː/, keep your lips unrounded, and voice."
   },
   "j": {
-    "writing": "",
+    "writing": "M518x518S35700482x483",
     "grapheme": "j, y",
     "example": "Junge, ja, Jo – Jo, Yacht",
     "description": "like the „y“ in the English word „yes”",
@@ -175,21 +175,21 @@
     "instruction": "Lower the back of your tongue, open your mouth, and round your lips slightly while voicing."
   },
   "øː": {
-    "writing": "",
+    "writing": "M518x518S34400482x483",
     "grapheme": "ö, öh",
     "example": "König, Löwe, blöd, Öl",
     "description": "similar to „eu” in French „peu”; long, say a long e and purse your lips",
     "instruction": "Raise the front of your tongue high in the mouth, round your lips tightly, and voice."
   },
   "œ": {
-    "writing": "",
+    "writing": "M518x518S34400482x483",
     "grapheme": "ö",
     "example": "Öffnung, östlich",
     "description": "short, cross between „i” in „dirt” and „eu” in French „peu”",
     "instruction": "Raise the front of your tongue mid-high in the mouth, round your lips moderately, and voice."
   },
   "ɔː": {
-    "writing": "",
+    "writing": "M518x518S34400482x483",
     "grapheme": "",
     "example": "",
     "description": "call, four, saw",

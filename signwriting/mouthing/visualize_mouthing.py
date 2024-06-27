@@ -11,11 +11,12 @@ if __name__ == "__main__":
         data = json.load(f)
 
     # Generate the markdown table
-    table_header = "| IPA | Writing | Grapheme | Example | Description | Instruction | \n"
-    table_divider = "| --- | ------- | -------- | ------- | ----------- | ----------- | \n"
+    table_header = "| IPA | Standard | Writing | Grapheme | Example | Description | Instruction | \n"
+    table_divider = "| --- | ------- | ------- | -------- | ------- | ----------- | ----------- | \n"
     table_rows = []
 
     for ipa, details in data.items():
+        standard = f"![{ipa}](standard/{ipa}.png)"
         writing = details.get("writing", "")
         if writing != "":
             image = f"https://www.signbank.org/signpuddle2.0/glyphogram.php?text={writing}&pad=10&size=2"
@@ -24,7 +25,7 @@ if __name__ == "__main__":
         example = details.get("example", "")
         description = details.get("description", "")
         instruction = details.get("instruction", "")
-        row = f"| {ipa} | {writing} | {grapheme} | {example} | {description} | {instruction} |\n"
+        row = f"| {ipa} | {standard} | {writing} | {grapheme} | {example} | {description} | {instruction} |\n"
         table_rows.append(row)
 
     # Read the current README.md content
