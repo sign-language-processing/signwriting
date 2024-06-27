@@ -11,11 +11,11 @@
     "example": "Salz, Wand, Mann",
     "description": "short „u” as in Southern English „but”"
   },
-  "eː": {
+  "ɛː": {
     "writing": "",
-    "grapheme": "e, ee, eh",
-    "example": "Esel, Schnee, Mehl",
-    "description": "long „e” similar to „a” in Northern English „gate”"
+    "grapheme": "ä, äh",
+    "example": "Käse, spät, Nähmaschine, Fähre, Mähne",
+    "description": "long as in „air“"
   },
   "ɛ": {
     "writing": "M518x518S34a00482x483",
@@ -23,11 +23,71 @@
     "example": "essen, Bett, Eltern, Äste",
     "description": "short „e” as in „bet” or „get“"
   },
+  "b": {
+    "writing": "M518x518S35000482x483",
+    "grapheme": "b, bb",
+    "example": "Boot, Ebbe, Banane, braun, aber",
+    "description": "as in English „bed”"
+  },
+  "ç": {
+    "writing": "",
+    "grapheme": "ch – nach e, i, ä, ö, ü, eu, äu, l,n,r, ei, „ig“ am Wortende",
+    "example": "ich, Teich, euch, Elch, Männchen, echt, nächste, möchte, Storch",
+    "description": "Imagine saying the English word „humor“ but breath with the tip of the tongue touching the back of the lower front teeth."
+  },
+  "x": {
+    "writing": "",
+    "grapheme": "ch nach „a“, „o“, „u“ und „au“",
+    "example": "acht, Tochter, Bauch, Buch, tauchen, Krach",
+    "description": "Imagine the rasping guttural sound made in the back of your throat before you spit."
+  },
+  "d": {
+    "writing": "M518x518S35d00482x483",
+    "grapheme": "d, dd",
+    "example": "Dose, Paddel, das, dumm",
+    "description": "same as its English equivalent „d”"
+  },
+  "d͡ʒ": {
+    "writing": "",
+    "grapheme": "Dsch",
+    "example": "Dschungel",
+    "description": "judge"
+  },
+  "eː": {
+    "writing": "",
+    "grapheme": "e, ee, eh",
+    "example": "Esel, Schnee, Mehl",
+    "description": "long „e” similar to „a” in Northern English „gate”"
+  },
   "ə": {
     "writing": "M518x518S34700482x483",
     "grapheme": "e",
     "example": "Silbe, Hilfe, eine, kostet, Nadel, Nagel",
     "description": "like the final syllable of the English word „brother”"
+  },
+  "f": {
+    "writing": "",
+    "grapheme": "f, ff, v",
+    "example": "Fisch, Affe, fragen, Vater, voll, frisch",
+    "description": "as „f“ in „fun“"
+  },
+  "ɡ": {
+    "writing": "M518x518S35d04482x483",
+    "grapheme": "g, gg",
+    "example": "gut, Gras, Gurke, Bagger",
+    "description": "like the „g“ in the English word „good“ or „go“"
+  },
+  "ʒ": {
+    "writing": "",
+    "grapheme": "g, j",
+    "example": "Garage, Jalousie",
+    "description": "like „sh“ but with voice"
+  },
+  "h": {
+    "writing": "",
+    "grapheme": "H, h",
+    "example": "Haus, Hund,hallo, heute",
+    "description": "house, he, hat"
   },
   "iː": {
     "writing": "",
@@ -41,6 +101,42 @@
     "example": "ich, Milch, wichtig",
     "description": "short „i“ as in „fit”; never as in „bite”"
   },
+  "j": {
+    "writing": "",
+    "grapheme": "j, y",
+    "example": "Junge, ja, Jo – Jo, Yacht",
+    "description": "like the „y“ in the English word „yes”"
+  },
+  "k": {
+    "writing": "",
+    "grapheme": "k, ck, kk, c, ch, g",
+    "example": "Kind, Zucker, Mokka, Clown, Chaos, Flug, krank, dick, trinken",
+    "description": "like the „k“ in English"
+  },
+  "l": {
+    "writing": "M518x518S35c00482x483",
+    "grapheme": "l, ll",
+    "example": "Lampe, Ball, lesen, leise, alt",
+    "description": "like „l” in „little”"
+  },
+  "m": {
+    "writing": "M518x518S33b00482x483",
+    "grapheme": "m, mm",
+    "example": "Mutter, Maus, Hammer, Nummer, machen",
+    "description": "like „m“ as in English „mother“"
+  },
+  "n": {
+    "writing": "M518x518S35d00482x483S33110499x490S20500503x493",
+    "grapheme": "n, nn",
+    "example": "Name, Nase, Hand, Tante, rennen, Kanne, Susanne, nie",
+    "description": "like „n“ in „no“ or „name“"
+  },
+  "ŋ": {
+    "writing": "",
+    "grapheme": "n, ng, nk",
+    "example": "Ring, Zange, Junge, Bon, krank, trinken",
+    "description": "like the „ng“ sound in the English word „song“ or „long”"
+  },
   "oː": {
     "writing": "M518x518S34400482x483",
     "grapheme": "o, oo, oh",
@@ -52,24 +148,6 @@
     "grapheme": "o",
     "example": "Onkel, offen, Kopf",
     "description": "short „o” as in „stop” or „not”"
-  },
-  "uː": {
-    "writing": "M518x518S34d00482x483",
-    "grapheme": "u, uh",
-    "example": "Buch, Tube, Huhn, Stuhl",
-    "description": "long „oo” as in „boot” with the lips much more rounded"
-  },
-  "ʊ": {
-    "writing": "M518x518S34600482x483",
-    "grapheme": "u",
-    "example": "Hund, Stunde, Unfall",
-    "description": "short „o“ like in „foot” or „push”"
-  },
-  "ɛː": {
-    "writing": "",
-    "grapheme": "ä, äh",
-    "example": "Käse, spät, Nähmaschine, Fähre, Mähne",
-    "description": "long as in „air“"
   },
   "øː": {
     "writing": "",
@@ -83,6 +161,90 @@
     "example": "Öffnung, östlich",
     "description": "short, cross between „i” in „dirt” and „eu” in French „peu”"
   },
+  "ɔː": {
+    "writing": "",
+    "grapheme": "",
+    "example": "",
+    "description": "call, four, saw"
+  },
+  "p": {
+    "writing": "",
+    "grapheme": "p (b - am Silbenende, oder vor s oder vor t )",
+    "example": "Papa, Puppe, pusten, ab, Obst, Bobtail",
+    "description": "like „p“ in „Paula“"
+  },
+  "p͡f": {
+    "writing": "",
+    "grapheme": "pf",
+    "example": "Pfanne, Pfeffer, Pfau",
+    "description": "like „pf“ in „upfront“"
+  },
+  "r": {
+    "writing": "M518x520S34700482x481S36140493x516",
+    "grapheme": "r, rr, rh",
+    "example": "Raupe, Karre, Rhabarber, rudern, rot",
+    "description": "„rrr” as if the speaker were gargling (there is another „r” produced with the tip of the tongue)"
+  },
+  "ɹ": {
+    "writing": "",
+    "grapheme": "r",
+    "example": "run, red, car",
+    "description": "like the „r” in „run” or „red”"
+  },
+  "z": {
+    "writing": "",
+    "grapheme": "s",
+    "example": "Saft, Rasen, Riese, Rose",
+    "description": "like an English „z”"
+  },
+  "s": {
+    "writing": "M518x518S36100482x483",
+    "grapheme": "s, ss, ß, c",
+    "example": "Glas, Klasse, groß, City, Bus, muss, Wasser",
+    "description": "like an English „s”"
+  },
+  "ʃ": {
+    "writing": "",
+    "grapheme": "sch s(t), s(p), sh, ch",
+    "example": "Schule, Stein, Spinne, Shampoo, Chance",
+    "description": "like the „sh” at the beginning of „show” or „short”"
+  },
+  "ð": {
+    "writing": "M518x518S36300482x483",
+    "grapheme": "th",
+    "example": "the, mother, father, with",
+    "description": "like the „th” in „this” or „mother”"
+  },
+  "θ": {
+    "writing": "",
+    "grapheme": "th",
+    "example": "three, youth, club, month",
+    "description": "like the „th” in „think” or „both”"
+  },
+  "t": {
+    "writing": "",
+    "grapheme": "t, tt, th, dt, d",
+    "example": "Tasse, Ratte, Theater, Stadt, Wand, Hund, turnen, tot, traurig",
+    "description": "same as in English „Tom“"
+  },
+  "tʃ": {
+    "writing": "",
+    "grapheme": "tsch, ch",
+    "example": "klatschen, Tschüs,knutschen",
+    "description": "like „ch” in „church”"
+  },
+  "uː": {
+    "writing": "M518x518S34d00482x483",
+    "grapheme": "u, uh",
+    "example": "Buch, Tube, Huhn, Stuhl",
+    "description": "long „oo” as in „boot” with the lips much more rounded"
+  },
+  "ʊ": {
+    "writing": "M518x518S34600482x483",
+    "grapheme": "u",
+    "example": "Hund, Stunde, Unfall",
+    "description": "short „o“ like in „foot” or „push”"
+  },
   "yː": {
     "writing": "M518x518S36000482x483",
     "grapheme": "ü, üh, y",
@@ -94,6 +256,24 @@
     "grapheme": "ü",
     "example": "Glück, zurück, Küste, dünn, Mücke",
     "description": "short, like „u“ in French „une“ or English „dune“, but with lips pressed much closer together"
+  },
+  "v": {
+    "writing": "M518x518S36500482x483",
+    "grapheme": "w, v",
+    "example": "Wand, Wüste, wohnen, abwaschen, weit, Vase",
+    "description": "like „v“ in „very“, not English „w“"
+  },
+  "ks": {
+    "writing": "",
+    "grapheme": "x, ks, gs, chs, cks",
+    "example": "Wachs, Taxi, Ochse, werktags, Luchs, Text, Knacks",
+    "description": "like the „x“ in the English word „oxen“ as a „ks” sound"
+  },
+  "t͡s": {
+    "writing": "",
+    "grapheme": "z, tz, zz, ts, ds",
+    "example": "Zahn, Katze, Pizza, Rätsel, Schiedsrichter",
+    "description": "like the „ts“ sound in the English words „lots” and „cats” (tsetse)"
   },
   "a͡ʊ": {
     "writing": "M531x518S34c00469x483S34d00495x483",
@@ -112,149 +292,5 @@
     "grapheme": "ei, ai, ay, ey, eih",
     "example": "Hai, Eimer, leise, Meyer, Reihe, Karl May",
     "description": "English „i“ as in „high“ or „mine”"
-  },
-  "m": {
-    "writing": "M518x518S33b00482x483",
-    "grapheme": "m, mm",
-    "example": "Mutter, Maus, Hammer, Nummer, machen",
-    "description": "like „m“ as in English „mother“"
-  },
-  "b": {
-    "writing": "M518x518S35000482x483",
-    "grapheme": "b, bb",
-    "example": "Boot, Ebbe, Banane, braun, aber",
-    "description": "as in English „bed”"
-  },
-  "p": {
-    "writing": "",
-    "grapheme": "p (b - am Silbenende, oder vor s oder vor t )",
-    "example": "Papa, Puppe, pusten, ab, Obst, Bobtail",
-    "description": "like „p“ in „Paula“"
-  },
-  "v": {
-    "writing": "M518x518S36500482x483",
-    "grapheme": "w, v",
-    "example": "Wand, Wüste, wohnen, abwaschen, weit, Vase",
-    "description": "like „v“ in „very“, not English „w“"
-  },
-  "f": {
-    "writing": "",
-    "grapheme": "f, ff, v",
-    "example": "Fisch, Affe, fragen, Vater, voll, frisch",
-    "description": "as „f“ in „fun“"
-  },
-  "l": {
-    "writing": "M518x518S35c00482x483",
-    "grapheme": "l, ll",
-    "example": "Lampe, Ball, lesen, leise, alt",
-    "description": "like „l” in „little”"
-  },
-  "d": {
-    "writing": "M518x518S35d00482x483",
-    "grapheme": "d, dd",
-    "example": "Dose, Paddel, das, dumm",
-    "description": "same as its English equivalent „d”"
-  },
-  "t": {
-    "writing": "",
-    "grapheme": "t, tt, th, dt, d",
-    "example": "Tasse, Ratte, Theater, Stadt, Wand, Hund, turnen, tot, traurig",
-    "description": "same as in English „Tom“"
-  },
-  "n": {
-    "writing": "M518x518S35d00482x483S33110499x490S20500503x493",
-    "grapheme": "n, nn",
-    "example": "Name, Nase, Hand, Tante, rennen, Kanne, Susanne, nie",
-    "description": "like „n“ in „no“ or „name“"
-  },
-  "t͡s": {
-    "writing": "",
-    "grapheme": "z, tz, zz, ts, ds",
-    "example": "Zahn, Katze, Pizza, Rätsel, Schiedsrichter",
-    "description": "like the „ts“ sound in the English words „lots” and „cats” (tsetse)"
-  },
-  "ʒ": {
-    "writing": "",
-    "grapheme": "g, j",
-    "example": "Garage, Jalousie",
-    "description": "like „sh“ but with voice"
-  },
-  "ʃ": {
-    "writing": "",
-    "grapheme": "sch s(t), s(p), sh, ch",
-    "example": "Schule, Stein, Spinne, Shampoo, Chance",
-    "description": "like the „sh” at the beginning of „show” or „short”"
-  },
-  "z": {
-    "writing": "",
-    "grapheme": "s",
-    "example": "Saft, Rasen, Riese, Rose",
-    "description": "like an English „z”"
-  },
-  "s": {
-    "writing": "M518x518S36100482x483",
-    "grapheme": "s, ss, ß, c",
-    "example": "Glas, Klasse, groß, City, Bus, muss, Wasser",
-    "description": "like an English „s”"
-  },
-  "j": {
-    "writing": "",
-    "grapheme": "j, y",
-    "example": "Junge, ja, Jo – Jo, Yacht",
-    "description": "like the „y“ in the English word „yes”"
-  },
-  "ɡ": {
-    "writing": "M518x518S35d04482x483",
-    "grapheme": "g, gg",
-    "example": "gut, Gras, Gurke, Bagger",
-    "description": "like the „g“ in the English word „good“ or „go“"
-  },
-  "k": {
-    "writing": "",
-    "grapheme": "k, ck, kk, c, ch, g",
-    "example": "Kind, Zucker, Mokka, Clown, Chaos, Flug, krank, dick, trinken",
-    "description": "like the „k“ in English"
-  },
-  "ks": {
-    "writing": "",
-    "grapheme": "x, ks, gs, chs, cks",
-    "example": "Wachs, Taxi, Ochse, werktags, Luchs, Text, Knacks",
-    "description": "like the „x“ in the English word „oxen“ as a „ks” sound"
-  },
-  "r": {
-    "writing": "M518x520S34700482x481S36140493x516",
-    "grapheme": "r, rr, rh",
-    "example": "Raupe, Karre, Rhabarber, rudern, rot",
-    "description": "„rrr” as if the speaker were gargling (there is another „r” produced with the tip of the tongue)"
-  },
-  "ç": {
-    "writing": "",
-    "grapheme": "ch – nach e, i, ä, ö, ü, eu, äu, l,n,r, ei, „ig“ am Wortende",
-    "example": "ich, Teich, euch, Elch, Männchen, echt, nächste, möchte, Storch",
-    "description": "Imagine saying the English word „humor“ but breath with the tip of the tongue touching the back of the lower front teeth."
-  },
-  "x": {
-    "writing": "",
-    "grapheme": "ch  nach „a“, „o“, „u“ und „au“",
-    "example": "acht, Tochter, Bauch, Buch, tauchen, Krach",
-    "description": "Imagine the rasping guttural sound made in the back of your throat before you spit."
-  },
-  "ŋ": {
-    "writing": "",
-    "grapheme": "n, ng, nk",
-    "example": "Ring, Zange, Junge, Bon, krank, trinken",
-    "description": "like the „ng“ sound in the English word „song“ or „long”"
-  },
-  "θ": {
-    "writing": "",
-    "grapheme": "th",
-    "example": "three, youth, club, month",
-    "description": ""
-  },
-  "ð": {
-    "writing": "M518x518S36300482x483",
-    "grapheme": "th",
-    "example": "the, mother, father, with",
-    "description": ""
   }
 }

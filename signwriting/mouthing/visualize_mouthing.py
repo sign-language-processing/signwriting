@@ -18,7 +18,8 @@ if __name__ == "__main__":
     for ipa, details in data.items():
         writing = details.get("writing", "")
         if writing != "":
-            writing = f"![{writing}](https://www.signbank.org/signpuddle2.0/glyphogram.php?text={writing}&pad=10)"
+            image = f"https://www.signbank.org/signpuddle2.0/glyphogram.php?text={writing}&pad=10&size=2"
+            writing = f"![{writing}]({image})"
         grapheme = details.get("grapheme", "")
         example = details.get("example", "")
         description = details.get("description", "")
