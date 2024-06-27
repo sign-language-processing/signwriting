@@ -24,12 +24,12 @@ This also helps in developing specialized word lists for educational purposes.
 | ç |  | ch – nach e, i, ä, ö, ü, eu, äu, l,n,r, ei, „ig“ am Wortende | ich, Teich, euch, Elch, Männchen, echt, nächste, möchte, Storch | Imagine saying the English word „humor“ but breath with the tip of the tongue touching the back of the lower front teeth. |
 | x |  | ch nach „a“, „o“, „u“ und „au“ | acht, Tochter, Bauch, Buch, tauchen, Krach | Imagine the rasping guttural sound made in the back of your throat before you spit. |
 | d | ![M518x518S35d00482x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x518S35d00482x483&pad=10&size=2) | d, dd | Dose, Paddel, das, dumm | same as its English equivalent „d” |
-| d͡ʒ |  | Dsch | Dschungel | judge |
+| d͡ʒ | ![M531x518S35d00469x483S34500495x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M531x518S35d00469x483S34500495x483&pad=10&size=2) | Dsch | Dschungel | judge |
 | eː |  | e, ee, eh | Esel, Schnee, Mehl | long „e” similar to „a” in Northern English „gate” |
 | ə | ![M518x518S34700482x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x518S34700482x483&pad=10&size=2) | e | Silbe, Hilfe, eine, kostet, Nadel, Nagel | like the final syllable of the English word „brother” |
 | f | ![M524x518S36500482x483S33500476x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M524x518S36500482x483S33500476x483&pad=10&size=2) | f, ff, v | Fisch, Affe, fragen, Vater, voll, frisch | as „f“ in „fun“ |
 | ɡ | ![M518x518S35d04482x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x518S35d04482x483&pad=10&size=2) | g, gg | gut, Gras, Gurke, Bagger | like the „g“ in the English word „good“ or „go“ |
-| ʒ |  | g, j | Garage, Jalousie | like „sh“ but with voice |
+| ʒ | ![M518x518S34500482x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x518S34500482x483&pad=10&size=2) | g, j | Garage, Jalousie | like „sh“ but with voice |
 | h | ![M524x518S33500476x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M524x518S33500476x483&pad=10&size=2) | H, h | Haus, Hund,hallo, heute | house, he, hat |
 | iː | ![M518x518S34800482x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x518S34800482x483&pad=10&size=2) | i, ie, ih, ieh | Igel, Tier, ihm, Vieh | long „ee” as in „bee” or „teeth” |
 | ɪ | ![M518x518S35700482x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x518S35700482x483&pad=10&size=2) | i | ich, Milch, wichtig | short „i“ as in „fit”; never as in „bite” |
@@ -63,5 +63,5 @@ This also helps in developing specialized word lists for educational purposes.
 | ks | ![M537x518S35d04469x483S36100495x483S33520463x483S33510495x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M537x518S35d04469x483S36100495x483S33520463x483S33510495x483&pad=10&size=2) | x, ks, gs, chs, cks | Wachs, Taxi, Ochse, werktags, Luchs, Text, Knacks | like the „x“ in the English word „oxen“ as a „ks” sound |
 | t͡s | ![M524x529S36100482x483S33500476x483S20600489x518](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M524x529S36100482x483S33500476x483S20600489x518&pad=10&size=2) | z, tz, zz, ts, ds | Zahn, Katze, Pizza, Rätsel, Schiedsrichter | like the „ts“ sound in the English words „lots” and „cats” (tsetse) |
 | a͡ʊ | ![M531x518S34c00469x483S34d00495x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M531x518S34c00469x483S34d00495x483&pad=10&size=2) | au, ao | Auto, Stau, laut, Haus, Kakao | „ow” as in English „cow” but in a more brief and clipped manner |
-| ɔ͡ø |  | äu, eu, oi | Feuer, Eule, Gebäude, aufräumen, Konvoi | „oy“ as in English „toy“ |
-| a͡ɪ |  | ei, ai, ay, ey, eih | Hai, Eimer, leise, Meyer, Reihe, Karl May | English „i“ as in „high“ or „mine” |
+| ɔ͡ø | ![M531x518S34900469x483S34800495x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M531x518S34900469x483S34800495x483&pad=10&size=2) | äu, eu, oi | Feuer, Eule, Gebäude, aufräumen, Konvoi | „oy“ as in English „toy“ |
+| a͡ɪ | ![M531x518S34c00469x483S34800495x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M531x518S34c00469x483S34800495x483&pad=10&size=2) | ei, ai, ay, ey, eih | Hai, Eimer, leise, Meyer, Reihe, Karl May | English „i“ as in „high“ or „mine” |

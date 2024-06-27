@@ -48,7 +48,7 @@
     "description": "same as its English equivalent „d”"
   },
   "d͡ʒ": {
-    "writing": "",
+    "writing": "M531x518S35d00469x483S34500495x483",
     "grapheme": "Dsch",
     "example": "Dschungel",
     "description": "judge"
@@ -78,7 +78,7 @@
     "description": "like the „g“ in the English word „good“ or „go“"
   },
   "ʒ": {
-    "writing": "",
+    "writing": "M518x518S34500482x483",
     "grapheme": "g, j",
     "example": "Garage, Jalousie",
     "description": "like „sh“ but with voice"
@@ -282,13 +282,13 @@
     "description": "„ow” as in English „cow” but in a more brief and clipped manner"
   },
   "ɔ͡ø": {
-    "writing": "",
+    "writing": "M531x518S34900469x483S34800495x483",
     "grapheme": "äu, eu, oi",
     "example": "Feuer, Eule, Gebäude, aufräumen, Konvoi",
     "description": "„oy“ as in English „toy“"
   },
   "a͡ɪ": {
-    "writing": "",
+    "writing": "M531x518S34c00469x483S34800495x483",
     "grapheme": "ei, ai, ay, ey, eih",
     "example": "Hai, Eimer, leise, Meyer, Reihe, Karl May",
     "description": "English „i“ as in „high“ or „mine”"
