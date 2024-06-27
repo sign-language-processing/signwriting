@@ -11,8 +11,8 @@ if __name__ == "__main__":
         data = json.load(f)
 
     # Generate the markdown table
-    table_header = "| IPA | Writing | Grapheme | Example | Description |\n"
-    table_divider = "| --- | ------- | -------- | ------- | ----------- |\n"
+    table_header = "| IPA | Writing | Grapheme | Example | Description | Instruction | \n"
+    table_divider = "| --- | ------- | -------- | ------- | ----------- | ----------- | \n"
     table_rows = []
 
     for ipa, details in data.items():
@@ -23,7 +23,8 @@ if __name__ == "__main__":
         grapheme = details.get("grapheme", "")
         example = details.get("example", "")
         description = details.get("description", "")
-        row = f"| {ipa} | {writing} | {grapheme} | {example} | {description} |\n"
+        instruction = details.get("instruction", "")
+        row = f"| {ipa} | {writing} | {grapheme} | {example} | {description} | {instruction} |\n"
         table_rows.append(row)
 
     # Read the current README.md content
