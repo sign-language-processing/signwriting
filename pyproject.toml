@@ -41,7 +41,7 @@ packages = [
 ]
 
 [tool.setuptools.package-data]
-signwriting = ["**/*.ttf"]
+signwriting = ["**/*.ttf", "**/*.txt"]
 
 [tool.pytest.ini_options]
 addopts = "-v"
