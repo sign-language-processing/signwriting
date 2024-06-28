@@ -11,7 +11,7 @@ if __name__ == "__main__":
         data = json.load(f)
 
     # Generate the markdown table
-    table_header = "| IPA | Standard | Writing | Grapheme | Example | Description | Instruction | \n"
+    table_header = "| IPA | SpeechWriting | SignWriting | Grapheme | Example | Description | Instruction | \n"
     table_divider = "| --- | ------- | ------- | -------- | ------- | ----------- | ----------- | \n"
     table_rows = []
 

@@ -1,9 +1,11 @@
 # SpeechWriting (Mundbildschrift)
 
-Mundbildschrift is a phonetic notation system designed to assist in the articulation training of deaf children. 
-It assigns specific symbols to different sounds of the German language. 
-The system focuses less on spelling accuracy and more on the association of graphemes with sound patterns to 
-facilitate the identification of specific mouth shapes. 
+Invented by: Stefan Wöhrmann
+
+Mundbildschrift is a phonetic notation system designed to assist in the articulation training of deaf children.
+It assigns specific symbols to different sounds of the German language.
+The system focuses less on spelling accuracy and more on the association of graphemes with sound patterns to
+facilitate the identification of specific mouth shapes.
 This also helps in developing specialized word lists for educational purposes.
 
 ## Standards
@@ -11,6 +13,16 @@ This also helps in developing specialized word lists for educational purposes.
 - 2002: https://www.gebaerdenschrift.de/read/Mundbilder/uebersicht_mundbilder.htm
 - 2010: https://www.signwriting.org/archive/docs7/sw0642_%DCbersicht_Symbole_der_Mundbildschrift_2010.pdf
 - 2014: https://www.signwriting.org/symposium/archive/sws0002_05_Overview_of_Symbols_in_Mundbildschrift_Juli_2014.pdf
+
+```bibtex
+@inproceedings{2014SpellingRF,
+  title={Spelling rules for Mundbilder in SignWriting documents},
+  author={Stefan W{\o}hrmann},
+  year={2014},
+  url={https://www.signwriting.org/symposium/archive/sws0002_02_Mundbilder_in_SignWriting_and_Spelling_rules.pdf}
+}
+```
+
 
 ## Help Wanted!
 
@@ -23,7 +35,7 @@ Find anything wrong or missing? Please help improve this resource by submitting 
 
 ## Table
 
-| IPA | Standard | Writing | Grapheme | Example | Description | Instruction | 
+| IPA | SpeechWriting | SignWriting | Grapheme | Example | Description | Instruction | 
 | --- | ------- | ------- | -------- | ------- | ----------- | ----------- | 
 | ɑː | ![ɑː](standard/ɑː.png) | ![M518x518S34c00482x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x518S34c00482x483&pad=10&size=2) | a, aa, ah | Aal, Abend, Bahn | long „a” as in „bar” – or „calm” | Open your mouth wide, keep your tongue low and flat, and voice. |
 | ʌ | ![ʌ](standard/ʌ.png) | ![M518x518S34c00482x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x518S34c00482x483&pad=10&size=2) | a | Salz, Wand, Mann | short „u” as in Southern English „but” | Keep your tongue in the center of your mouth, slightly raised, with your mouth open and lips relaxed while voicing. |
