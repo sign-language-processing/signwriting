@@ -17,6 +17,7 @@ def get_font(font_name: str) -> ImageFont.FreeTypeFont:
     return ImageFont.truetype(str(font_path), 30)
 
 
+@lru_cache(maxsize=None)
 def get_symbol_size(symbol: str):
     font = get_font('SuttonSignWritingLine')
     line_id = symbol_line(key2id(symbol))
