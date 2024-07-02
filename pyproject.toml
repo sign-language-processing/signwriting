@@ -7,7 +7,7 @@ authors = [
 ]
 readme = "README.md"
 dependencies = [
-    "Pillow",
+    "Pillow"
 ]
 
 [project.optional-dependencies]
@@ -15,6 +15,11 @@ dev = [
     "pytest",
     "pylint",
     "numpy", # to test visualizer
+]
+mouthing = [
+    # For IPA transliteration
+    "epitran",
+    "g2pk"
 ]
 
 [tool.yapf]

@@ -86,3 +86,19 @@ Find anything wrong or missing? Please help improve this resource by submitting 
 | a͡ʊ | ![a͡ʊ](standard/a͡ʊ.png) | ![M531x518S34c00469x483S34d00495x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M531x518S34c00469x483S34d00495x483&pad=10&size=2) | au, ao | Auto, Stau, laut, Haus, Kakao | „ow” as in English „cow” but in a more brief and clipped manner | Start with your tongue low and your mouth open, then move your tongue upward and close your lips into a rounded shape while voicing. |
 | ɔ͡ø | ![ɔ͡ø](standard/ɔ͡ø.png) | ![M531x518S34900469x483S34800495x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M531x518S34900469x483S34800495x483&pad=10&size=2) | äu, eu, oi | Feuer, Eule, Gebäude, aufräumen, Konvoi | „oy“ as in English „toy“ | Start with your tongue low and your lips rounded, then move your tongue upward and forward while rounding your lips tighter. |
 | a͡ɪ | ![a͡ɪ](standard/a͡ɪ.png) | ![M531x518S34c00469x483S34800495x483](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M531x518S34c00469x483S34800495x483&pad=10&size=2) | ei, ai, ay, ey, eih | Hai, Eimer, leise, Meyer, Reihe, Karl May | English „i“ as in „high“ or „mine” | Start with your tongue low and your mouth open, then move your tongue upward and close your lips into a slight smile while voicing. |
+
+
+## Install flite
+
+To make English IPA translitaration work, you need to install `flite`:
+
+```bash
+git clone https://github.com/festvox/flite.git
+cd flite
+
+./configure && make
+sudo make install
+cd testsuite
+make lex_lookup
+sudo cp lex_lookup /usr/local/bin
+```

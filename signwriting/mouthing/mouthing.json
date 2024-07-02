@@ -11,7 +11,8 @@
     "grapheme": "a",
     "example": "Salz, Wand, Mann",
     "description": "short „u” as in Southern English „but”",
-    "instruction": "Keep your tongue in the center of your mouth, slightly raised, with your mouth open and lips relaxed while voicing."
+    "instruction": "Keep your tongue in the center of your mouth, slightly raised, with your mouth open and lips relaxed while voicing.",
+    "alternatives": ["a", "æ"]
   },
   "ɛː": {
     "writing": "M518x518S34a00482x483",
@@ -154,7 +155,7 @@
     "instruction": "Place the tip of your tongue against the ridge behind your upper front teeth, let the air pass through your nose, and voice."
   },
   "ŋ": {
-    "writing": "",
+    "writing": "M518x518S35d00482x483S33110499x490S20500503x493",
     "grapheme": "n, ng, nk",
     "example": "Ring, Zange, Junge, Bon, krank, trinken",
     "description": "like the „ng“ sound in the English word „song“ or „long”",
@@ -165,7 +166,8 @@
     "grapheme": "o, oo, oh",
     "example": "Ofen, Oma, Kohle, Zoo, Krone, groß, Obst",
     "description": "long „o” similar to „go” but with the lips more rounded and more open",
-    "instruction": "Raise the back of your tongue close to the roof of your mouth, round your lips, and voice."
+    "instruction": "Raise the back of your tongue close to the roof of your mouth, round your lips, and voice.",
+    "alternatives": ["o"]
   },
   "ɔ": {
     "writing": "M518x518S34900482x483",
@@ -277,7 +279,8 @@
     "grapheme": "u, uh",
     "example": "Buch, Tube, Huhn, Stuhl",
     "description": "long „oo” as in „boot” with the lips much more rounded",
-    "instruction": "Raise the back of your tongue high in the mouth, round your lips tightly, and voice."
+    "instruction": "Raise the back of your tongue high in the mouth, round your lips tightly, and voice.",
+    "alternatives": ["w"]
   },
   "ʊ": {
     "writing": "M518x518S34600482x483",
