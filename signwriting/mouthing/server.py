@@ -1,3 +1,4 @@
+from flask import make_response, jsonify
 from flask_restful import Resource, reqparse
 
 from signwriting.mouthing.mouthing import mouth
@@ -12,4 +13,5 @@ class Mouthing(Resource):
     def get(self):
         args = parser.parse_args()
 
-        return {"fsw": mouth(args["text"], language=args["spoken_language"])}
+        fsw = mouth(args["text"], language=args["spoken_language"])
+        return make_response(jsonify({"fsw": fsw}), 200)

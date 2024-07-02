@@ -1,3 +1,4 @@
+from flask import make_response, jsonify
 from flask_restful import Resource, reqparse
 
 from signwriting.fingerspelling.fingerspelling import spell, get_chars_by
@@ -14,6 +15,7 @@ class Fingerspelling(Resource):
         try:
             chars = get_chars_by(value=args["signed_language"], category="SIGNED")
         except ValueError as e:
-            return {"message": str(e)}, 400
+            return make_response(jsonify({"message": str(e)}), 400)
 
-        return {"fsw": spell(args["text"], chars=chars)}
+        fsw = spell(args["text"], chars=chars)
+        return make_response(jsonify({"fsw": fsw}), 200)
