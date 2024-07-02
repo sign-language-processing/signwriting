@@ -43,6 +43,8 @@ packages = [
     "signwriting.tokenizer",
     "signwriting.utils",
     "signwriting.visualizer",
+    "signwriting.fingerspelling",
+    "signwriting.mouthing"
 ]
 
 [tool.setuptools.package-data]
