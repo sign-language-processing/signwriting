@@ -26,7 +26,8 @@
     "grapheme": "e, ä",
     "example": "essen, Bett, Eltern, Äste",
     "description": "short „e” as in „bet” or „get“",
-    "instruction": "Place your tongue mid-high in the mouth, open your mouth slightly, and voice."
+    "instruction": "Place your tongue mid-high in the mouth, open your mouth slightly, and voice.",
+    "alternatives": ["e"]
   },
   "b": {
     "writing": "M518x518S35000482x483",
@@ -61,7 +62,9 @@
     "grapheme": "Dsch",
     "example": "Dschungel",
     "description": "judge",
-    "instruction": "Place the tip of your tongue against the ridge behind your upper front teeth, then release it while simultaneously voicing and passing air through a narrow gap."
+    "instruction": "Place the tip of your tongue against the ridge behind your upper front teeth, then release it while simultaneously voicing and passing air through a narrow gap.",
+    "alternatives": ["ʤ"]
+
   },
   "eː": {
     "writing": "M518x518S34700482x483",
@@ -117,7 +120,8 @@
     "grapheme": "i",
     "example": "ich, Milch, wichtig",
     "description": "short „i“ as in „fit”; never as in „bite”",
-    "instruction": "Raise the front of your tongue high in the mouth, but not as high as for /iː/, keep your lips unrounded, and voice."
+    "instruction": "Raise the front of your tongue high in the mouth, but not as high as for /iː/, keep your lips unrounded, and voice.",
+    "alternatives": ["i"]
   },
   "j": {
     "writing": "M518x518S35700482x483",
@@ -167,7 +171,7 @@
     "example": "Ofen, Oma, Kohle, Zoo, Krone, groß, Obst",
     "description": "long „o” similar to „go” but with the lips more rounded and more open",
     "instruction": "Raise the back of your tongue close to the roof of your mouth, round your lips, and voice.",
-    "alternatives": ["o"]
+    "alternatives": ["o", "ɑ"]
   },
   "ɔ": {
     "writing": "M518x518S34900482x483",
@@ -272,7 +276,8 @@
     "grapheme": "tsch, ch",
     "example": "klatschen, Tschüs,knutschen",
     "description": "like „ch” in „church”",
-    "instruction": "Place the tip of your tongue against the ridge behind your upper front teeth, then release it while simultaneously pushing air through a narrow gap."
+    "instruction": "Place the tip of your tongue against the ridge behind your upper front teeth, then release it while simultaneously pushing air through a narrow gap.",
+    "alternatives": ["ʧ"]
   },
   "uː": {
     "writing": "M518x518S34d00482x483",
@@ -287,7 +292,8 @@
     "grapheme": "u",
     "example": "Hund, Stunde, Unfall",
     "description": "short „o“ like in „foot” or „push”",
-    "instruction": "Raise the back of your tongue high in the mouth, round your lips moderately, and voice."
+    "instruction": "Raise the back of your tongue high in the mouth, round your lips moderately, and voice.",
+    "alternatives": ["u"]
   },
   "yː": {
     "writing": "M518x518S36000482x483",

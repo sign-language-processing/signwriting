@@ -25,7 +25,8 @@ if __name__ == "__main__":
         example = details.get("example", "")
         description = details.get("description", "")
         instruction = details.get("instruction", "")
-        row = f"| {ipa} | {standard} | {writing} | {grapheme} | {example} | {description} | {instruction} |\n"
+        all_ipa = " / ".join([ipa] + details.get("alternatives", []))
+        row = f"| {all_ipa} | {standard} | {writing} | {grapheme} | {example} | {description} | {instruction} |\n"
         table_rows.append(row)
 
     # Read the current README.md content

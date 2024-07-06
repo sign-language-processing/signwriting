@@ -5,10 +5,9 @@ from pathlib import Path
 from typing import Union
 
 from epitran import Epitran
-from signwriting.formats.sign_to_fsw import sign_to_fsw
 
 from signwriting.formats.fsw_to_sign import fsw_to_sign
-
+from signwriting.formats.sign_to_fsw import sign_to_fsw
 from signwriting.utils.join_signs import join_signs_horizontal, sign_from_symbols
 
 MOUTHING_INDEX = Path(__file__).parent / "mouthing.json"
@@ -47,6 +46,9 @@ def mouth_ipa_single(word: str, aspiration=False) -> Union[str, None]:
     # Make sure to look at long symbols first
     mouthings = sorted(list(mouthings.items()), key=lambda x: len(x[0]), reverse=True)
 
+    # Remove syllabic consonant markers
+    word = word.replace("̩", "")
+
     sl = []
     caret = 0
     while caret < len(word):
@@ -74,9 +76,28 @@ def mouth_ipa(characters: str, aspiration=False) -> Union[str, None]:
 def mouth(word: str, language: str, aspiration=False):
     epi = Epitran(language, ligatures=True)
     ipa = epi.transliterate(word)
-    return mouth_ipa(ipa, aspiration=aspiration)
+
+    mouthing_fsw = mouth_ipa(ipa, aspiration=aspiration)
+    if mouthing_fsw is None:
+        print(f"Failed to mouth {word}, IPA: {ipa}")
+    return mouthing_fsw
 
 
 if __name__ == "__main__":
     for _word in ["hello", "Amit", "high", "sign writing", "SignWriting"]:
         print(_word, mouth(_word, language='eng-Latn'))
+
+    # Make sure all of English is covered https://www.vocabulary.com/resources/ipa-pronunciation/
+    english_words = [
+        "pit", "lip", "bit", "tub", "tip", "sit", "dig", "sad", "cup", "sky", "click", "guy", "bag", "my", "jam", "not",
+        "ran", "sing", "finger", "link", "check", "etch", "just", "giant", "judge", "age", "fish", "cuff", "vowel",
+        "leave", "thigh", "breath", "thy", "father", "breathe", "sip", "mass", "zip", "jazz", "shop", "wish", "genre",
+        "pleasure", "beige", "house", "ahead", "wit", "swap", "yes", "young", "rip", "water", "write", "lap", "pull",
+        "feet", "seat", "me", "happy", "sit", "gym", "elate", "break", "say", "let", "best", "cat", "mad", "but",
+        "trust", "under", "comma", "bazaar", "the", "goose", "rude", "cruel", "foot", "took", "boat", "owe", "no",
+        "frog", "bought", "launch", "not", "father", "buy", "aisle", "isle", "cow", "mouth", "soil", "boy"
+    ]
+    from tqdm import tqdm
+
+    for _word in tqdm(english_words):
+        mouth(_word, language='eng-Latn')
