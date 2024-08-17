@@ -57,5 +57,6 @@ def spell(word: str, language=None, chars=None, vertical=True) -> Union[str, Non
 
 
 if __name__ == "__main__":
-    for _word in ["12345", "hello", "Amit"]:
-        print(_word, spell(_word, language='en-us-ase-asl', vertical=False))
+    words = ["custom", "prited", "circuit", "board"]
+    spellings = [spell(word, language='en-us-ase-asl', vertical=True) for word in words]
+    print(" ".join(spellings))
