@@ -21,6 +21,11 @@ mouthing = [
     "epitran",
     "g2pk"
 ]
+server = [
+    # For API server
+    "flask",
+    "Flask-RESTful",
+]
 
 [tool.yapf]
 based_on_style = "google"

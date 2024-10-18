@@ -1,6 +1,8 @@
+# pylint: disable=unnecessary-lambda-assignment
+
 from functools import lru_cache
 from pathlib import Path
-from typing import Tuple
+from typing import Tuple, List, Literal
 
 from PIL import Image, ImageDraw, ImageFont
 
@@ -65,3 +67,35 @@ def signwriting_to_image(fsw: str, antialiasing=True, trust_box=True, embedded_c
                   font=line_font, embedded_color=embedded_color)
 
     return img
+
+
+# pylint: disable=too-many-locals, too-many-arguments
+def signwritings_to_image(fsw_list: List[str], antialiasing: bool = True, trust_box: bool = True,
+                        embedded_color: bool = False, line_color: Tuple[int, int, int, int] = (0, 0, 0, 255),
+                        fill_color: Tuple[int, int, int, int] = (255, 255, 255, 255),
+                        direction: Literal["horizontal", "vertical"] = "horizontal") -> Image:
+    images = [
+        signwriting_to_image(fsw_string, antialiasing, trust_box, embedded_color, line_color, fill_color)
+        for fsw_string in fsw_list
+    ]
+
+    if direction == "horizontal":
+        max_height = max(img.height for img in images)
+        total_width = sum(img.width for img in images)
+        size = (total_width, max_height)
+        paste_position = lambda offset: (offset, 0)
+        offset_increment = lambda img: img.width
+    else:
+        max_width = max(img.width for img in images)
+        total_height = sum(img.height for img in images)
+        size = (max_width, total_height)
+        paste_position = lambda offset: (0, offset)
+        offset_increment = lambda img: img.height
+
+    final_image = Image.new("RGBA", size, (255, 255, 255, 0))
+    offset = 0
+    for img in images:
+        final_image.paste(img, paste_position(offset))
+        offset += offset_increment(img)
+
+    return final_image

@@ -5,7 +5,7 @@ import numpy as np
 from PIL import Image
 from numpy.testing import assert_array_equal
 
-from signwriting.visualizer.visualize import signwriting_to_image
+from signwriting.visualizer.visualize import signwriting_to_image, signwritings_to_image
 
 
 class VisualizeCase(unittest.TestCase):
@@ -76,6 +76,15 @@ class VisualizeCase(unittest.TestCase):
                                      fill_color=(123,234,0,255))
         self.assert_image_equal_with_reference(fsw, image)
 
+    def test_signwritings_to_image(self):
+        fsw1 = "AS10011S10019S2e704S2e748M525x535S2e748483x510S10011501x466S20544510x500S10019476x475"
+        fsw2 = "M530x518S19a30500x482S19a38465x481S22f04509x506S22f14467x504"
+
+        image = signwritings_to_image([fsw1, fsw2], direction="horizontal")
+        self.assert_image_equal_with_reference("horizontal", image)
+
+        image = signwritings_to_image([fsw1, fsw2], direction="vertical")
+        self.assert_image_equal_with_reference("vertical", image)
 
 if __name__ == '__main__':
     unittest.main()
