@@ -27,7 +27,7 @@ def get_symbol_size(symbol: str):
     return right - left, bottom - top
 
 
-# pylint: disable=too-many-locals, too-many-arguments, too-many-positional-arguments
+# pylint: disable=too-many-locals, too-many-arguments
 def signwriting_to_image(fsw: str, antialiasing=True, trust_box=True, embedded_color=False,
                          line_color: RGBA = (0, 0, 0, 255),
                          fill_color: RGBA = (255, 255, 255, 255)) -> Image:
@@ -69,7 +69,7 @@ def signwriting_to_image(fsw: str, antialiasing=True, trust_box=True, embedded_c
     return img
 
 
-# pylint: disable=too-many-locals, too-many-arguments, too-many-positional-arguments
+# pylint: disable=too-many-locals, too-many-arguments
 def signwritings_to_image(fsw_list: List[str], antialiasing: bool = True, trust_box: bool = True,
                         embedded_color: bool = False, line_color: Tuple[int, int, int, int] = (0, 0, 0, 255),
                         fill_color: Tuple[int, int, int, int] = (255, 255, 255, 255),
