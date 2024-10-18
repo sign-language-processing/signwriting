@@ -1,26 +1,31 @@
-name: Test
-
+name: Lint and Test
 
 on:
   push:
-    branches: [ master, main ]
+    branches: [master, main]
   pull_request:
-    branches: [ master, main ]
-
+    branches: [master, main]
 
 jobs:
-  test:
-    name: Test
+  lint_and_test:
+    name: Lint and Test
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: [3.8, 3.10, 3.12]
 
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.8'
+          python-version: ${{ matrix.python-version }}
 
       - name: Install Requirements
         run: pip install .[dev,mouthing,server]
+
+      - name: Lint Code
+        run: pylint signwriting
 
       - name: Test Code
         run: pytest signwriting
