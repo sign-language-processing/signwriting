@@ -1,5 +1,3 @@
-# pylint: disable=unnecessary-lambda-assignment
-
 from functools import lru_cache
 from pathlib import Path
 from typing import Tuple, List, Literal
@@ -83,14 +81,14 @@ def signwritings_to_image(fsw_list: List[str], antialiasing: bool = True, trust_
         max_height = max(img.height for img in images)
         total_width = sum(img.width for img in images)
         size = (total_width, max_height)
-        paste_position = lambda offset: (offset, 0)
-        offset_increment = lambda img: img.width
+        paste_position = lambda offset: (offset, 0) # pylint: disable=unnecessary-lambda-assignment
+        offset_increment = lambda img: img.width # pylint: disable=unnecessary-lambda-assignment
     else:
         max_width = max(img.width for img in images)
         total_height = sum(img.height for img in images)
         size = (max_width, total_height)
-        paste_position = lambda offset: (0, offset)
-        offset_increment = lambda img: img.height
+        paste_position = lambda offset: (0, offset) # pylint: disable=unnecessary-lambda-assignment
+        offset_increment = lambda img: img.height # pylint: disable=unnecessary-lambda-assignment
 
     final_image = Image.new("RGBA", size, (255, 255, 255, 0))
     offset = 0
