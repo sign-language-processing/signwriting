@@ -76,23 +76,25 @@ def signwriting_to_image(fsw: Union[str, List[str]], antialiasing=True, trust_bo
 
 
 def layout_signwriting(images: List[Image.Image], direction: str) -> Image.Image:
+    GAP = 40
+
     if direction == "horizontal":
         max_height = max(img.height for img in images)
-        total_width = sum(img.width for img in images)
+        total_width = sum(img.width for img in images) + GAP * (len(images) - 1)
         size = (total_width, max_height)
-        paste_position = lambda offset: (offset, 0) # pylint: disable=unnecessary-lambda-assignment
-        offset_increment = lambda img: img.width # pylint: disable=unnecessary-lambda-assignment
+        paste_position = lambda offset, img: (offset, (max_height - img.height) // 2)
+        offset_increment = lambda img: img.width + GAP
     else:
         max_width = max(img.width for img in images)
-        total_height = sum(img.height for img in images)
+        total_height = sum(img.height for img in images) + GAP * (len(images) - 1)
         size = (max_width, total_height)
-        paste_position = lambda offset: (0, offset) # pylint: disable=unnecessary-lambda-assignment
-        offset_increment = lambda img: img.height # pylint: disable=unnecessary-lambda-assignment
+        paste_position = lambda offset, img: ((max_width - img.width) // 2, offset)
+        offset_increment = lambda img: img.height + GAP
 
     layout_image = Image.new("RGBA", size, (255, 255, 255, 0))
     offset = 0
     for img in images:
-        layout_image.paste(img, paste_position(offset))
+        layout_image.paste(img, paste_position(offset, img))
         offset += offset_increment(img)
 
     return layout_image
