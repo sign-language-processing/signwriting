@@ -29,7 +29,7 @@ def get_symbol_size(symbol: str):
 def signwriting_to_image(fsw: Union[str, List[str]], antialiasing=True, trust_box=True, embedded_color=False,
                          line_color: RGBA = (0, 0, 0, 255),
                          fill_color: RGBA = (255, 255, 255, 255),
-                         direction: Literal["horizontal", "vertical"] = "horizontal") -> Image:
+                         direction: Literal["horizontal", "vertical"] = "horizontal") -> Image.Image:
     if isinstance(fsw, list):
         images = [
             signwriting_to_image(fsw_string, antialiasing, trust_box, embedded_color, line_color, fill_color)
@@ -75,7 +75,7 @@ def signwriting_to_image(fsw: Union[str, List[str]], antialiasing=True, trust_bo
     return img
 
 
-def layout_signwriting(images: List[Image], direction: str) -> Image:
+def layout_signwriting(images: List[Image.Image], direction: str) -> Image.Image:
     if direction == "horizontal":
         max_height = max(img.height for img in images)
         total_width = sum(img.width for img in images)
