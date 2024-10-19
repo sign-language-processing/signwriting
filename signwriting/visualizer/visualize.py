@@ -1,6 +1,6 @@
 from functools import lru_cache
 from pathlib import Path
-from typing import Tuple, List, Literal
+from typing import Tuple, List, Literal, Union
 
 from PIL import Image, ImageDraw, ImageFont
 
@@ -26,9 +26,17 @@ def get_symbol_size(symbol: str):
 
 
 # pylint: disable=too-many-locals, too-many-arguments
-def signwriting_to_image(fsw: str, antialiasing=True, trust_box=True, embedded_color=False,
+def signwriting_to_image(fsw: Union[str, List[str]], antialiasing=True, trust_box=True, embedded_color=False,
                          line_color: RGBA = (0, 0, 0, 255),
-                         fill_color: RGBA = (255, 255, 255, 255)) -> Image:
+                         fill_color: RGBA = (255, 255, 255, 255),
+                         direction: Literal["horizontal", "vertical"] = "horizontal") -> Image:
+    if isinstance(fsw, list):
+        images = [
+            signwriting_to_image(fsw_string, antialiasing, trust_box, embedded_color, line_color, fill_color)
+            for fsw_string in fsw
+        ]
+        return layout_signwriting(images, direction)
+
     sign = fsw_to_sign(fsw)
     if len(sign['symbols']) == 0:
         return Image.new('RGBA', (1, 1), (0, 0, 0, 0))
@@ -67,16 +75,7 @@ def signwriting_to_image(fsw: str, antialiasing=True, trust_box=True, embedded_c
     return img
 
 
-# pylint: disable=too-many-locals, too-many-arguments
-def signwritings_to_image(fsw_list: List[str], antialiasing: bool = True, trust_box: bool = True,
-                        embedded_color: bool = False, line_color: Tuple[int, int, int, int] = (0, 0, 0, 255),
-                        fill_color: Tuple[int, int, int, int] = (255, 255, 255, 255),
-                        direction: Literal["horizontal", "vertical"] = "horizontal") -> Image:
-    images = [
-        signwriting_to_image(fsw_string, antialiasing, trust_box, embedded_color, line_color, fill_color)
-        for fsw_string in fsw_list
-    ]
-
+def layout_signwriting(images: List[Image], direction: str) -> Image:
     if direction == "horizontal":
         max_height = max(img.height for img in images)
         total_width = sum(img.width for img in images)
@@ -90,10 +89,10 @@ def signwritings_to_image(fsw_list: List[str], antialiasing: bool = True, trust_
         paste_position = lambda offset: (0, offset) # pylint: disable=unnecessary-lambda-assignment
         offset_increment = lambda img: img.height # pylint: disable=unnecessary-lambda-assignment
 
-    final_image = Image.new("RGBA", size, (255, 255, 255, 0))
+    layout_image = Image.new("RGBA", size, (255, 255, 255, 0))
     offset = 0
     for img in images:
-        final_image.paste(img, paste_position(offset))
+        layout_image.paste(img, paste_position(offset))
         offset += offset_increment(img)
 
-    return final_image
+    return layout_image
