@@ -1,6 +1,6 @@
 from functools import lru_cache
 from pathlib import Path
-from typing import Tuple
+from typing import Tuple, List, Literal, Union
 
 from PIL import Image, ImageDraw, ImageFont
 
@@ -26,9 +26,17 @@ def get_symbol_size(symbol: str):
 
 
 # pylint: disable=too-many-locals, too-many-arguments
-def signwriting_to_image(fsw: str, antialiasing=True, trust_box=True, embedded_color=False,
+def signwriting_to_image(fsw: Union[str, List[str]], antialiasing=True, trust_box=True, embedded_color=False,
                          line_color: RGBA = (0, 0, 0, 255),
-                         fill_color: RGBA = (255, 255, 255, 255)) -> Image:
+                         fill_color: RGBA = (255, 255, 255, 255),
+                         direction: Literal["horizontal", "vertical"] = "horizontal") -> Image.Image:
+    if isinstance(fsw, list):
+        images = [
+            signwriting_to_image(fsw_string, antialiasing, trust_box, embedded_color, line_color, fill_color)
+            for fsw_string in fsw
+        ]
+        return layout_signwriting(images, direction)
+
     sign = fsw_to_sign(fsw)
     if len(sign['symbols']) == 0:
         return Image.new('RGBA', (1, 1), (0, 0, 0, 0))
@@ -65,3 +73,28 @@ def signwriting_to_image(fsw: str, antialiasing=True, trust_box=True, embedded_c
                   font=line_font, embedded_color=embedded_color)
 
     return img
+
+
+def layout_signwriting(images: List[Image.Image], direction: str) -> Image.Image:
+    GAP = 20
+
+    if direction == "horizontal":
+        max_height = max(img.height for img in images)
+        total_width = sum(img.width for img in images) + GAP * (len(images) - 1)
+        size = (total_width, max_height)
+        paste_position = lambda offset, img: (offset, (max_height - img.height) // 2)
+        offset_increment = lambda img: img.width + GAP
+    else:
+        max_width = max(img.width for img in images)
+        total_height = sum(img.height for img in images) + GAP * (len(images) - 1)
+        size = (max_width, total_height)
+        paste_position = lambda offset, img: ((max_width - img.width) // 2, offset)
+        offset_increment = lambda img: img.height + GAP
+
+    layout_image = Image.new("RGBA", size, (255, 255, 255, 0))
+    offset = 0
+    for img in images:
+        layout_image.paste(img, paste_position(offset, img))
+        offset += offset_increment(img)
+
+    return layout_image
