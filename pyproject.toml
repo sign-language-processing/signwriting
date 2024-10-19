@@ -38,6 +38,8 @@ disable = [
     "C0114", # Missing module docstring
     "C0115", # Missing class docstring
     "C0116", # Missing function or method docstring
+    "C3001", # Lambda expression assigned to a variable
+    "R0917", # Too many positional arguments
 ]
 good-names = ["i", "f", "x", "y"]
 
