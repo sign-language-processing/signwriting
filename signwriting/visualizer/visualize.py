@@ -76,7 +76,7 @@ def signwriting_to_image(fsw: Union[str, List[str]], antialiasing=True, trust_bo
 
 
 def layout_signwriting(images: List[Image.Image], direction: str) -> Image.Image:
-    GAP = 40
+    GAP = 20
 
     if direction == "horizontal":
         max_height = max(img.height for img in images)

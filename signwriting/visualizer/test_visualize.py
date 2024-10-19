@@ -77,11 +77,11 @@ class VisualizeCase(unittest.TestCase):
         self.assert_image_equal_with_reference(fsw, image)
 
     def test_layout_signwriting(self):
-        fsw1 = "AS10011S10019S2e704S2e748M525x535S2e748483x510S10011501x466S20544510x500S10019476x475"
-        fsw2 = "M530x518S19a30500x482S19a38465x481S22f04509x506S22f14467x504"
+        fsw_list = ["AS14c20S27106M518x529S14c20481x471S27106503x489", 
+            "AS18701S1870aS2e734S20500M518x533S1870a489x515S18701482x490S20500508x496S2e734500x468"] # Hello World
 
         for direction in ["horizontal", "vertical"]:
-            image = signwriting_to_image([fsw1, fsw2], direction=direction)
+            image = signwriting_to_image(fsw_list, direction=direction)
             self.assert_image_equal_with_reference(direction, image)
 
 
