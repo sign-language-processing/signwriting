@@ -13,7 +13,7 @@ def all_axis(_sign, axis):
 
 
 def init_join(*fsws: str):
-    signs = [fsw_to_sign(fsw) for fsw in fsws]
+    signs = [fsw_to_sign(fsw) for fsw in fsws if fsw is not None]
     return [sign for sign in signs if len(sign["symbols"]) > 0]
 
 
