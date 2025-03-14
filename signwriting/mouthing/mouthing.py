@@ -1,3 +1,4 @@
+import copy
 import functools
 import json
 import re
@@ -28,14 +29,14 @@ def get_mouthings():
 
 @functools.lru_cache()
 def get_mouthings_without_aspiration():
-    mouthings = get_mouthings()
+    mouthings = copy.deepcopy(get_mouthings())
 
     for info in mouthings.values():
         if "S335" in info["writing"]:
             info["writing"] = re.sub(r"S335..\d{3}x\d{3}", "", info["writing"])
         sign = fsw_to_sign(info["writing"])
         sign = sign_from_symbols(sign["symbols"])
-        info["writing"] = sign_to_fsw(sign)
+        info["writing"] = sign_to_fsw(sign) if len(sign["symbols"]) > 0 else ""
 
     return mouthings
 
@@ -95,7 +96,8 @@ if __name__ == "__main__":
         "pleasure", "beige", "house", "ahead", "wit", "swap", "yes", "young", "rip", "water", "write", "lap", "pull",
         "feet", "seat", "me", "happy", "sit", "gym", "elate", "break", "say", "let", "best", "cat", "mad", "but",
         "trust", "under", "comma", "bazaar", "the", "goose", "rude", "cruel", "foot", "took", "boat", "owe", "no",
-        "frog", "bought", "launch", "not", "father", "buy", "aisle", "isle", "cow", "mouth", "soil", "boy"
+        "frog", "bought", "launch", "not", "father", "buy", "aisle", "isle", "cow", "mouth", "soil", "boy",
+        "participate"
     ]
     from tqdm import tqdm
 
