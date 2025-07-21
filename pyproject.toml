@@ -23,8 +23,10 @@ mouthing = [
 ]
 server = [
     # For API server
-    "flask",
+    "Flask",
     "Flask-RESTful",
+    "Flask-Cors",
+    "gunicorn"
 ]
 
 [tool.yapf]

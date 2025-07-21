@@ -8,6 +8,12 @@ Python utilities for SignWriting.
 pip install git+https://github.com/sign-language-processing/signwriting
 ```
 
+Or with Docker:
+```shell
+docker build --platform linux/amd64 --tag signwriting:python .
+docker run --platform linux/amd64 --rm -p 9090:8080 -e PORT=8080 signwriting:python
+```
+
 ## Utilities
 
 ### `signwriting.formats`
