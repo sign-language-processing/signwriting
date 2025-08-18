@@ -6,6 +6,8 @@ from PIL import Image, ImageDraw, ImageFont
 
 from signwriting.formats.fsw_to_sign import fsw_to_sign
 from signwriting.formats.fsw_to_swu import key2id, symbol_line, symbol_fill
+from signwriting.formats.swu import is_swu
+from signwriting.formats.swu_to_fsw import swu2fsw
 
 # Type alias representing a tuple of four integers: Red, Green, Blue, Alpha
 RGBA = Tuple[int, int, int, int]
@@ -36,6 +38,9 @@ def signwriting_to_image(fsw: Union[str, List[str]], antialiasing=True, trust_bo
             for fsw_string in fsw
         ]
         return layout_signwriting(images, direction)
+
+    if is_swu(fsw):
+        fsw = swu2fsw(fsw)
 
     sign = fsw_to_sign(fsw)
     if len(sign['symbols']) == 0:

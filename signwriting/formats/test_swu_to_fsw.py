@@ -1,6 +1,7 @@
 import unittest
 
-from signwriting.formats.swu_to_fsw import swu2fsw, swu_add_prefix
+from signwriting.formats.swu import swu_add_prefix
+from signwriting.formats.swu_to_fsw import swu2fsw
 
 
 class SWUtoFSWCase(unittest.TestCase):

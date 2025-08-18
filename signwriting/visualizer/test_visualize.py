@@ -21,6 +21,11 @@ class VisualizeCase(unittest.TestCase):
         image = signwriting_to_image(fsw)
         self.assert_image_equal_with_reference(fsw, image)
 
+    def test_image_swu(self):
+        swu = "𝠃𝤟𝤩񋛩𝣵𝤐񀀒𝤇𝣤񋚥𝤐𝤆񀀚𝣮𝣭"
+        image = signwriting_to_image(swu)
+        self.assert_image_equal_with_reference('swu_test', image)
+
     def test_image_without_antialiasing(self):
         fsw = "M528x526S1ce40506x474S1ce48472x474S22a04507x511S22a14480x510"
         image = signwriting_to_image(fsw, antialiasing=False)
