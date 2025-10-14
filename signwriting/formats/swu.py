@@ -1,5 +1,7 @@
 import re
 
+import regex
+
 re_swu = {
     'symbol': r'[\U00040001-\U0004FFFF]',
     'coord': r'[\U0001D80C-\U0001DFFF]{2}',
@@ -28,3 +30,6 @@ def swu_add_prefix(swu_text: str) -> str:
 def is_swu(text: str) -> bool:
     # Using the regex pattern instead of the compiled regex for performance (about 30% faster)
     return bool(re.fullmatch(re_swu['sign_with_whitespace'], text))
+
+def is_sgnw(text: str) -> bool:
+    return bool(regex.fullmatch("\p{Sutton_SignWriting}+", text))
