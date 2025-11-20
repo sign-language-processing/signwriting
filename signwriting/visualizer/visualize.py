@@ -87,14 +87,14 @@ def layout_signwriting(images: List[Image.Image], direction: str) -> Image.Image
         max_height = max(img.height for img in images)
         total_width = sum(img.width for img in images) + GAP * (len(images) - 1)
         size = (total_width, max_height)
-        paste_position = lambda offset, img: (offset, (max_height - img.height) // 2)
-        offset_increment = lambda img: img.width + GAP
+        paste_position = lambda offset, img: (offset, (max_height - img.height) // 2) # noqa: E731
+        offset_increment = lambda img: img.width + GAP # noqa: E731
     else:
         max_width = max(img.width for img in images)
         total_height = sum(img.height for img in images) + GAP * (len(images) - 1)
         size = (max_width, total_height)
-        paste_position = lambda offset, img: ((max_width - img.width) // 2, offset)
-        offset_increment = lambda img: img.height + GAP
+        paste_position = lambda offset, img: ((max_width - img.width) // 2, offset) # noqa: E731
+        offset_increment = lambda img: img.height + GAP # noqa: E731
 
     layout_image = Image.new("RGBA", size, (255, 255, 255, 0))
     offset = 0

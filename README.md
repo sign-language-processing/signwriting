@@ -94,7 +94,7 @@ signwriting_to_image(fsw)
 ![AS10011S10019S2e704S2e748M525x535S2e748483x510S10011501x466S20544510x500S10019476x475](signwriting/visualizer/test_assets/AS10011S10019S2e704S2e748M525x535S2e748483x510S10011501x466S20544510x500S10019476x475.png)
 
 To use the visualizer with the server, you can hit:
-https://signwriting-sxie2r74ua-uc.a.run.app//visualizer?fsw=M525x535S2e748483x510S10011501x466S2e704510x500S10019476x475
+https://signwriting-sxie2r74ua-uc.a.run.app/visualizer?fsw=M525x535S2e748483x510S10011501x466S2e704510x500S10019476x475
 
 ### `signwriting.utils`
 
@@ -127,7 +127,7 @@ spell(word, language)
 ```
 
 To use the fingerspelling with the server, you can hit:
-https://signwriting-sxie2r74ua-uc.a.run.app//fingerspelling?text=hello&signed_language=ase
+https://signwriting-sxie2r74ua-uc.a.run.app/fingerspelling?text=hello&signed_language=ase
 
 ### `signwriting.mouthing`
 
@@ -146,7 +146,7 @@ Note: Installing English support for `epitran` requires extra steps,
 see "Install flite" at [mouthing/README.md](signwriting/mouthing/README.md).
 
 To use the mouthing with the server, you can hit:
-https://signwriting-sxie2r74ua-uc.a.run.app//mouthing?text=hello&spoken_language=eng-Latn
+https://signwriting-sxie2r74ua-uc.a.run.app/mouthing?text=hello&spoken_language=eng-Latn
 
 
 ## Cite

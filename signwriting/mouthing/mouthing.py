@@ -2,16 +2,25 @@ import copy
 import functools
 import json
 import re
+from dataclasses import dataclass
 from pathlib import Path
-from typing import Union
+from typing import Union, Optional
 
 from epitran import Epitran
 
 from signwriting.formats.fsw_to_sign import fsw_to_sign
 from signwriting.formats.sign_to_fsw import sign_to_fsw
+from signwriting.formats.fsw_to_swu import fsw2swu
 from signwriting.utils.join_signs import join_signs_horizontal, sign_from_symbols
 
 MOUTHING_INDEX = Path(__file__).parent / "mouthing.json"
+
+
+@dataclass
+class MouthingResult:
+    ipa: str
+    fsw: Optional[str]
+    swu: Optional[str]
 
 
 @functools.lru_cache()
@@ -74,14 +83,17 @@ def mouth_ipa(characters: str, aspiration=False) -> Union[str, None]:
     return join_signs_horizontal(*words, spacing=10)
 
 
-def mouth(word: str, language: str, aspiration=False):
+def mouth(word: str, language: str, aspiration=False) -> MouthingResult:
     epi = Epitran(language, ligatures=True)
     ipa = epi.transliterate(word)
 
     mouthing_fsw = mouth_ipa(ipa, aspiration=aspiration)
     if mouthing_fsw is None:
         print(f"Failed to mouth {word}, IPA: {ipa}")
-    return mouthing_fsw
+
+    mouthing_swu = fsw2swu(mouthing_fsw) if mouthing_fsw else None
+
+    return MouthingResult(ipa=ipa, fsw=mouthing_fsw, swu=mouthing_swu)
 
 
 if __name__ == "__main__":
