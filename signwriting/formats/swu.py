@@ -32,4 +32,4 @@ def is_swu(text: str) -> bool:
     return bool(re.fullmatch(re_swu['sign_with_whitespace'], text))
 
 def is_sgnw(text: str) -> bool:
-    return bool(regex.fullmatch("\p{Sutton_SignWriting}+", text))
+    return bool(regex.fullmatch(r"\p{Sutton_SignWriting}+", text))
