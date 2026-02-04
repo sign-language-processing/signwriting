@@ -1,4 +1,5 @@
-from functools import lru_cache
+import os
+from functools import cache
 from pathlib import Path
 from typing import Tuple, List, Literal, Union
 
@@ -13,18 +14,29 @@ from signwriting.formats.swu_to_fsw import swu2fsw
 RGBA = Tuple[int, int, int, int]
 
 
-@lru_cache(maxsize=None)
+@cache
 def get_font(font_name: str) -> ImageFont.FreeTypeFont:
     font_path = Path(__file__).parent / f'{font_name}.ttf'
     return ImageFont.truetype(str(font_path), 30)
 
 
-@lru_cache(maxsize=None)
+@cache
 def get_symbol_size(symbol: str):
     font = get_font('SuttonSignWritingLine')
     line_id = symbol_line(key2id(symbol))
     left, top, right, bottom = font.getbbox(line_id)
     return right - left, bottom - top
+
+
+def _clear_caches_after_fork():
+    # ImageFont objects cached by lru_cache can become corrupted after fork(),
+    # causing garbage data (e.g., wrong image dimensions). Clear caches in child
+    # processes so fonts are reloaded fresh.
+    get_font.cache_clear()
+    get_symbol_size.cache_clear()
+
+
+os.register_at_fork(after_in_child=_clear_caches_after_fork)
 
 
 # pylint: disable=too-many-locals, too-many-arguments
