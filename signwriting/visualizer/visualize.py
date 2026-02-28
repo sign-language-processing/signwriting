@@ -1,5 +1,5 @@
 import os
-from functools import cache
+from functools import lru_cache
 from pathlib import Path
 from typing import Tuple, List, Literal, Union
 
@@ -14,13 +14,13 @@ from signwriting.formats.swu_to_fsw import swu2fsw
 RGBA = Tuple[int, int, int, int]
 
 
-@cache
+@lru_cache(maxsize=None)
 def get_font(font_name: str) -> ImageFont.FreeTypeFont:
     font_path = Path(__file__).parent / f'{font_name}.ttf'
     return ImageFont.truetype(str(font_path), 30)
 
 
-@cache
+@lru_cache(maxsize=None)
 def get_symbol_size(symbol: str):
     font = get_font('SuttonSignWritingLine')
     line_id = symbol_line(key2id(symbol))
