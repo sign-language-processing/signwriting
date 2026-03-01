@@ -15,8 +15,10 @@ class Mouthing(Resource):
 
         result = mouth(args["text"], language=args["spoken_language"])
 
-        return make_response(jsonify({
+        response = make_response(jsonify({
             "ipa": result.ipa,
             "fsw": result.fsw,
             "swu": result.swu
         }), 200)
+        response.headers['Cache-Control'] = 'public, max-age=86400'
+        return response
