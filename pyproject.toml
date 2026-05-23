@@ -53,6 +53,7 @@ packages = [
     "signwriting.formats",
     "signwriting.tokenizer",
     "signwriting.utils",
+    "signwriting.utils.mirror",
     "signwriting.visualizer",
     "signwriting.fingerspelling",
     "signwriting.mouthing"
