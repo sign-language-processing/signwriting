@@ -24,7 +24,7 @@ Limb, Location, ...) has its own rotation and fill rules, encoded in
 | ---------------- | ----------- | ---------------------------------------------- | ---------------------------------------------- |
 | Hand             | `S100-S204` | `rot -> (rot + 8) mod 16`                      | unchanged                                      |
 | Contact          | `S205-S216` | `rot -> (n - rot) mod n` (n probed from font)  | unchanged                                      |
-| Movement         | `S217-S2f6` | per-family (XOR-1, +8, face-style, custom)     | per-family (often unchanged; some swap `0<->1`)|
+| Movement         | `S217-S2f6` | per-family (XOR-1, +8, face-style, custom)     | swap `0<->1` (handedness); fills 2-5 kept; some bases keep all |
 | Face / dynamics  | `S2f7+`     | face-style: `0,4` fixed; `1<->7, 2<->6, 3<->5` | swap `1<->2` if the partner glyph exists       |
 | Position         | -           | `x -> 1000 - x`, recompute box, `L <-> R`      | -                                              |
 
@@ -32,9 +32,13 @@ A fill swap is only applied when the partner glyph actually exists in
 the font; otherwise the original fill is kept so the result is always a
 renderable symbol.
 
+Movement arrows encode handedness in fill `0` vs fill `1`, so mirroring
+swaps that pair (fills `2-5` are arrow styles and are kept); a few
+families that carry no handedness in the fill (e.g. the `Sequential`
+bases `S21a`/`S21f`/`S223`/`S224`, and the contact-style `S22a`) keep it.
 Within "Movement" and "Face/dynamics" a large number of per-base rules
-override the defaults; e.g. limbs (`S377-S37d`) keep rotation 0 and 8 as
-self-mirror and follow `+8` elsewhere; "Hits Floor" arrows
+override the rotation default; e.g. limbs (`S377-S37d`) keep rotation 0
+and 8 as self-mirror and follow `+8` elsewhere; "Hits Floor" arrows
 (`S2c8-S2d1`) swap fill `0<->1` plus a rotation fold of
 `0<->1, 2<->7, 3<->6, 4<->5`. See `mirror.py` for the complete table.
 
@@ -53,9 +57,9 @@ Each example wraps the symbol in a minimum-sized sign centered on (500, 500).
 | ------------------ | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | Hand, rot 0        | `S10000` ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M507x515S10000493x485&pad=10&size=3) | `S10008` ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M507x515S10008493x485&pad=10&size=3) |
 | Hand, rot 5        | `S15050` ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M513x516S15050487x484&pad=10&size=3) | `S15058` ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M513x515S15058487x485&pad=10&size=3) |
-| Movement 16-rot    | `S2e700` ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M507x512S2e700493x488&pad=10&size=3) | `S2e708` ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M507x513S2e708493x487&pad=10&size=3) |
-| Movement 8-rot     | `S22a02` ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M507x507S22a02493x493&pad=10&size=3) | `S22a06` ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M507x507S22a06493x493&pad=10&size=3) |
-| Hits Chest (XOR-1) | `S2ae00` ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M507x515S2ae00493x485&pad=10&size=3) | `S2ae01` ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M507x515S2ae01493x485&pad=10&size=3) |
+| Movement 16-rot, fill 0→1 | `S2e700` ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M507x512S2e700493x488&pad=10&size=3) | `S2e718` ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M507x513S2e718493x487&pad=10&size=3) |
+| Movement 8-rot, fill kept | `S22a02` ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M507x507S22a02493x493&pad=10&size=3) | `S22a06` ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M507x507S22a06493x493&pad=10&size=3) |
+| Hits Chest, fill 0→1 + rot XOR-1 | `S2ae00` ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M507x515S2ae00493x485&pad=10&size=3) | `S2ae11` ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M507x515S2ae11493x485&pad=10&size=3) |
 | Diagonal Between   | `S25d01` ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M507x515S25d01493x485&pad=10&size=3) | `S25d17` ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M507x515S25d17493x485&pad=10&size=3) |
 | Hits Floor         | `S2c800` ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M507x515S2c800493x485&pad=10&size=3) | `S2c811` ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M507x515S2c811493x485&pad=10&size=3) |
 | Single eyebrow     | `S30a10` ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x518S30a10482x482&pad=10&size=3) | `S30a20` ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x518S30a20482x482&pad=10&size=3) |
@@ -72,7 +76,7 @@ Each example wraps the symbol in a minimum-sized sign centered on (500, 500).
 | `M531x518S35d00469x483S34500495x483` <br> ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M531x518S35d00469x483S34500495x483&pad=10&size=2) | `M531x518S35d00495x483S34500469x483` <br> ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M531x518S35d00495x483S34500469x483&pad=10&size=2) |
 | `M507x507S1f720487x492` <br> ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M507x507S1f720487x492&pad=10&size=2) | `M513x507S1f728493x492` <br> ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M513x507S1f728493x492&pad=10&size=2) |
 | `M521x547S33100482x483S20310506x500S26b02503x520` <br> ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M521x547S33100482x483S20310506x500S26b02503x520&pad=10&size=2) | `M518x547S33100482x483S20318479x500S26b16479x520` <br> ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x547S33100482x483S20318479x500S26b16479x520&pad=10&size=2) |
-| `M525x535S2e748483x510S10011501x466S2e704510x500S10019476x475` <br> ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M525x535S2e748483x510S10011501x466S2e704510x500S10019476x475&pad=10&size=2) | `M524x535S2e740500x510S10019478x466S2e70c475x500S10011503x475` <br> ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M524x535S2e740500x510S10019478x466S2e70c475x500S10011503x475&pad=10&size=2) |
+| `M525x535S2e748483x510S10011501x466S2e704510x500S10019476x475` <br> ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M525x535S2e748483x510S10011501x466S2e704510x500S10019476x475&pad=10&size=2) | `M524x535S2e740500x510S10019478x466S2e71c475x500S10011503x475` <br> ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M524x535S2e740500x510S10019478x466S2e71c475x500S10011503x475&pad=10&size=2) |
 | `M534x521S22a14475x503S19a00506x479S19a08467x479S22a04514x504S2fb04493x515` <br> ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M534x521S22a14475x503S19a00506x479S19a08467x479S22a04514x504S2fb04493x515&pad=10&size=2) | `M533x521S22a14511x503S19a08465x479S19a00504x479S22a04472x504S2fb04492x515` <br> ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M533x521S22a14511x503S19a08465x479S19a00504x479S22a04472x504S2fb04492x515&pad=10&size=2) |
 
 ## Caveats
