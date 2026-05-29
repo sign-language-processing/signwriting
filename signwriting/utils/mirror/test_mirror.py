@@ -6,6 +6,7 @@ from PIL import ImageOps
 
 from signwriting.formats.swu_to_fsw import swu2fsw
 from signwriting.utils.mirror import mirror_sign, mirror_symbol
+from signwriting.utils.mirror.mirror import _symbol_exists
 from signwriting.visualizer.visualize import signwriting_to_image
 
 # User-confirmed (src, mirror) pairs. The authoritative list of symbol
@@ -905,6 +906,24 @@ class MirrorSymbolCase(unittest.TestCase):
                   'S2e95c', 'S21901', 'S21903', 'S20600',
                   'S2ae00', 'S2ae21', 'S37e40', 'S37e42']:
             self.assertEqual(s, mirror_symbol(mirror_symbol(s)))
+
+    def test_mirror_is_involution_over_all_symbols(self):
+        # mirror^2 must be the identity for every renderable ISWA symbol.
+        # This guards the per-base override tables against asymmetric
+        # entries (a pair mapped in only one direction).
+        with warnings.catch_warnings():
+            warnings.simplefilter('ignore')
+            for base_value in range(0x100, 0x38c):
+                for fill in range(6):
+                    for rotation in range(16):
+                        symbol = f'S{base_value:x}{fill}{rotation:x}'
+                        if not _symbol_exists(symbol):
+                            continue
+                        mirrored = mirror_symbol(symbol)
+                        self.assertEqual(
+                            symbol, mirror_symbol(mirrored),
+                            f'{symbol} -> {mirrored} -> {mirror_symbol(mirrored)}',
+                        )
 
 
 class MirrorSignCase(unittest.TestCase):

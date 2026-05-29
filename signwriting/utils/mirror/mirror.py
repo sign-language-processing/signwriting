@@ -25,12 +25,24 @@ differently. This module groups them as:
   eyebrows) additionally encode handedness in fill ``1`` vs fill ``2``; we
   swap that pair when the partner glyph exists.
 
+The four sections above describe the *default* rule for each range. Many
+individual bases deviate (the same compass direction can encode chirality
+in the rotation, the fill, or neither depending on the glyph family), so
+the bulk of this module is a set of per-base override tables - the
+``_*_BASES`` frozensets and ``_*_OVERRIDES`` / ``_*_MAPS`` dicts below.
+Each table names the bases it covers and the rule it applies; the
+dispatchers (`_mirror_movement`, `_mirror_face`) consult them before
+falling back to the section default. The tables were calibrated against a
+corpus of human-confirmed mirror pairs (see ``test_mirror.py``), and every
+existing ISWA symbol satisfies ``mirror(mirror(s)) == s``.
+
 The sign-level mirror reflects each symbol's x-position across ``x = 500``
 (the box centerline), recomputes the box's right edge, and flips the ``L``
 and ``R`` lane markers.
 
-The symbol-level rotation logic is a section-typed reformulation of
-signmaker's ``ssw.mirror`` (https://github.com/sutton-signwriting/signmaker).
+The symbol-level rotation logic started as a section-typed reformulation of
+signmaker's ``ssw.mirror`` (https://github.com/sutton-signwriting/signmaker)
+and was extended with the per-base tables described above.
 """
 import warnings
 from typing import Tuple
@@ -47,18 +59,20 @@ _NO_MIRROR_SYMBOLS = frozenset({
     "S2f024", "S2f025",
 })
 
-# One-off per-symbol overrides for cases that don't fit any of the
-# base-level rules. mirror_symbol consults this first and uses it
-# bidirectionally so the result is always an involution.
+# One-off per-symbol overrides for cases that don't fit any base-level
+# rule. mirror_symbol consults this (and its inverse) first, which both
+# produces the mapping AND short-circuits the section dispatch - so a
+# self-entry like S32630->S32630 is meaningful: it pins those symbols as
+# self-mirror, overriding the _FACE_WITH_0_4_SWAP_* rule the rest of S326
+# follows.
 _SPECIAL_MIRROR_OVERRIDES = {
     "S32320": "S32324",
-    # S326 fill 3 rotations 0 and 4 are self (unlike the rest of S326 which
-    # swaps 0<->4 via _FACE_WITH_0_4_SWAP_*).
     "S32630": "S32630",
     "S32634": "S32634",
 }
-# Pre-computed inverse so mirror_symbol can do an O(1) reverse lookup.
-# Self-pairs are already in the forward dict so we exclude them here.
+# Pre-computed inverse for an O(1) reverse lookup in mirror_symbol. Exclude
+# self-pairs: they're already served by the forward dict, and a self-entry
+# in the reverse dict would be redundant.
 _SPECIAL_MIRROR_REVERSE = {
     dst: src for src, dst in _SPECIAL_MIRROR_OVERRIDES.items() if dst != src
 }
