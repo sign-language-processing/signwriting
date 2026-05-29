@@ -1,3 +1,4 @@
+# pylint: disable=too-many-lines  # dominated by the _PAIRS_RAW data table
 import unittest
 import warnings
 
@@ -38,9 +39,17 @@ _PAIRS_RAW = [
     # 16-rotation arrows swap fill 0<->1 + rotation +8 (S2e7 Arm Circle).
     ("S2e700", "S2e718"),
     ("S2e710", "S2e708"),
-    # +8 bases that keep fill (no handedness): S21a/S21f/S223/S224.
+    # Contact-style bases that DO swap fill 0<->1 (S22a/S22f).
+    ("S22a02", "S22a16"),
+    ("S22f02", "S22f16"),
+    # Contact-style base that keeps fill (S226).
+    ("S22602", "S22606"),
+    ("S22600", "S22600"),
+    # +8 Sequential bases keep fill (no handedness): S21a/S223/S224.
     ("S21a08", "S21a00"),
     ("S22300", "S22308"),
+    # S21f flick sequential now swaps fill 0<->1 (+8).
+    ("S21f00", "S21f18"),
 
     # S255-S26b Diagonal & Floor-plane Straight: fill 0<->1, fills 2/3/4
     # stay, face-style rotation.
@@ -685,11 +694,17 @@ class MirrorMovementCase(unittest.TestCase):
         self.assertEqual('S2e744', mirror_symbol('S2e74c'))
 
     def test_8_rotation_contact_base_keeps_fill(self):
-        # S22a ships 8 rotations; mirror is (8 - r) % 8 with no fill swap.
-        self.assertEqual('S22a06', mirror_symbol('S22a02'))
-        self.assertEqual('S22a00', mirror_symbol('S22a00'))
-        self.assertEqual('S22a04', mirror_symbol('S22a04'))
-        self.assertEqual('S22a16', mirror_symbol('S22a12'))
+        # S226 ships 8 rotations; mirror is (8 - r) % 8 with no fill swap.
+        self.assertEqual('S22606', mirror_symbol('S22602'))
+        self.assertEqual('S22600', mirror_symbol('S22600'))
+        self.assertEqual('S22604', mirror_symbol('S22604'))
+
+    def test_8_rotation_contact_base_swaps_fill(self):
+        # S22a / S22f are contact-style but DO encode handedness, so fill
+        # 0<->1 swaps on top of the (8 - r) % 8 rotation.
+        self.assertEqual('S22a16', mirror_symbol('S22a02'))
+        self.assertEqual('S22a06', mirror_symbol('S22a12'))
+        self.assertEqual('S22f16', mirror_symbol('S22f02'))
 
     def test_4_rotation_base_uses_face_style(self):
         # S219 ships 4 rotations per fill; rotation 0 and 2 are self-mirror,

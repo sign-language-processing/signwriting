@@ -410,10 +410,16 @@ _S2D4_ROTATION = {0: 4, 4: 0, 1: 5, 5: 1, 2: 7, 7: 2, 3: 6, 6: 3}
 # by default. These few bases encode no handedness in the fill, so they keep
 # it (rotation still +8):
 #   S21a Squeeze Sequential
-#   S21f Flick Sequential
 #   S223 Hinge Movement, Up Sequential
 #   S224 Hinge Movement, Down Sequential
-_PLUS_8_NO_FILL_SWAP_BASES = frozenset({"S21a", "S21f", "S223", "S224"})
+_PLUS_8_NO_FILL_SWAP_BASES = frozenset({"S21a", "S223", "S224"})
+
+# Contact-style movement bases (rotation (n - r) mod n) that DO encode
+# handedness in fill 0 vs 1, so they swap it. Most contact-style movement
+# bases keep their fill (e.g. S226), so this is an explicit allow-list.
+#   S22a Single Straight Movement, Wall Plane Small
+#   S22f Double Straight Movement, Wall Plane
+_CONTACT_FILL_SWAP_BASES = frozenset({"S22a", "S22f"})
 
 # Wrist Circle Hits Wall - Single (S2ef) / Double (S2f0): fills 0 and 1 are
 # chirality pairs at the same rotation (S2ef0r <-> S2ef1r). Fill 2 (an arrow
@@ -490,7 +496,9 @@ def _mirror_movement(base: str, fill: str, rotation: int) -> Tuple[str, int]:
         new_fill = fill if base in _PLUS_8_NO_FILL_SWAP_BASES \
             else _FILL_0_1_SWAP.get(fill, fill)
         return new_fill, (rotation + 8) % 16
-    return _mirror_contact(base, fill, rotation)
+    _, new_rotation = _mirror_contact(base, fill, rotation)
+    new_fill = _FILL_0_1_SWAP.get(fill, fill) if base in _CONTACT_FILL_SWAP_BASES else fill
+    return new_fill, new_rotation
 
 
 # ---------------------------------------------------------------------------
