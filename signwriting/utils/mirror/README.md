@@ -70,3 +70,22 @@ so the glyphogram renders the full glyph without cropping.
   `render(sign)`. A handful of font glyphs differ from their mirror partner
   by ~1px (e.g. some S22a arrowheads). Tests allow a 20% pixel-diff
   tolerance for the render-equivalence assertion.
+
+## Known font issues
+
+In a few cases the ISWA codepoint we map to is the correct symbolic
+mirror, but the glyph drawn by the SignWriting fonts (both
+`SuttonSignWritingLine` and `SuttonSignWritingOneD`) doesn't reflect it
+faithfully. The mirror function returns the right codepoint; the rendered
+image will look "off". Known cases:
+
+* `S22826 → S22822` (and the reverse) — Finger Contact Movement, Wall
+  Plane. The codepoint pairing is correct but the font's drawing of the
+  partner glyph is not the actual horizontal mirror.
+* `S2311b → S23103` (and the reverse), `S23104 → S2311c` (and the reverse)
+  — Double Alternating Movement, Wall Plane. Fill `1<->0` swap + rotation
+  +8 produces the correct codepoint, but several font glyphs in S231 don't
+  reflect a true horizontal mirror.
+* `S22922 → S22926` (and the reverse) — Finger Contact Movement, Floor
+  Plane. Codepoint mapping is correct (face-style rotation 2 <-> 6) but
+  the font glyph isn't the visual mirror.
