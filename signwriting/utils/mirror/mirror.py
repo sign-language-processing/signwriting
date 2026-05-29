@@ -45,6 +45,7 @@ signmaker's ``ssw.mirror`` (https://github.com/sutton-signwriting/signmaker)
 and was extended with the per-base tables described above.
 """
 import warnings
+from functools import lru_cache
 from typing import Tuple
 
 from signwriting.formats.fsw_to_sign import fsw_to_sign
@@ -125,15 +126,23 @@ def _mirror_hand(fill: str, rotation: int) -> Tuple[str, int]:
 # ---------------------------------------------------------------------------
 # Contact  (S205-S216)
 # ---------------------------------------------------------------------------
-def _mirror_contact(base: str, fill: str, rotation: int) -> Tuple[str, int]:
-    # Rotations span 0..n-1 at evenly-spaced angles, so horizontal mirror is
-    # rotation -> (n - rotation) % n. Probe the font to discover n.
+@lru_cache(maxsize=None)
+def _contact_rotation_count(base: str, fill: str) -> int:
+    # Number of contiguous rotations (from 0) the font defines for this
+    # base+fill. Probes the font, so cache the (base, fill) -> n result.
     n = 0
     for r in range(16):
         if _symbol_exists(f"{base}{fill}{r:x}"):
             n = r + 1
         else:
             break
+    return n
+
+
+def _mirror_contact(base: str, fill: str, rotation: int) -> Tuple[str, int]:
+    # Rotations span 0..n-1 at evenly-spaced angles, so horizontal mirror is
+    # rotation -> (n - rotation) % n.
+    n = _contact_rotation_count(base, fill)
     if n == 0:
         return fill, rotation
     return fill, (n - rotation) % n
@@ -432,6 +441,7 @@ _FINGER_CIRCLES_BASES = frozenset({"S2f3", "S2f4"})
 _FINGER_CIRCLES_ROTATION = {0: 2, 2: 0, 1: 3, 3: 1, 4: 5, 5: 4, 6: 7, 7: 6}
 
 
+@lru_cache(maxsize=None)
 def _movement_has_16_rotations(base: str) -> bool:
     # Probe both common fills - some bases only ship a subset.
     return _symbol_exists(f"{base}08") or _symbol_exists(f"{base}18")

@@ -803,8 +803,8 @@ class MirrorFaceFillOverrideCase(unittest.TestCase):
 
 class MirrorUserReportedRegressionCase(unittest.TestCase):
     """Pinned regression tests for every specific case the user has flagged
-    so they can't drift. The authoritative list lives in
-    ``signwriting.utils.mirror.confirmed_pairs``."""
+    so they can't drift. The authoritative list is ``_PAIRS_RAW`` /
+    ``CONFIRMED_PAIRS`` at the top of this module."""
 
     def test_all_confirmed_pairs(self):
         for src, expected in CONFIRMED_PAIRS:
