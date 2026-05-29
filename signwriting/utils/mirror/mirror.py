@@ -362,14 +362,15 @@ def _mirror_face(base: str, fill: str, rotation: int) -> Tuple[str, int]:
 # ---------------------------------------------------------------------------
 # Rotation k mirrors to rotation k XOR 1 - the lowest bit encodes chirality
 # at each direction. Covers the "Hits Front Wall / Chest / Ceiling / Floor"
-# arrow families (Curve, Hump, Loop, Wave, Rotation) plus the Wave Diagonal
-# Path bases. (See ISWA base names for the full taxonomy.)
+# arrow families (Curve, Hump, Loop, Wave, Rotation). The fill 0<->1 swap
+# encodes handedness; the rotation XOR 1 pairs adjacent directions.
+# (See ISWA base names for the full taxonomy.)
 _XOR_PAIRED_BASES = frozenset({
-    # S2a6-S2ac: Curve / Hump / Loop / Wave / Rotation Hits Front Wall
-    "S2a6", "S2a7", "S2a8", "S2a9", "S2aa", "S2ab", "S2ac",
-    # S2ad-S2b3: Curve / Hump / Loop / Wave / Rotation Hits Chest
-    "S2ad", "S2ae", "S2af", "S2b0", "S2b1", "S2b2", "S2b3",
-    # S2ba-S2c4: Hump / Loop / Wave / Rotation Hits Ceiling
+    # S2a6-S2ab: Curve / Hump / Loop / Wave Hits Front Wall
+    "S2a6", "S2a7", "S2a8", "S2a9", "S2aa", "S2ab",
+    # S2ad-S2b2: Curve / Hump / Loop / Wave Hits Chest
+    "S2ad", "S2ae", "S2af", "S2b0", "S2b1", "S2b2",
+    # S2ba-S2c2: Hump / Loop / Wave / Rotation Hits Ceiling
     # (S2b7, S2b8, S2c3, S2c5 use the dual-axis pair rule - see
     # _CEILING_HITS_*; S2b9, S2bb use the _FLOOR_HITS_* fill 0/1 swap.)
     "S2ba", "S2bc", "S2bd", "S2be", "S2bf",
@@ -379,6 +380,11 @@ _XOR_PAIRED_BASES = frozenset({
     # S2c8-S2d2 use the unified Hits Floor map - see _FLOOR_HITS_*.)
     "S2d3",
 })
+
+# "Rotation Alternating" arrows (S2ac Hits Front Wall, S2b3 Hits Chest):
+# fill 0<->1 swap, but the 4 rotations reflect via 3 - rotation
+# (0<->3, 1<->2) rather than the XOR-1 pairing of their neighbours.
+_ALTERNATING_ROTATION_BASES = frozenset({"S2ac", "S2b3"})
 
 # Rotation 0<->1, 2<->7, 3<->6, 4<->5 - "axis-fold" reflection. Shared by
 # the _FLOOR_HITS_* and _CEILING_HITS_* families (the dicts used to be
@@ -400,10 +406,14 @@ _CEILING_HITS_FILL = _FILL_0_1_AND_3_4_SWAP
 # stay); rotation 0<->4, 1<->5, 2<->7, 3<->6.
 _S2D4_ROTATION = {0: 4, 4: 0, 1: 5, 5: 1, 2: 7, 7: 2, 3: 6, 6: 3}
 
-# 16-rotation movement bases that ALSO swap fills 0<->1 (fill 2 stays).
-#   S231 Double Alternating Movement, Wall Plane
-#   S298 Loop Wall Plane Small Double
-_MOVEMENT_PLUS_8_FILL_0_1_BASES = frozenset({"S231", "S298"})
+# 16-rotation movement arrows swap fill 0<->1 (handedness) plus rotation +8
+# by default. These few bases encode no handedness in the fill, so they keep
+# it (rotation still +8):
+#   S21a Squeeze Sequential
+#   S21f Flick Sequential
+#   S223 Hinge Movement, Up Sequential
+#   S224 Hinge Movement, Down Sequential
+_PLUS_8_NO_FILL_SWAP_BASES = frozenset({"S21a", "S21f", "S223", "S224"})
 
 # Wrist Circle Hits Wall - Single (S2ef) / Double (S2f0): fills 0 and 1 are
 # chirality pairs at the same rotation (S2ef0r <-> S2ef1r). Fill 2 (an arrow
@@ -457,12 +467,12 @@ def _mirror_movement(base: str, fill: str, rotation: int) -> Tuple[str, int]:
     if base == "S2d4":  # Rotation Alternating Hits Floor.
         return (_CEILING_HITS_FILL.get(fill, fill),
                 _S2D4_ROTATION.get(rotation, rotation))
-    if base in _MOVEMENT_PLUS_8_FILL_0_1_BASES:
-        return _FILL_0_1_SWAP.get(fill, fill), (rotation + 8) % 16
     if base == "S2f2":  # Finger Circles Wall Double - rotation XOR 4.
         return fill, rotation ^ 4
+    if base in _ALTERNATING_ROTATION_BASES:
+        return _FILL_0_1_SWAP.get(fill, fill), 3 - rotation
     if base in _XOR_PAIRED_BASES:
-        return fill, rotation ^ 1
+        return _FILL_0_1_SWAP.get(fill, fill), rotation ^ 1
     if base in _FILL_0_1_PAIRED_BASES:
         # Fills 0 and 1 pair (rotation preserved). Fill 2 uses XOR-1 on
         # rotation (rotation k ↔ k^1, same fill).
@@ -475,7 +485,11 @@ def _mirror_movement(base: str, fill: str, rotation: int) -> Tuple[str, int]:
         return (_FILL_0_1_SWAP.get(fill, fill),
                 _FACE_ROTATION_MIRROR.get(rotation, rotation))
     if _movement_has_16_rotations(base):
-        return fill, (rotation + 8) % 16
+        # 16-rotation arrows swap fill 0<->1 (handedness) by default; a few
+        # bases encode no handedness in the fill and keep it.
+        new_fill = fill if base in _PLUS_8_NO_FILL_SWAP_BASES \
+            else _FILL_0_1_SWAP.get(fill, fill)
+        return new_fill, (rotation + 8) % 16
     return _mirror_contact(base, fill, rotation)
 
 

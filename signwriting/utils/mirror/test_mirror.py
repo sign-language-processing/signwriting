@@ -27,10 +27,20 @@ _PAIRS_RAW = [
     ("S21813", "S21811"),
     ("S21d03", "S21d01"),
 
-    # Movement XOR-1: S2ae and neighbors.
-    ("S2ae00", "S2ae01"),
+    # Movement XOR arrows: fill 0<->1 swap + rotation XOR 1 (fill 2 stays).
+    ("S2ae00", "S2ae11"),
+    ("S2ae02", "S2ae13"),
     ("S2ae20", "S2ae21"),
-    ("S2ae02", "S2ae03"),
+    # Rotation Alternating (S2ac/S2b3): fill 0<->1 + rotation 3 - r.
+    ("S2ac00", "S2ac13"),
+    ("S2ac01", "S2ac12"),
+    ("S2b300", "S2b313"),
+    # 16-rotation arrows swap fill 0<->1 + rotation +8 (S2e7 Arm Circle).
+    ("S2e700", "S2e718"),
+    ("S2e710", "S2e708"),
+    # +8 bases that keep fill (no handedness): S21a/S21f/S223/S224.
+    ("S21a08", "S21a00"),
+    ("S22300", "S22308"),
 
     # S255-S26b Diagonal & Floor-plane Straight: fill 0<->1, fills 2/3/4
     # stay, face-style rotation.
@@ -656,30 +666,29 @@ class MirrorContactCase(unittest.TestCase):
 
 
 class MirrorMovementCase(unittest.TestCase):
-    """S217-S2f6: fills are arrow-style variants (preserved). Bases with 16
-    rotations use ``rotation + 8`` (hand convention); fewer-rotation bases
-    use ``(n - rotation) % n`` (contact convention)."""
+    """S217-S2f6: 16-rotation arrows use ``rotation + 8`` and swap fill
+    0<->1 (handedness); fewer-rotation bases use ``(n - rotation) % n``
+    (contact convention). Fills other than 0/1 are preserved."""
 
     def test_16_rotation_base_uses_plus_8(self):
-        # S2e7 ships all 16 rotations; rotation 0 mirrors to rotation 8.
-        self.assertEqual('S2e708', mirror_symbol('S2e700'))
-        self.assertEqual('S2e700', mirror_symbol('S2e708'))
-        self.assertEqual('S2e718', mirror_symbol('S2e710'))
-        # Fill is preserved across mirror.
+        # S2e7 ships all 16 rotations; rotation 0 mirrors to rotation 8 and
+        # fill 0 swaps to 1.
+        self.assertEqual('S2e718', mirror_symbol('S2e700'))
+        self.assertEqual('S2e708', mirror_symbol('S2e710'))
+        # Fills other than 0/1 are preserved.
         self.assertEqual('S2e958', mirror_symbol('S2e950'))
         self.assertEqual('S2e954', mirror_symbol('S2e95c'))
 
     def test_16_rotation_diagonals(self):
-        # rotation 4 + 8 = c.
+        # Fill 4 has no handedness pair, so it stays; rotation 4 + 8 = c.
         self.assertEqual('S2e74c', mirror_symbol('S2e744'))
         self.assertEqual('S2e744', mirror_symbol('S2e74c'))
 
-    def test_8_rotation_base_uses_face_style(self):
+    def test_8_rotation_contact_base_keeps_fill(self):
         # S22a ships 8 rotations; mirror is (8 - r) % 8 with no fill swap.
         self.assertEqual('S22a06', mirror_symbol('S22a02'))
         self.assertEqual('S22a00', mirror_symbol('S22a00'))
         self.assertEqual('S22a04', mirror_symbol('S22a04'))
-        # Fill is preserved.
         self.assertEqual('S22a16', mirror_symbol('S22a12'))
 
     def test_4_rotation_base_uses_face_style(self):
@@ -720,21 +729,30 @@ class MirrorFaceCase(unittest.TestCase):
 
 
 class MirrorXorPairedMovementCase(unittest.TestCase):
-    """S2a6-S2d3 (with gaps) and S2ef-S2f0: consecutive rotations are
-    chirality pairs (rotation k mirrors to rotation k XOR 1)."""
+    """S2a6-S2d3 (with gaps): fill 0<->1 (handedness) plus rotation XOR 1.
+    Fills other than 0/1 are preserved."""
 
-    def test_s2ae_xor_pairing(self):
-        # User-reported anchor: rotation 0/1 and 2/3 swap.
-        self.assertEqual('S2ae01', mirror_symbol('S2ae00'))
-        self.assertEqual('S2ae00', mirror_symbol('S2ae01'))
+    def test_s2ae_fill_and_rotation_swap(self):
+        # Fill 0 swaps to 1 and rotation flips (XOR 1).
+        self.assertEqual('S2ae11', mirror_symbol('S2ae00'))
+        self.assertEqual('S2ae10', mirror_symbol('S2ae01'))
+        self.assertEqual('S2ae13', mirror_symbol('S2ae02'))
+        # Fill 2 has no handedness pair, so it stays; rotation still flips.
         self.assertEqual('S2ae21', mirror_symbol('S2ae20'))
         self.assertEqual('S2ae20', mirror_symbol('S2ae21'))
-        self.assertEqual('S2ae03', mirror_symbol('S2ae02'))
 
     def test_xor_pairing_covers_full_range(self):
-        # Spot-check the boundaries of the XOR range.
-        self.assertEqual('S2a601', mirror_symbol('S2a600'))
-        self.assertEqual('S2d301', mirror_symbol('S2d300'))
+        # Spot-check the boundaries of the XOR range (fill 0 -> 1).
+        self.assertEqual('S2a611', mirror_symbol('S2a600'))
+        self.assertEqual('S2d311', mirror_symbol('S2d300'))
+
+    def test_alternating_rotation_bases(self):
+        # S2ac / S2b3 (Rotation Alternating) swap fill 0<->1 but reflect the
+        # 4 rotations via 3 - rotation (0<->3, 1<->2) instead of XOR 1.
+        self.assertEqual('S2ac13', mirror_symbol('S2ac00'))
+        self.assertEqual('S2ac12', mirror_symbol('S2ac01'))
+        self.assertEqual('S2ac00', mirror_symbol('S2ac13'))
+        self.assertEqual('S2b313', mirror_symbol('S2b300'))
 
 
 class MirrorOther16RotationCase(unittest.TestCase):
