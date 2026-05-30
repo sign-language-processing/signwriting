@@ -45,11 +45,11 @@ _PAIRS_RAW = [
     # Contact-style base that keeps fill (S226).
     ("S22602", "S22606"),
     ("S22600", "S22600"),
-    # +8 Sequential bases keep fill (no handedness): S21a/S223/S224.
+    # Bases below S22a keep fill (the general movement-fill rule starts at
+    # S22a): S21a/S21f Sequential (+8), S223/S224 Hinge Sequential (+8).
     ("S21a08", "S21a00"),
+    ("S21f00", "S21f08"),
     ("S22300", "S22308"),
-    # S21f flick sequential now swaps fill 0<->1 (+8).
-    ("S21f00", "S21f18"),
 
     # S255-S26b Diagonal & Floor-plane Straight: fill 0<->1, fills 2/3/4
     # stay, face-style rotation.
@@ -689,9 +689,9 @@ class MirrorMovementCase(unittest.TestCase):
         self.assertEqual('S2e954', mirror_symbol('S2e95c'))
 
     def test_16_rotation_diagonals(self):
-        # Fill 4 has no handedness pair, so it stays; rotation 4 + 8 = c.
-        self.assertEqual('S2e74c', mirror_symbol('S2e744'))
-        self.assertEqual('S2e744', mirror_symbol('S2e74c'))
+        # S2e7 ships 6 fills, so fill 3<->4 also swap; rotation 4 + 8 = c.
+        self.assertEqual('S2e73c', mirror_symbol('S2e744'))
+        self.assertEqual('S2e744', mirror_symbol('S2e73c'))
 
     def test_8_rotation_contact_base_keeps_fill(self):
         # S226 ships 8 rotations; mirror is (8 - r) % 8 with no fill swap.

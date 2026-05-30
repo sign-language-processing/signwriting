@@ -24,7 +24,7 @@ Limb, Location, ...) has its own rotation and fill rules, encoded in
 | ---------------- | ----------- | ---------------------------------------------- | ---------------------------------------------- |
 | Hand             | `S100-S204` | `rot -> (rot + 8) mod 16`                      | unchanged                                      |
 | Contact          | `S205-S216` | `rot -> (n - rot) mod n` (n probed from font)  | unchanged                                      |
-| Movement         | `S217-S2f6` | per-family (XOR-1, +8, face-style, custom)     | swap `0<->1` (handedness); fills 2-5 kept; some bases keep all |
+| Movement         | `S217-S2f6` | per-family (XOR-1, +8, face-style, custom)     | by fill count (see below)                      |
 | Face / dynamics  | `S2f7+`     | face-style: `0,4` fixed; `1<->7, 2<->6, 3<->5` | swap `1<->2` if the partner glyph exists       |
 | Position         | -           | `x -> 1000 - x`, recompute box, `L <-> R`      | -                                              |
 
@@ -32,10 +32,20 @@ A fill swap is only applied when the partner glyph actually exists in
 the font; otherwise the original fill is kept so the result is always a
 renderable symbol.
 
-Movement arrows encode handedness in fill `0` vs fill `1`, so mirroring
-swaps that pair (fills `2-5` are arrow styles and are kept); a few
-families that carry no handedness in the fill (e.g. the `Sequential`
-bases `S21a`/`S21f`/`S223`/`S224`, and the contact-style `S22a`) keep it.
+**Movement fill (handedness).** From `S22a` onward, the fill swap depends
+only on how many fills the base ships - handedness lives in the `0/1`
+pair (and, for 6-fill bases, the `3/4` pair):
+
+| Fill count | Fill mirror                |
+| ---------- | -------------------------- |
+| < 3        | keep                       |
+| 3, 4, 5    | `0<->1`; keep `2/3/4`      |
+| 6          | `0<->1` and `3<->4`; keep `2/5` |
+
+Bases below `S22a` (Squeeze/Flick/Hinge Sequential, Finger-contact,
+Single-straight) keep their fill, as do the two Arrowhead bases
+(`S2f5`/`S2f6`) which carry no handedness. The rotation rule is still
+per-family.
 Within "Movement" and "Face/dynamics" a large number of per-base rules
 override the rotation default; e.g. limbs (`S377-S37d`) keep rotation 0
 and 8 as self-mirror and follow `+8` elsewhere; "Hits Floor" arrows

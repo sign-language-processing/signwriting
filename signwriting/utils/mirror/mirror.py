@@ -78,7 +78,7 @@ _SPECIAL_MIRROR_REVERSE = {
     dst: src for src, dst in _SPECIAL_MIRROR_OVERRIDES.items() if dst != src
 }
 
-# Shared fill-mirror dicts used across multiple bases.
+# Shared fill-mirror dicts used across multiple "face/dynamics" bases.
 _FILL_0_1_SWAP = {"0": "1", "1": "0"}
 _FILL_23_SWAP = {"2": "3", "3": "2"}
 _FILL_45_SWAP = {"4": "5", "5": "4"}
@@ -86,7 +86,6 @@ _FILL_01_23_SWAP = {**_FILL_0_1_SWAP, **_FILL_23_SWAP}
 _FILL_01_23_45_SWAP = {**_FILL_01_23_SWAP, **_FILL_45_SWAP}
 _FILL_12_34_SWAP = {"1": "2", "2": "1", "3": "4", "4": "3"}
 _FILL_12_45_SWAP = {"1": "2", "2": "1", **_FILL_45_SWAP}
-_FILL_0_1_AND_3_4_SWAP = {**_FILL_0_1_SWAP, "3": "4", "4": "3"}
 
 
 # ---------------------------------------------------------------------------
@@ -375,10 +374,6 @@ _XOR_PAIRED_BASES = frozenset({
     # _CEILING_HITS_*; S2b9, S2bb use the _FLOOR_HITS_* fill 0/1 swap.)
     "S2ba", "S2bc", "S2bd", "S2be", "S2bf",
     "S2c0", "S2c1", "S2c2",
-    # S2d3: Rotation Double Hits Floor
-    # (S2c5-S2c7 use the dual-axis pair rule - see _CEILING_HITS_*;
-    # S2c8-S2d2 use the unified Hits Floor map - see _FLOOR_HITS_*.)
-    "S2d3",
 })
 
 # "Rotation Alternating" arrows (S2ac Hits Front Wall, S2b3 Hits Chest):
@@ -396,30 +391,64 @@ _AXIS_FOLD_ROTATION = {0: 1, 1: 0, 2: 7, 3: 6, 4: 5, 5: 4, 6: 3, 7: 2}
 #   S2b7, S2b8 Curve Hits Ceiling Small/Large
 #   S2c3, S2c4, S2c5 Rotation Single/Double/Alternating Hits Ceiling
 #   S2c6, S2c7 Curve Hits Floor Small/Large
-#   S2d2 Rotation Single Hits Floor
+#   S2d2, S2d3 Rotation Single/Double Hits Floor
 _CEILING_HITS_BASES = frozenset({
-    "S2b7", "S2b8", "S2c3", "S2c4", "S2c5", "S2c6", "S2c7", "S2d2",
+    "S2b7", "S2b8", "S2c3", "S2c4", "S2c5", "S2c6", "S2c7", "S2d2", "S2d3",
 })
-_CEILING_HITS_FILL = _FILL_0_1_AND_3_4_SWAP
 
-# Rotation Alternating Hits Floor (S2d4): fills 0<->1, 3<->4 (fills 2/5
-# stay); rotation 0<->4, 1<->5, 2<->7, 3<->6.
+# Rotation Alternating Hits Floor (S2d4): rotation 0<->4, 1<->5, 2<->7,
+# 3<->6 (fill handled by the general movement-fill rule).
 _S2D4_ROTATION = {0: 4, 4: 0, 1: 5, 5: 1, 2: 7, 7: 2, 3: 6, 6: 3}
 
-# 16-rotation movement arrows swap fill 0<->1 (handedness) plus rotation +8
-# by default. These few bases encode no handedness in the fill, so they keep
-# it (rotation still +8):
-#   S21a Squeeze Sequential
-#   S223 Hinge Movement, Up Sequential
-#   S224 Hinge Movement, Down Sequential
-_PLUS_8_NO_FILL_SWAP_BASES = frozenset({"S21a", "S223", "S224"})
+# 16-rotation arrows (rotation +8) - Rotation Single/Double/Alternate Wall
+# Plane (S2a2-S2a4), Rotation Floor Plane (S2df-S2e1), Arm Circle Hits Wall
+# (S2e7-S2ec). Fill is handled by the general movement-fill rule.
+_PLUS_8_FILL_01_34_BASES = frozenset({
+    "S2a2", "S2a3", "S2a4",
+    "S2df", "S2e0", "S2e1",
+    "S2e7", "S2e8", "S2e9", "S2ea", "S2eb", "S2ec",
+})
 
-# Contact-style movement bases (rotation (n - r) mod n) that DO encode
-# handedness in fill 0 vs 1, so they swap it. Most contact-style movement
-# bases keep their fill (e.g. S226), so this is an explicit allow-list.
-#   S22a Single Straight Movement, Wall Plane Small
-#   S22f Double Straight Movement, Wall Plane
-_CONTACT_FILL_SWAP_BASES = frozenset({"S22a", "S22f"})
+# ---------------------------------------------------------------------------
+# Movement fill (handedness) - general rule
+# ---------------------------------------------------------------------------
+# For movement bases S22a-S2f6, the fill swap depends only on how many fills
+# the base ships (handedness lives in the fill-0/1 pair, and for 6-fill bases
+# also the 3/4 pair):
+#   <3 fills          : keep fill (no handedness encoded)
+#   3, 4, 5 fills      : swap 0<->1; keep 2/3/4
+#   6 fills            : swap 0<->1 and 3<->4; keep 2/5
+# Bases below S22a (Squeeze/Flick/Hinge/Contact/Single-straight) keep their
+# fill, as do the two Arrowhead bases which carry no handedness.
+_MOVEMENT_FILL_RANGE_START = 0x22a
+_MOVEMENT_KEEP_ALL_FILL_BASES = frozenset({"S2f5", "S2f6"})
+_FILL_34_SWAP = {"3": "4", "4": "3"}
+
+
+@lru_cache(maxsize=None)
+def _movement_fill_count(base: str) -> int:
+    n = 0
+    for f in range(6):
+        if _symbol_exists(f"{base}{f}0"):
+            n = f + 1
+        else:
+            break
+    return n
+
+
+def _movement_fill(base: str, fill: str) -> str:
+    if int(base[1:], 16) < _MOVEMENT_FILL_RANGE_START:
+        return fill
+    if base in _MOVEMENT_KEEP_ALL_FILL_BASES:
+        return fill
+    count = _movement_fill_count(base)
+    if count < 3:
+        return fill
+    if fill in _FILL_0_1_SWAP:
+        return _FILL_0_1_SWAP[fill]
+    if count == 6:
+        return _FILL_34_SWAP.get(fill, fill)
+    return fill
 
 # Wrist Circle Hits Wall - Single (S2ef) / Double (S2f0): fills 0 and 1 are
 # chirality pairs at the same rotation (S2ef0r <-> S2ef1r). Fill 2 (an arrow
@@ -463,42 +492,37 @@ def _movement_has_16_rotations(base: str) -> bool:
     return _symbol_exists(f"{base}08") or _symbol_exists(f"{base}18")
 
 
-def _mirror_movement(base: str, fill: str, rotation: int) -> Tuple[str, int]:
-    if base in _FLOOR_HITS_BASES:
-        return (_FILL_0_1_SWAP.get(fill, fill),
-                _AXIS_FOLD_ROTATION.get(rotation, rotation))
-    if base in _CEILING_HITS_BASES:
-        return (_CEILING_HITS_FILL.get(fill, fill),
-                _AXIS_FOLD_ROTATION.get(rotation, rotation))
+def _movement_rotation(base: str, fill: str, rotation: int) -> int:
+    """The per-base rotation rule for a movement symbol (fill-independent
+    except for the Wrist-Circle bases)."""
+    if base in _FLOOR_HITS_BASES or base in _CEILING_HITS_BASES:
+        return _AXIS_FOLD_ROTATION.get(rotation, rotation)
     if base == "S2d4":  # Rotation Alternating Hits Floor.
-        return (_CEILING_HITS_FILL.get(fill, fill),
-                _S2D4_ROTATION.get(rotation, rotation))
-    if base == "S2f2":  # Finger Circles Wall Double - rotation XOR 4.
-        return fill, rotation ^ 4
+        return _S2D4_ROTATION.get(rotation, rotation)
+    if base in _PLUS_8_FILL_01_34_BASES:
+        return (rotation + 8) % 16
+    if base == "S2f2":  # Finger Circles Wall Double.
+        return rotation ^ 4
     if base in _ALTERNATING_ROTATION_BASES:
-        return _FILL_0_1_SWAP.get(fill, fill), 3 - rotation
+        return 3 - rotation
     if base in _XOR_PAIRED_BASES:
-        return _FILL_0_1_SWAP.get(fill, fill), rotation ^ 1
+        return rotation ^ 1
     if base in _FILL_0_1_PAIRED_BASES:
-        # Fills 0 and 1 pair (rotation preserved). Fill 2 uses XOR-1 on
-        # rotation (rotation k ↔ k^1, same fill).
-        if fill in _FILL_0_1_SWAP:
-            return _FILL_0_1_SWAP[fill], rotation
-        return fill, rotation ^ 1
+        # Fills 0/1 keep their rotation; fill 2 (an arrow variant) uses XOR-1.
+        return rotation if fill in _FILL_0_1_SWAP else rotation ^ 1
     if base in _FINGER_CIRCLES_BASES:
-        return fill, _FINGER_CIRCLES_ROTATION.get(rotation, rotation)
+        return _FINGER_CIRCLES_ROTATION.get(rotation, rotation)
     if base in _DIAGONAL_AND_FLOOR_STRAIGHT_BASES:
-        return (_FILL_0_1_SWAP.get(fill, fill),
-                _FACE_ROTATION_MIRROR.get(rotation, rotation))
+        return _FACE_ROTATION_MIRROR.get(rotation, rotation)
     if _movement_has_16_rotations(base):
-        # 16-rotation arrows swap fill 0<->1 (handedness) by default; a few
-        # bases encode no handedness in the fill and keep it.
-        new_fill = fill if base in _PLUS_8_NO_FILL_SWAP_BASES \
-            else _FILL_0_1_SWAP.get(fill, fill)
-        return new_fill, (rotation + 8) % 16
+        return (rotation + 8) % 16
+    # Contact-style fallback: rotation (n - r) mod n.
     _, new_rotation = _mirror_contact(base, fill, rotation)
-    new_fill = _FILL_0_1_SWAP.get(fill, fill) if base in _CONTACT_FILL_SWAP_BASES else fill
-    return new_fill, new_rotation
+    return new_rotation
+
+
+def _mirror_movement(base: str, fill: str, rotation: int) -> Tuple[str, int]:
+    return _movement_fill(base, fill), _movement_rotation(base, fill, rotation)
 
 
 # ---------------------------------------------------------------------------
