@@ -44,13 +44,14 @@ pair (and, for 6-fill bases, the `3/4` pair):
 
 Bases below `S22a` (Squeeze/Flick/Hinge Sequential, Finger-contact,
 Single-straight) keep their fill, as do the two Arrowhead bases
-(`S2f5`/`S2f6`) which carry no handedness. The rotation rule is still
-per-family.
-Within "Movement" and "Face/dynamics" a large number of per-base rules
-override the rotation default; e.g. limbs (`S377-S37d`) keep rotation 0
-and 8 as self-mirror and follow `+8` elsewhere; "Hits Floor" arrows
-(`S2c8-S2d1`) swap fill `0<->1` plus a rotation fold of
-`0<->1, 2<->7, 3<->6, 4<->5`. See `mirror.py` for the complete table.
+(`S2f5`/`S2f6`) which carry no handedness.
+
+The rotation rule is still per-family. Within "Movement" and
+"Face/dynamics" a large number of per-base rules pick the rotation
+transform; e.g. limbs (`S377-S37d`) keep rotation 0 and 8 as self-mirror
+and follow `+8` elsewhere; "Hits Floor" arrows (`S2c8-S2d1`) use a
+rotation fold of `0<->1, 2<->7, 3<->6, 4<->5`. See `mirror.py` for the
+complete table.
 
 This is an extension of signmaker's
 [`ssw.mirror`](https://github.com/sutton-signwriting/signmaker/blob/1c3751049967819fd509c1ac290cd1bd1954be64/index.js#L467-L474)
@@ -86,7 +87,7 @@ Each example wraps the symbol in a minimum-sized sign centered on (500, 500).
 | `M531x518S35d00469x483S34500495x483` <br> ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M531x518S35d00469x483S34500495x483&pad=10&size=2) | `M531x518S35d00495x483S34500469x483` <br> ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M531x518S35d00495x483S34500469x483&pad=10&size=2) |
 | `M507x507S1f720487x492` <br> ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M507x507S1f720487x492&pad=10&size=2) | `M513x507S1f728493x492` <br> ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M513x507S1f728493x492&pad=10&size=2) |
 | `M521x547S33100482x483S20310506x500S26b02503x520` <br> ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M521x547S33100482x483S20310506x500S26b02503x520&pad=10&size=2) | `M518x547S33100482x483S20318479x500S26b16479x520` <br> ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M518x547S33100482x483S20318479x500S26b16479x520&pad=10&size=2) |
-| `M525x535S2e748483x510S10011501x466S2e704510x500S10019476x475` <br> ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M525x535S2e748483x510S10011501x466S2e704510x500S10019476x475&pad=10&size=2) | `M524x535S2e740500x510S10019478x466S2e71c475x500S10011503x475` <br> ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M524x535S2e740500x510S10019478x466S2e71c475x500S10011503x475&pad=10&size=2) |
+| `M525x535S2e748483x510S10011501x466S2e704510x500S10019476x475` <br> ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M525x535S2e748483x510S10011501x466S2e704510x500S10019476x475&pad=10&size=2) | `M524x535S2e730500x510S10019478x466S2e71c475x500S10011503x475` <br> ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M524x535S2e730500x510S10019478x466S2e71c475x500S10011503x475&pad=10&size=2) |
 | `M534x521S22a14475x503S19a00506x479S19a08467x479S22a04514x504S2fb04493x515` <br> ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M534x521S22a14475x503S19a00506x479S19a08467x479S22a04514x504S2fb04493x515&pad=10&size=2) | `M533x521S22a04511x503S19a08465x479S19a00504x479S22a14472x504S2fb04492x515` <br> ![](https://www.signbank.org/signpuddle2.0/glyphogram.php?text=M533x521S22a04511x503S19a08465x479S19a00504x479S22a14472x504S2fb04492x515&pad=10&size=2) |
 
 ## Caveats

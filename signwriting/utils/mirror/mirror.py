@@ -403,7 +403,7 @@ _S2D4_ROTATION = {0: 4, 4: 0, 1: 5, 5: 1, 2: 7, 7: 2, 3: 6, 6: 3}
 # 16-rotation arrows (rotation +8) - Rotation Single/Double/Alternate Wall
 # Plane (S2a2-S2a4), Rotation Floor Plane (S2df-S2e1), Arm Circle Hits Wall
 # (S2e7-S2ec). Fill is handled by the general movement-fill rule.
-_PLUS_8_FILL_01_34_BASES = frozenset({
+_PLUS_8_ROTATION_BASES = frozenset({
     "S2a2", "S2a3", "S2a4",
     "S2df", "S2e0", "S2e1",
     "S2e7", "S2e8", "S2e9", "S2ea", "S2eb", "S2ec",
@@ -499,7 +499,7 @@ def _movement_rotation(base: str, fill: str, rotation: int) -> int:
         return _AXIS_FOLD_ROTATION.get(rotation, rotation)
     if base == "S2d4":  # Rotation Alternating Hits Floor.
         return _S2D4_ROTATION.get(rotation, rotation)
-    if base in _PLUS_8_FILL_01_34_BASES:
+    if base in _PLUS_8_ROTATION_BASES:
         return (rotation + 8) % 16
     if base == "S2f2":  # Finger Circles Wall Double.
         return rotation ^ 4
