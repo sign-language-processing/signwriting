@@ -30,5 +30,9 @@ class JoinSignsCase(unittest.TestCase):
         result_sign = join_signs_vertical(char_a, char_b)
         self.assertEqual('M510x507S1f720487x492', result_sign)
 
+    def test_join_only_empty_signs(self):
+        result_sign = join_signs_vertical('M518x515', 'M518x515')
+        self.assertEqual('M500x500', result_sign)
+
 if __name__ == '__main__':
     unittest.main()

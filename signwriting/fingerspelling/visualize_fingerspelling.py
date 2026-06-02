@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from signwriting.fingerspelling.fingerspelling import FINGERSPELLING_DIR, get_chars
+from signwriting.fingerspelling.fingerspelling import FINGERSPELLING_DIR, get_chars, variant_signs
 
 readme_path = Path(__file__).parent / "README.md"
 
@@ -11,7 +11,7 @@ if __name__ == "__main__":
     texts = []
 
     for language in sorted(FINGERSPELLING_DIR.glob("*")):
-        chars = get_chars(language.stem)
+        chars = {char: variant_signs(variants) for char, variants in get_chars(language.stem).items()}
         # convert to markdown table
         table = [
             "| " + " | ".join(char for char in chars.keys()) + " |",  # Table head

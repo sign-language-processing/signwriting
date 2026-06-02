@@ -33,6 +33,9 @@ def join_signs_vertical(*fsws: str, spacing: int = 0):
                 "position": (symbol["position"][0], symbol["position"][1] + sign_offset_y)
             })
 
+    if not symbols:
+        return "M500x500"
+
     new_sign = sign_from_symbols(symbols, fix_x=False)
     return sign_to_fsw(new_sign)
 
@@ -52,6 +55,9 @@ def join_signs_horizontal(*fsws: str, spacing: int = 0):
                 "symbol": symbol["symbol"],
                 "position": (symbol["position"][0] + sign_offset_x, symbol["position"][1])
             })
+
+    if not symbols:
+        return "M500x500"
 
     new_sign = sign_from_symbols(symbols, fix_y=False)
     return sign_to_fsw(new_sign)
