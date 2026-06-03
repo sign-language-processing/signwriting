@@ -31,6 +31,7 @@ def variant_signs(char_variants: CharVariants, variants: List[str] = None) -> Li
 
 
 def spell(word: str, language=None, chars=None, vertical=True, variants=None, seed=None, rng=None) -> Union[str, None]:
+    # pylint: disable=too-many-arguments
     if chars is None:
         if language is None:
             raise ValueError("Either language or chars must be provided")
