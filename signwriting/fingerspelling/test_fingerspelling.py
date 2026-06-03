@@ -48,6 +48,32 @@ class FingerspellingCase(unittest.TestCase):
         # the 1-hand "+" glyph is identical to the "t" glyph
         self.assertEqual(one_hand, spell("t", language='en-us-ase-asl'))
 
+    def test_spell_seed_is_deterministic(self):
+        # "w" has multiple default options, so the choice is seed-dependent.
+        first = spell("www", language='en-us-ase-asl', seed=42)
+        second = spell("www", language='en-us-ase-asl', seed=42)
+        self.assertEqual(first, second)
+
+    def test_spell_text_seed_is_deterministic(self):
+        first = spell_text("world wide web", language='en-us-ase-asl', seed=42)
+        second = spell_text("world wide web", language='en-us-ase-asl', seed=42)
+        self.assertEqual(first, second)
+
+    def test_spell_text_different_seeds_can_differ(self):
+        # With several multi-option characters the two seeds should diverge.
+        text = "www kkk ppp vvv"
+        self.assertNotEqual(
+            spell_text(text, language='en-us-ase-asl', seed=1),
+            spell_text(text, language='en-us-ase-asl', seed=2),
+        )
+
+    def test_spell_seed_independent_for_single_option_chars(self):
+        # "abc" has one option per character, so the seed must not affect the result.
+        self.assertEqual(
+            spell("abc", language='en-us-ase-asl', seed=1),
+            spell("abc", language='en-us-ase-asl', seed=2),
+        )
+
     def test_tokenize_splits_words_and_symbols(self):
         self.assertEqual(tokenize("google.com/test+ai"),
                          ["google", ".", "com", "/", "test", "+", "ai"])
