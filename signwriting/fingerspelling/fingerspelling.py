@@ -30,11 +30,15 @@ def variant_signs(char_variants: CharVariants, variants: List[str] = None) -> Li
     return char_variants
 
 
-def spell(word: str, language=None, chars=None, vertical=True, variants=None) -> Union[str, None]:
+def spell(word: str, language=None, chars=None, vertical=True, variants=None, seed=None, rng=None) -> Union[str, None]:
+    # pylint: disable=too-many-arguments
     if chars is None:
         if language is None:
             raise ValueError("Either language or chars must be provided")
         chars = get_chars(language)
+
+    if rng is None:
+        rng = random.Random(seed) if seed is not None else random
 
     sl = []
     caret = 0
@@ -42,7 +46,9 @@ def spell(word: str, language=None, chars=None, vertical=True, variants=None) ->
         found = False
         for c, options in chars.items():
             if word[caret:caret + len(c)].lower() == c:
-                sl.append(random.choice(variant_signs(options, variants)))
+                signs = variant_signs(options, variants)
+                # Only draw from the rng when there is an actual choice to make.
+                sl.append(signs[0] if len(signs) == 1 else rng.choice(signs))
                 caret += len(c)
                 found = True
                 break
@@ -57,8 +63,10 @@ def tokenize(text: str) -> List[str]:
     return re.findall(r'[^\W_]+|[^\w\s]|_', text)
 
 
-def spell_text(text: str, language=None, vertical=True, variants=None) -> Union[str, None]:
-    spellings = [spell(token, language=language, vertical=vertical, variants=variants)
+def spell_text(text: str, language=None, vertical=True, variants=None, seed=None) -> Union[str, None]:
+    # Share a single seeded rng across tokens so the whole text spells deterministically.
+    rng = random.Random(seed) if seed is not None else None
+    spellings = [spell(token, language=language, vertical=vertical, variants=variants, rng=rng)
                  for token in tokenize(text)]
     if any(spelling is None for spelling in spellings):
         return None
