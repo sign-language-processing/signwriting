@@ -3,21 +3,28 @@ import re
 from signwriting.types import Sign
 
 
-def fsw_to_sign(fsw: str) -> Sign:
-    boxes = re.finditer(r'([BLMR])(\d{3})x(\d{3})', fsw)
-    box = next(boxes, None)
-    # pylint: disable=invalid-name
-    box_symbol, x, y = box.groups() if box is not None else ("M", 500, 500)
+BOX_RE = re.compile(r"([BLMR])(\d{3})x(\d{3})")
+SYMBOL_RE = re.compile(r"(S[123][0-9a-f]{2}[0-5][0-9a-f])(\d{3})x(\d{3})")
 
-    symbols = re.findall(r'(S[123][0-9a-f]{2}[0-5][0-9a-f])(\d{3})x(\d{3})', fsw)
+
+def fsw_to_sign(fsw: str) -> Sign:
+    box = BOX_RE.search(fsw)
+    if box is None:
+        box_symbol = "M"
+        box_position = (500, 500)
+    else:
+        box_symbol = box[1]
+        box_position = (int(box[2]), int(box[3]))
+
+    symbols = SYMBOL_RE.findall(fsw)
 
     return {
         "box": {
             "symbol": box_symbol,
-            "position": (int(x), int(y))
+            "position": box_position,
         },
         "symbols": [{
-            "symbol": s[0],
-            "position": (int(s[1]), int(s[2]))
-        } for s in symbols]
+            "symbol": symbol,
+            "position": (int(x), int(y)),
+        } for symbol, x, y in symbols],
     }
