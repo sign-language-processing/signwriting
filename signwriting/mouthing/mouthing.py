@@ -83,8 +83,14 @@ def mouth_ipa(characters: str, aspiration=False) -> Union[str, None]:
     return join_signs_horizontal(*words, spacing=10)
 
 
+@functools.lru_cache()
+def get_epitran(language: str) -> Epitran:
+    # Construction loads language data from disk (~0.7s), so reuse instances across calls
+    return Epitran(language, ligatures=True)
+
+
 def mouth(word: str, language: str, aspiration=False) -> MouthingResult:
-    epi = Epitran(language, ligatures=True)
+    epi = get_epitran(language)
     ipa = epi.transliterate(word)
 
     mouthing_fsw = mouth_ipa(ipa, aspiration=aspiration)
