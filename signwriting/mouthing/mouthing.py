@@ -23,7 +23,7 @@ class MouthingResult:
     swu: Optional[str]
 
 
-@functools.lru_cache()
+@functools.cache
 def get_mouthings():
     with open(MOUTHING_INDEX, "r", encoding="utf-8") as f:
         mouthings = json.load(f)
@@ -36,7 +36,7 @@ def get_mouthings():
     return mouthings
 
 
-@functools.lru_cache()
+@functools.cache
 def get_mouthings_without_aspiration():
     mouthings = copy.deepcopy(get_mouthings())
 
@@ -83,8 +83,14 @@ def mouth_ipa(characters: str, aspiration=False) -> Union[str, None]:
     return join_signs_horizontal(*words, spacing=10)
 
 
+@functools.cache
+def get_epitran(language: str) -> Epitran:
+    # Construction loads language data from disk (~0.7s), so reuse instances across calls
+    return Epitran(language, ligatures=True)
+
+
 def mouth(word: str, language: str, aspiration=False) -> MouthingResult:
-    epi = Epitran(language, ligatures=True)
+    epi = get_epitran(language)
     ipa = epi.transliterate(word)
 
     mouthing_fsw = mouth_ipa(ipa, aspiration=aspiration)
