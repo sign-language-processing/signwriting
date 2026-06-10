@@ -17,17 +17,8 @@ ENV PATH="/opt/venv/bin:$PATH"
 RUN python -m venv $VIRTUAL_ENV
 
 WORKDIR /app
-
-# Install dependencies in their own layer, so it is reused when only code changes
-COPY pyproject.toml ./
-RUN python -c "import tomllib; \
-    project = tomllib.load(open('pyproject.toml', 'rb'))['project']; \
-    deps = project['dependencies'] + project['optional-dependencies']['mouthing'] + project['optional-dependencies']['server']; \
-    open('requirements.txt', 'w').write('\n'.join(deps))" && \
-    pip install --no-cache-dir -r requirements.txt
-
 COPY . .
-RUN pip install --no-cache-dir --no-deps .
+RUN pip install --no-cache-dir ".[mouthing,server]"
 
 # ---- Runtime stage ----
 FROM python:3.12-slim
