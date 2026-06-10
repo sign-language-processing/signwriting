@@ -23,10 +23,12 @@ def send_pil_image(pil_img):
 
 
 parser = reqparse.RequestParser()
-parser.add_argument('fsw', type=str, required=False, help='FSW String (Must be provided if swu is not provided)')
-parser.add_argument('swu', type=str, required=False, help='SWU String (Must be provided if fsw is not provided)')
-parser.add_argument('line', type=str, default='000000ff', help='Line color in hex format')
-parser.add_argument('fill', type=str, default='ffffffff', help='Fill color in hex format')
+parser.add_argument('fsw', type=str, location='args', required=False,
+                    help='FSW String (Must be provided if swu is not provided)')
+parser.add_argument('swu', type=str, location='args', required=False,
+                    help='SWU String (Must be provided if fsw is not provided)')
+parser.add_argument('line', type=str, location='args', default='000000ff', help='Line color in hex format')
+parser.add_argument('fill', type=str, location='args', default='ffffffff', help='Fill color in hex format')
 
 
 class Visualizer(Resource):
