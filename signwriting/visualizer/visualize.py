@@ -9,6 +9,7 @@ from signwriting.formats.fsw_to_sign import fsw_to_sign
 from signwriting.formats.fsw_to_swu import key2id, symbol_line, symbol_fill
 from signwriting.formats.swu import is_swu
 from signwriting.formats.swu_to_fsw import swu2fsw
+from signwriting.types import Sign
 
 # Type alias representing a tuple of four integers: Red, Green, Blue, Alpha
 RGBA = Tuple[int, int, int, int]
@@ -26,6 +27,18 @@ def get_symbol_size(symbol: str):
     line_id = symbol_line(key2id(symbol))
     left, top, right, bottom = font.getbbox(line_id)
     return right - left, bottom - top
+
+
+def signwriting_box(sign: Sign) -> Tuple[int, int]:
+    """Recompute a sign's bottom-right box corner ``(max_x, max_y)`` from its
+    symbols' rendered sizes - the tight box used when ``trust_box`` is off."""
+    max_x, max_y = 0, 0
+    for symbol in sign["symbols"]:
+        symbol_x, symbol_y = symbol["position"]
+        symbol_width, symbol_height = get_symbol_size(symbol["symbol"])
+        max_x = max(max_x, symbol_x + symbol_width)
+        max_y = max(max_y, symbol_y + symbol_height)
+    return max_x, max_y
 
 
 def _clear_caches_after_fork():
@@ -65,12 +78,7 @@ def signwriting_to_image(fsw: Union[str, List[str]], antialiasing=True, trust_bo
     max_x, max_y, = sign["box"]["position"]
 
     if not trust_box:
-        max_x, max_y = 0, 0
-        for symbol in sign['symbols']:
-            symbol_x, symbol_y = symbol["position"]
-            symbol_width, symbol_height = get_symbol_size(symbol["symbol"])
-            max_x = max(max_x, symbol_x + symbol_width)
-            max_y = max(max_y, symbol_y + symbol_height)
+        max_x, max_y = signwriting_box(sign)
 
     img = Image.new('RGBA', (max_x - min_x, max_y - min_y), (255, 255, 255, 0))
     draw = ImageDraw.Draw(img, 'RGBA')

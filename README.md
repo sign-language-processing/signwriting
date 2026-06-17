@@ -112,6 +112,17 @@ result_sign = join_signs_vertical(char_a, char_b)
 # M510x518S1f720490x481S14720496x496
 ```
 
+2. `canonicalize` rewrites a sign's symbols in a canonical order (by category,
+   then top-to-bottom, left-to-right) and tightens its box, without changing
+   the rendered image. See [`utils/canonicalize`](signwriting/utils/canonicalize/README.md).
+
+```python
+from signwriting.utils.canonicalize import canonicalize
+
+canonicalize('M521x547S20310506x500S33100482x443')
+# M521x515S33100482x443S20310506x500
+```
+
 
 ### `signwriting.fingerspelling`
 
