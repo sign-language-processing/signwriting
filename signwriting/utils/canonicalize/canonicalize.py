@@ -47,6 +47,35 @@ def _sort_key(symbol: SignSymbol):
     return _category_rank(symbol["symbol"]), y, x
 
 
+# A sign's center pivot, ported from @sutton-signwriting/font-ttf signNormalize:
+# when a sign contains a face it is centered horizontally on the face, when it
+# contains a face or trunk it is centered vertically on those, and otherwise it
+# falls back to the full bounding box.
+_HCENTER_RANGE = (0x2ff, 0x36c)  # head / face
+_VCENTER_RANGE = (0x2ff, 0x375)  # head / face + trunk
+
+
+def _bbox(symbols: List[SignSymbol]):
+    left = min(s["position"][0] for s in symbols)
+    top = min(s["position"][1] for s in symbols)
+    right = max(s["position"][0] + get_symbol_size(s["symbol"])[0] for s in symbols)
+    bottom = max(s["position"][1] + get_symbol_size(s["symbol"])[1] for s in symbols)
+    return left, top, right, bottom
+
+
+def _center_offset(symbols: List[SignSymbol]):
+    """Offset of the sign's center from (500, 500), using the face/trunk pivot
+    when present and the full bounding box otherwise."""
+    left, top, right, bottom = _bbox(symbols)
+    faces = [s for s in symbols if _HCENTER_RANGE[0] <= int(s["symbol"][1:4], 16) <= _HCENTER_RANGE[1]]
+    if faces:
+        left, _, right, _ = _bbox(faces)
+    bodies = [s for s in symbols if _VCENTER_RANGE[0] <= int(s["symbol"][1:4], 16) <= _VCENTER_RANGE[1]]
+    if bodies:
+        _, top, _, bottom = _bbox(bodies)
+    return int((left + right) / 2) - 500, int((top + bottom) / 2) - 500
+
+
 @functools.cache
 def _symbol_mask(symbol: str) -> np.ndarray:
     """Boolean ink mask (line + fill) of a symbol rendered at the origin."""
@@ -144,11 +173,14 @@ def _canonical_order(symbols: List[SignSymbol]) -> List[SignSymbol]:
 
 
 def canonicalize(fsw: str) -> str:
-    """Rewrite an FSW sign with its symbols in canonical order and a tight box.
+    """Rewrite an FSW sign with its symbols in canonical order, centered, with a
+    tight box.
 
     Symbols are ordered by category (faces, other, hands, contact, movement)
     and within a category top-to-bottom then left-to-right; overlapping symbols
-    keep their original relative order so the rendered image is unchanged.
+    keep their original relative order so the rendered image is unchanged. The
+    sign is then centered on (500, 500) - on its face/trunk when present,
+    otherwise on its bounding box - and the box recomputed to fit tightly.
 
     ``fsw`` must be ASCII Formal SignWriting. For SWU input, convert with
     ``signwriting.formats.swu_to_fsw.swu2fsw`` first.
@@ -160,8 +192,13 @@ def canonicalize(fsw: str) -> str:
     if not sign["symbols"]:
         return fsw
 
+    ordered = _canonical_order(sign["symbols"])
+    max_x, max_y = signwriting_box(sign)
+    offset_x, offset_y = _center_offset(ordered)
     canonical_sign: Sign = {
-        "box": {"symbol": sign["box"]["symbol"], "position": signwriting_box(sign)},
-        "symbols": _canonical_order(sign["symbols"]),
+        "box": {"symbol": sign["box"]["symbol"], "position": (max_x - offset_x, max_y - offset_y)},
+        "symbols": [{"symbol": s["symbol"],
+                     "position": (s["position"][0] - offset_x, s["position"][1] - offset_y)}
+                    for s in ordered],
     }
     return sign_to_fsw(canonical_sign)
