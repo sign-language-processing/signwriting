@@ -5,7 +5,7 @@ import numpy as np
 from signwriting.formats.fsw_to_sign import fsw_to_sign
 from signwriting.utils.canonicalize import canonicalize
 from signwriting.utils.canonicalize.canonicalize import _order_matters, _symbols_share_ink
-from signwriting.visualizer.visualize import signwriting_to_image
+from signwriting.visualizer.visualize import get_symbol_size, signwriting_to_image
 
 # Real signs from the single_signs corpus, spanning a range of symbol counts
 # and categories. Canonicalization must never change the rendered image.
@@ -38,13 +38,13 @@ class CanonicalizeOverlapCase(unittest.TestCase):
 
     def test_overlapping_hand_then_face_preserved(self):
         self.assertEqual(
-            "M521x519S20310506x500S33100482x483",
+            "M521x518S20310506x499S33100482x482",
             canonicalize("M521x547S20310506x500S33100482x483"),
         )
 
     def test_overlapping_face_then_hand_preserved(self):
         self.assertEqual(
-            "M521x519S33100482x483S20310506x500",
+            "M521x518S33100482x482S20310506x499",
             canonicalize("M521x547S33100482x483S20310506x500"),
         )
 
@@ -52,7 +52,7 @@ class CanonicalizeOverlapCase(unittest.TestCase):
         # Moving the face up (y 483 -> 443) breaks the overlap, so the canonical
         # order kicks in and the face is written before the hand.
         self.assertEqual(
-            "M521x515S33100482x443S20310506x500",
+            "M521x554S33100482x482S20310506x539",
             canonicalize("M521x547S20310506x500S33100482x443"),
         )
 
@@ -92,7 +92,7 @@ class CanonicalizeCategoryOrderCase(unittest.TestCase):
         # contact, movement.
         fsw = "M750x750S26500250x250S20500300x300S10000350x350S37000400x400S33000450x450"
         self.assertEqual(
-            "M499x487S33000450x450S37000400x400S10000350x350S20500300x300S26500250x250",
+            "M525x544S33000476x507S37000426x457S10000376x407S20500326x357S26500276x307",
             canonicalize(fsw),
         )
 
@@ -107,13 +107,35 @@ class CanonicalizeBoxCase(unittest.TestCase):
 
     def test_box_is_tightened(self):
         # The input box (547) is looser than the symbols require; it is
-        # recomputed to the tight bottom-right corner.
+        # recomputed to the tight bottom-right corner (and the sign centered).
         out = canonicalize("M521x547S20310506x500S33100482x483")
-        self.assertTrue(out.startswith("M521x519"))
+        self.assertTrue(out.startswith("M521x518"))
 
     def test_box_marker_preserved(self):
         self.assertTrue(canonicalize("L521x547S20310506x500S33100482x483").startswith("L"))
         self.assertTrue(canonicalize("R521x547S20310506x500S33100482x483").startswith("R"))
+
+
+class CanonicalizeCenterCase(unittest.TestCase):
+    """Centering ported from @sutton-signwriting/font-ttf signNormalize: a sign
+    is moved so its center sits on (500, 500), pivoting on the face/trunk when
+    present and the full bounding box otherwise."""
+
+    def test_centers_horizontally_on_face(self):
+        # Face plus a hand far to the right. Horizontal centering pivots on the
+        # face (S2ff-S36c), so the face's midpoint lands on 500 - independent of
+        # where the hand sits.
+        out = canonicalize("M620x540S33000482x460S10000600x500")
+        face = next(s for s in fsw_to_sign(out)["symbols"] if s["symbol"] == "S33000")
+        left = face["position"][0]
+        right = left + get_symbol_size("S33000")[0]
+        self.assertEqual(500, int((left + right) / 2))
+
+    def test_normalizes_translation(self):
+        # The same sign shifted by a constant offset normalizes to one form.
+        base = "M544x527S11511503x500S33100482x482S20600522x495"
+        shifted = "M564x547S11511523x520S33100502x502S20600542x515"
+        self.assertEqual(canonicalize(base), canonicalize(shifted))
 
 
 class CanonicalizeContractCase(unittest.TestCase):
@@ -133,8 +155,9 @@ class CanonicalizeContractCase(unittest.TestCase):
 
 
 class CanonicalizeRenderEquivalenceCase(unittest.TestCase):
-    """Reordering only ever swaps symbols whose glyphs are disjoint, so the
-    rendered image is pixel-identical to the original (with the same box)."""
+    """Reordering only swaps symbols whose draw order is invisible, and
+    centering is a uniform translation, so the rendered image (cropped to its
+    content) is pixel-identical to the original."""
 
     @staticmethod
     def _render(fsw: str):
