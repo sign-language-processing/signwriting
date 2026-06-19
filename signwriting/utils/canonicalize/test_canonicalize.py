@@ -1,3 +1,4 @@
+import re
 import unittest
 
 import numpy as np
@@ -152,6 +153,28 @@ class CanonicalizeContractCase(unittest.TestCase):
             with self.subTest(fsw=fsw):
                 once = canonicalize(fsw)
                 self.assertEqual(once, canonicalize(once))
+
+
+class CanonicalizeMultiSignCase(unittest.TestCase):
+    """``fsw_to_sign`` absorbs every symbol into the first box, so a whitespace-
+    separated multi-sign string must be canonicalized one sign at a time rather
+    than merged into a single box."""
+
+    def test_each_sign_canonicalized_independently(self):
+        first = "M532x585S30004482x483S1ce02487x518S1ce0a477x533S20500522x508S2eb34512x543S2eb10472x553"
+        second = "M522x527S20300497x512S20320507x507S21400479x514S28a02484x474S20e00494x494"
+        out = canonicalize(f"{first} {second}")
+        self.assertEqual(f"{canonicalize(first)} {canonicalize(second)}", out)
+
+    def test_signs_are_not_merged(self):
+        first = "M532x585S30004482x483S1ce02487x518S1ce0a477x533S20500522x508S2eb34512x543S2eb10472x553"
+        second = "M522x527S20300497x512S20320507x507S21400479x514S28a02484x474S20e00494x494"
+        out = canonicalize(f"{first} {second}")
+        self.assertEqual(2, len(out.split()))
+        self.assertEqual(2, len(re.findall(r"[MLRB]\d{3}x\d{3}", out)))
+
+    def test_whitespace_only_is_empty(self):
+        self.assertEqual("", canonicalize("   "))
 
 
 class CanonicalizeRenderEquivalenceCase(unittest.TestCase):

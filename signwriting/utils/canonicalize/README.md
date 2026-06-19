@@ -13,6 +13,14 @@ canonicalize("M521x547S20310506x500S33100482x443")
 `canonicalize` accepts ASCII **Formal SignWriting (FSW)**. For SWU input,
 convert first via `signwriting.formats.swu_to_fsw.swu2fsw`.
 
+A string may hold several whitespace-separated signs; each is canonicalized
+independently and the results are re-joined with a single space.
+
+```python
+canonicalize("M524x520S15a11501x497S20600487x479 M507x507S1f720487x492")
+# "M519x521S15a11496x498S20600482x480 M510x508S1f720490x493"
+```
+
 ## Algorithm
 
 1. **Order by category.** Each symbol belongs to one ISWA category, sorted in
