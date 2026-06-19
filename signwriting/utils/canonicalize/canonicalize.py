@@ -172,22 +172,7 @@ def _canonical_order(symbols: List[SignSymbol]) -> List[SignSymbol]:
     return order
 
 
-def canonicalize(fsw: str) -> str:
-    """Rewrite an FSW sign with its symbols in canonical order, centered, with a
-    tight box.
-
-    Symbols are ordered by category (faces, other, hands, contact, movement)
-    and within a category top-to-bottom then left-to-right; overlapping symbols
-    keep their original relative order so the rendered image is unchanged. The
-    sign is then centered on (500, 500) - on its face/trunk when present,
-    otherwise on its bounding box - and the box recomputed to fit tightly.
-
-    ``fsw`` must be ASCII Formal SignWriting. For SWU input, convert with
-    ``signwriting.formats.swu_to_fsw.swu2fsw`` first.
-    """
-    if not fsw.isascii():
-        raise ValueError("canonicalize expects ASCII FSW; convert SWU input via swu2fsw first")
-
+def _canonicalize_sign(fsw: str) -> str:
     sign = fsw_to_sign(fsw)
     if not sign["symbols"]:
         return fsw
@@ -202,3 +187,26 @@ def canonicalize(fsw: str) -> str:
                     for s in ordered],
     }
     return sign_to_fsw(canonical_sign)
+
+
+def canonicalize(fsw: str) -> str:
+    """Rewrite each FSW sign with its symbols in canonical order, centered, with
+    a tight box.
+
+    Symbols are ordered by category (faces, other, hands, contact, movement)
+    and within a category top-to-bottom then left-to-right; overlapping symbols
+    keep their original relative order so the rendered image is unchanged. Each
+    sign is then centered on (500, 500) - on its face/trunk when present,
+    otherwise on its bounding box - and the box recomputed to fit tightly.
+
+    ``fsw`` may hold multiple whitespace-separated signs; each is canonicalized
+    independently (``fsw_to_sign`` greedily absorbs every symbol into the first
+    box, so treating the whole string as one sign would merge them).
+
+    ``fsw`` must be ASCII Formal SignWriting. For SWU input, convert with
+    ``signwriting.formats.swu_to_fsw.swu2fsw`` first.
+    """
+    if not fsw.isascii():
+        raise ValueError("canonicalize expects ASCII FSW; convert SWU input via swu2fsw first")
+
+    return " ".join(_canonicalize_sign(sign) for sign in fsw.split())
