@@ -47,17 +47,10 @@ disable = [
 ]
 good-names = ["i", "f", "x", "y"]
 
-[tool.setuptools]
-packages = [
-    "signwriting",
-    "signwriting.formats",
-    "signwriting.tokenizer",
-    "signwriting.utils",
-    "signwriting.utils.mirror",
-    "signwriting.visualizer",
-    "signwriting.fingerspelling",
-    "signwriting.mouthing"
-]
+# Discover every signwriting subpackage automatically so new ones (e.g.
+# utils/canonicalize) ship without being listed here by hand.
+[tool.setuptools.packages.find]
+include = ["signwriting*"]
 
 [tool.setuptools.package-data]
 signwriting = ["**/*.ttf", "**/*.txt", "**/*.json"]
