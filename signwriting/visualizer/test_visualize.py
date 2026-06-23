@@ -5,7 +5,7 @@ import numpy as np
 from PIL import Image
 from numpy.testing import assert_array_equal
 
-from signwriting.visualizer.visualize import signwriting_to_image
+from signwriting.visualizer.visualize import _box_symbol, signwriting_to_image, stack_signs
 
 
 class VisualizeCase(unittest.TestCase):
@@ -85,9 +85,25 @@ class VisualizeCase(unittest.TestCase):
         fsw_list = ["AS14c20S27106M518x529S14c20481x471S27106503x489",
             "AS18701S1870aS2e734S20500M518x533S1870a489x515S18701482x490S20500508x496S2e734500x468"] # Hello World
 
-        for direction in ["horizontal", "vertical"]:
-            image = signwriting_to_image(fsw_list, direction=direction)
-            self.assert_image_equal_with_reference(direction, image)
+        image = signwriting_to_image(fsw_list)
+        self.assert_image_equal_with_reference("vertical", image)
+
+    def test_stack_signs_alignment(self):
+        opaque = lambda w: Image.new("RGBA", (w, 10), (0, 0, 0, 255))  # noqa: E731
+        image = stack_signs([opaque(40), opaque(20), opaque(20), opaque(20)], ["M", "L", "M", "R"])
+
+        self.assertEqual(image.size, (40, 10 * 4 + 20 * 3))  # width = max, height = sum + gaps
+        # Each sign sits in its own row band; crop it and read its horizontal extent.
+        self.assertEqual(image.crop((0, 30, 40, 40)).getbbox()[::2], (0, 20))   # L: flush left
+        self.assertEqual(image.crop((0, 60, 40, 70)).getbbox()[::2], (10, 30))  # M: centered
+        self.assertEqual(image.crop((0, 90, 40, 100)).getbbox()[::2], (20, 40))  # R: flush right
+
+    def test_box_symbol_lane(self):
+        self.assertEqual(_box_symbol("L518x529S14c20481x471S27106503x489"), "L")
+        self.assertEqual(_box_symbol("R518x529S14c20481x471S27106503x489"), "R")
+        self.assertEqual(_box_symbol("M518x529S14c20481x471S27106503x489"), "M")
+        # swu is converted to fsw before the lane is read
+        self.assertEqual(_box_symbol("𝠃𝤟𝤩񋛩𝣵𝤐񀀒𝤇𝣤񋚥𝤐𝤆񀀚𝣮𝣭"), "M")
 
 
 if __name__ == '__main__':
