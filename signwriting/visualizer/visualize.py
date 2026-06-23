@@ -1,7 +1,7 @@
 import os
 from functools import lru_cache
 from pathlib import Path
-from typing import Tuple, List, Literal, Union
+from typing import Tuple, List, Union
 
 from PIL import Image, ImageDraw, ImageFont
 
@@ -53,17 +53,9 @@ os.register_at_fork(after_in_child=_clear_caches_after_fork)
 
 
 # pylint: disable=too-many-locals, too-many-arguments
-def signwriting_to_image(fsw: Union[str, List[str]], antialiasing=True, trust_box=True, embedded_color=False,
-                         line_color: RGBA = (0, 0, 0, 255),
-                         fill_color: RGBA = (255, 255, 255, 255),
-                         direction: Literal["horizontal", "vertical"] = "horizontal") -> Image.Image:
-    if isinstance(fsw, list):
-        images = [
-            signwriting_to_image(fsw_string, antialiasing, trust_box, embedded_color, line_color, fill_color)
-            for fsw_string in fsw
-        ]
-        return layout_signwriting(images, direction)
-
+def visualize_sign(fsw: str, antialiasing=True, trust_box=True, embedded_color=False,
+                   line_color: RGBA = (0, 0, 0, 255),
+                   fill_color: RGBA = (255, 255, 255, 255)) -> Image.Image:
     if is_swu(fsw):
         fsw = swu2fsw(fsw)
 
@@ -100,26 +92,35 @@ def signwriting_to_image(fsw: Union[str, List[str]], antialiasing=True, trust_bo
     return img
 
 
-def layout_signwriting(images: List[Image.Image], direction: str) -> Image.Image:
+def _box_symbol(fsw: str) -> str:
+    if is_swu(fsw):
+        fsw = swu2fsw(fsw)
+    return fsw_to_sign(fsw)["box"]["symbol"]
+
+
+def stack_signs(images: List[Image.Image], box_symbols: List[str]) -> Image.Image:
     GAP = 20
+    width = max(img.width for img in images)
+    height = sum(img.height for img in images) + GAP * (len(images) - 1)
 
-    if direction == "horizontal":
-        max_height = max(img.height for img in images)
-        total_width = sum(img.width for img in images) + GAP * (len(images) - 1)
-        size = (total_width, max_height)
-        paste_position = lambda offset, img: (offset, (max_height - img.height) // 2) # noqa: E731
-        offset_increment = lambda img: img.width + GAP # noqa: E731
-    else:
-        max_width = max(img.width for img in images)
-        total_height = sum(img.height for img in images) + GAP * (len(images) - 1)
-        size = (max_width, total_height)
-        paste_position = lambda offset, img: ((max_width - img.width) // 2, offset) # noqa: E731
-        offset_increment = lambda img: img.height + GAP # noqa: E731
-
-    layout_image = Image.new("RGBA", size, (255, 255, 255, 0))
-    offset = 0
-    for img in images:
-        layout_image.paste(img, paste_position(offset, img))
-        offset += offset_increment(img)
+    layout_image = Image.new("RGBA", (width, height), (255, 255, 255, 0))
+    y = 0
+    for img, box in zip(images, box_symbols):
+        if box == "L":
+            x = 0
+        elif box == "R":
+            x = width - img.width
+        else:  # M / B: centered lane
+            x = (width - img.width) // 2
+        layout_image.paste(img, (x, y))
+        y += img.height + GAP
 
     return layout_image
+
+
+def signwriting_to_image(fsw: Union[str, List[str]], **kwargs) -> Image.Image:
+    fsw_list = [fsw] if isinstance(fsw, str) else fsw
+    images = [visualize_sign(f, **kwargs) for f in fsw_list]
+    if len(images) == 1:
+        return images[0]
+    return stack_signs(images, [_box_symbol(f) for f in fsw_list])
