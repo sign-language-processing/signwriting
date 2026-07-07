@@ -15,5 +15,10 @@ class SWUtoFSWCase(unittest.TestCase):
         prediction = swu_add_prefix(swu)
         self.assertEqual('𝠀񍉡񆄱񈠣𝠃𝤛𝤵񍉡𝣴𝣵񆄱𝤌𝤆񈠣𝤉𝤚 𝠀񋛩񀀒񋚥񀀚𝠃𝤟𝤩񋛩𝣵𝤐񀀒𝤇𝣤񋚥𝤐𝤆񀀚𝣮𝣭', prediction)
 
+    def test_swu_add_prefix_doesnt_duplicate(self):
+        swu = '𝠀񍉡񆄱񈠣𝠃𝤛𝤵񍉡𝣴𝣵񆄱𝤌𝤆񈠣𝤉𝤚'
+        prediction = swu_add_prefix(swu)
+        self.assertEqual('𝠀񍉡񆄱񈠣𝠃𝤛𝤵񍉡𝣴𝣵񆄱𝤌𝤆񈠣𝤉𝤚', prediction)
+
 if __name__ == '__main__':
     unittest.main()
