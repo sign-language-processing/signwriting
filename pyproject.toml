@@ -8,6 +8,7 @@ authors = [
 readme = "README.md"
 dependencies = [
     "Pillow>=11.3", # save() reads metadata from the image's encoderinfo attribute
+    "regex", # is_sgnw() needs \p{Sutton_SignWriting}, unsupported by stdlib re
 ]
 
 [project.optional-dependencies]
