@@ -4,6 +4,7 @@ from pathlib import Path
 from typing import Tuple, List, Union
 
 from PIL import Image, ImageDraw, ImageFont
+from PIL.PngImagePlugin import PngInfo
 
 from signwriting.formats.fsw_to_sign import fsw_to_sign
 from signwriting.formats.fsw_to_swu import key2id, symbol_line, symbol_fill
@@ -118,9 +119,23 @@ def stack_signs(images: List[Image.Image], box_symbols: List[str]) -> Image.Imag
     return layout_image
 
 
+def _attach_fsw_metadata(image: Image.Image, fsw: str) -> Image.Image:
+    image.info["FSW"] = fsw
+    pnginfo = PngInfo()
+    pnginfo.add_text("FSW", fsw)
+    # Pillow >= 11.3 merges this attribute into save() params, so a plain
+    # image.save(...) embeds the FSW text chunk.
+    image.encoderinfo = {"pnginfo": pnginfo}
+    return image
+
+
 def signwriting_to_image(fsw: Union[str, List[str]], **kwargs) -> Image.Image:
     fsw_list = [fsw] if isinstance(fsw, str) else fsw
     images = [visualize_sign(f, **kwargs) for f in fsw_list]
     if len(images) == 1:
-        return images[0]
-    return stack_signs(images, [_box_symbol(f) for f in fsw_list])
+        image = images[0]
+    else:
+        image = stack_signs(images, [_box_symbol(f) for f in fsw_list])
+
+    fsw_strings = [swu2fsw(f) if is_swu(f) else f for f in fsw_list]
+    return _attach_fsw_metadata(image, " ".join(fsw_strings))
