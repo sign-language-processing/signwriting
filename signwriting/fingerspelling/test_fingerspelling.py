@@ -74,6 +74,16 @@ class FingerspellingCase(unittest.TestCase):
             spell("abc", language='en-us-ase-asl', seed=2),
         )
 
+    def test_spell_greek_word(self):
+        sign = spell("γεια", language='gss', vertical=True)
+        self.assertEqual(sign, "M512x547S1dc04488x453S14a20493x488S19220489x508S1f720490x532")
+
+    def test_spell_greek_accents_final_sigma_and_case(self):
+        # Tonos vowels and final sigma spell like their base letters, uppercase like lowercase.
+        base = spell_text("καλοσ", language='gss')
+        self.assertEqual(spell_text("καλός", language='gss'), base)
+        self.assertEqual(spell_text("ΚΑΛΌΣ", language='gss'), base)
+
     def test_tokenize_splits_words_and_symbols(self):
         self.assertEqual(tokenize("google.com/test+ai"),
                          ["google", ".", "com", "/", "test", "+", "ai"])
