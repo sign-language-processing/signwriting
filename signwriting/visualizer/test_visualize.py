@@ -1,4 +1,5 @@
 import unittest
+from io import BytesIO
 from pathlib import Path
 
 import numpy as np
@@ -97,6 +98,33 @@ class VisualizeCase(unittest.TestCase):
         self.assertEqual(image.crop((0, 30, 40, 40)).getbbox()[::2], (0, 20))   # L: flush left
         self.assertEqual(image.crop((0, 60, 40, 70)).getbbox()[::2], (10, 30))  # M: centered
         self.assertEqual(image.crop((0, 90, 40, 100)).getbbox()[::2], (20, 40))  # R: flush right
+
+    def reload_png(self, image):
+        buffer = BytesIO()
+        image.save(buffer, "PNG")
+        buffer.seek(0)
+        return Image.open(buffer)
+
+    def test_image_fsw_metadata(self):
+        fsw = "M518x517S10040482x485S26500493x474"
+        image = signwriting_to_image(fsw)
+
+        self.assertEqual(image.info["FSW"], fsw)
+        self.assertEqual(self.reload_png(image).text["FSW"], fsw)
+
+    def test_image_swu_metadata_is_fsw(self):
+        swu = "𝠃𝤟𝤩񋛩𝣵𝤐񀀒𝤇𝣤񋚥𝤐𝤆񀀚𝣮𝣭"
+        image = signwriting_to_image(swu)
+
+        fsw = "M525x535S2e748483x510S10011501x466S2e704510x500S10019476x475"
+        self.assertEqual(self.reload_png(image).text["FSW"], fsw)
+
+    def test_image_list_metadata_joins_fsw(self):
+        fsw_list = ["AS14c20S27106M518x529S14c20481x471S27106503x489",
+                    "AS18701S1870aS2e734S20500M518x533S1870a489x515S18701482x490S20500508x496S2e734500x468"]
+        image = signwriting_to_image(fsw_list)
+
+        self.assertEqual(self.reload_png(image).text["FSW"], " ".join(fsw_list))
 
     def test_box_symbol_lane(self):
         self.assertEqual(_box_symbol("L518x529S14c20481x471S27106503x489"), "L")

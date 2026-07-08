@@ -7,7 +7,7 @@ authors = [
 ]
 readme = "README.md"
 dependencies = [
-    "Pillow"
+    "Pillow>=11.3", # save() reads metadata from the image's encoderinfo attribute
 ]
 
 [project.optional-dependencies]
