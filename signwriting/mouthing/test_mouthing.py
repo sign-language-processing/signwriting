@@ -33,8 +33,10 @@ MISSING_SYMBOLS = [
 ]
 
 
-@pytest.mark.parametrize("ipa,word", TOKENIZATION_ARTIFACTS + MISSING_SYMBOLS,
-                         ids=[w for _, w in TOKENIZATION_ARTIFACTS + MISSING_SYMBOLS])
+CASES = TOKENIZATION_ARTIFACTS + MISSING_SYMBOLS
+
+
+@pytest.mark.parametrize("ipa,word", CASES, ids=[word for _, word in CASES])
 def test_mouths_without_returning_none(ipa: str, word: str):
     assert mouth_ipa(ipa) is not None, f"{word} ({ipa}) failed to mouth"
 

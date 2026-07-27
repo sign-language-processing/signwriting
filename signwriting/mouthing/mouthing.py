@@ -4,9 +4,10 @@ import json
 import re
 import unicodedata
 from dataclasses import dataclass
-from itertools import groupby
 from pathlib import Path
 from typing import Union, Optional
+
+import regex
 
 from epitran import Epitran
 
@@ -20,7 +21,7 @@ MOUTHING_INDEX = Path(__file__).parent / "mouthing.json"
 # Punctuation, separators and digits. ASR tokenizers emit hyphenated/em-dashed compounds and bare
 # numerals ("all-day", "has—what", "7-year-old"); break on them instead of failing the whole word.
 # Numerals have no mouthing at all, so a word made only of digits still yields None.
-WORD_BREAK_CATEGORIES = "PZN"
+WORD_BREAK = regex.compile(r"[\p{P}\p{Z}\p{N}]+")
 
 # Diacritics and suprasegmentals that qualify a phoneme without giving it its own mouth picture:
 # nasalization, non-syllabic, palatalization, tie bars (Mn); length and stress marks (Lm); tone
@@ -56,7 +57,8 @@ def get_mouthings():
 def get_mouthings_without_aspiration():
     mouthings = copy.deepcopy(get_mouthings())
 
-    for info in mouthings.values():
+    # Aliases share one info object with the symbol they alias, so strip each object only once
+    for info in {id(info): info for info in mouthings.values()}.values():
         if "S335" in info["writing"]:
             info["writing"] = re.sub(r"S335..\d{3}x\d{3}", "", info["writing"])
         sign = fsw_to_sign(info["writing"])
@@ -95,13 +97,8 @@ def mouth_ipa_single(word: str, aspiration=False) -> Union[str, None]:
     return join_signs_horizontal(*sl, spacing=-10)
 
 
-def split_ipa_words(characters: str) -> list[str]:
-    is_break = lambda char: unicodedata.category(char)[0] in WORD_BREAK_CATEGORIES
-    return ["".join(chars) for brk, chars in groupby(characters, is_break) if not brk]
-
-
 def mouth_ipa(characters: str, aspiration=False) -> Union[str, None]:
-    words = [mouth_ipa_single(word, aspiration=aspiration) for word in split_ipa_words(characters)]
+    words = [mouth_ipa_single(word, aspiration=aspiration) for word in WORD_BREAK.split(characters) if word]
     if not words or any(word is None for word in words):
         return None
 
