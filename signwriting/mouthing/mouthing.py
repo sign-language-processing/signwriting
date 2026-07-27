@@ -2,7 +2,9 @@ import copy
 import functools
 import json
 import re
+import unicodedata
 from dataclasses import dataclass
+from itertools import groupby
 from pathlib import Path
 from typing import Union, Optional
 
@@ -14,6 +16,16 @@ from signwriting.formats.fsw_to_swu import fsw2swu
 from signwriting.utils.join_signs import join_signs_horizontal, sign_from_symbols
 
 MOUTHING_INDEX = Path(__file__).parent / "mouthing.json"
+
+# Punctuation, separators and digits. ASR tokenizers emit hyphenated/em-dashed compounds and bare
+# numerals ("all-day", "has—what", "7-year-old"); break on them instead of failing the whole word.
+# Numerals have no mouthing at all, so a word made only of digits still yields None.
+WORD_BREAK_CATEGORIES = "PZN"
+
+# Diacritics and suprasegmentals that qualify a phoneme without giving it its own mouth picture:
+# nasalization, non-syllabic, palatalization, tie bars (Mn); length and stress marks (Lm); tone
+# letters (Sk). Only consulted after longest-match fails, so "iː" still beats "ɪ" + dropped "ː".
+IGNORED_MARK_CATEGORIES = ("Mn", "Lm", "Sk")
 
 
 @dataclass
@@ -28,10 +40,14 @@ def get_mouthings():
     with open(MOUTHING_INDEX, "r", encoding="utf-8") as f:
         mouthings = json.load(f)
 
+    # Decompose keys so precomposed vowels ("ũ", "õ") reduce to a base letter plus a skippable mark.
+    # "ç" decomposes too, but stays a 2-character key that longest-match still prefers over "c".
+    mouthings = {unicodedata.normalize("NFD", symbol): info for symbol, info in mouthings.items()}
+
     for info in list(mouthings.values()):
         if "alternatives" in info:
             for alternative in info["alternatives"]:
-                mouthings[alternative] = info
+                mouthings[unicodedata.normalize("NFD", alternative)] = info
 
     return mouthings
 
@@ -56,8 +72,7 @@ def mouth_ipa_single(word: str, aspiration=False) -> Union[str, None]:
     # Make sure to look at long symbols first
     mouthings = sorted(list(mouthings.items()), key=lambda x: len(x[0]), reverse=True)
 
-    # Remove syllabic consonant markers
-    word = word.replace("̩", "")
+    word = unicodedata.normalize("NFD", word)
 
     sl = []
     caret = 0
@@ -70,14 +85,24 @@ def mouth_ipa_single(word: str, aspiration=False) -> Union[str, None]:
                 found = True
                 break
         if not found:
-            print(f"Symbol not found: {word[caret:caret + 1]}")
+            if unicodedata.category(word[caret]) in IGNORED_MARK_CATEGORIES:
+                caret += 1
+                continue
+            print(f"Symbol not found: {word[caret]}")
             return None
+    if not sl:
+        return None
     return join_signs_horizontal(*sl, spacing=-10)
 
 
+def split_ipa_words(characters: str) -> list[str]:
+    is_break = lambda char: unicodedata.category(char)[0] in WORD_BREAK_CATEGORIES
+    return ["".join(chars) for brk, chars in groupby(characters, is_break) if not brk]
+
+
 def mouth_ipa(characters: str, aspiration=False) -> Union[str, None]:
-    words = [mouth_ipa_single(word, aspiration=aspiration) for word in characters.split(" ")]
-    if any(word is None for word in words):
+    words = [mouth_ipa_single(word, aspiration=aspiration) for word in split_ipa_words(characters)]
+    if not words or any(word is None for word in words):
         return None
 
     return join_signs_horizontal(*words, spacing=10)
