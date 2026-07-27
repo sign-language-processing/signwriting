@@ -4,15 +4,14 @@ from signwriting.mouthing.mouthing import mouth_ipa
 
 # IPA transcriptions that used to return None because a single character had no mouthing entry.
 # https://linear.app/rylo/issue/SIGN-752
-TOKENIZATION_ARTIFACTS = [
+CASES = [
+    # ASR tokenization artifacts
     ("ɔl-dej", "all-day"),
     ("hæz—wʌt", "has—what"),
     ("bajɑləʤi,ɹajt", "biology,right"),
     ("ju.ɛs", "U.S"),
     ("sɪks-fɪɡjɚ", "six-figure"),
-]
-
-MISSING_SYMBOLS = [
+    # Symbols missing from the mouthing table
     ("kɾeo", "es: creo"),
     ("desaroʝaɾ", "es: desarrollar"),
     ("plɛʀ", "fr: plaire"),
@@ -31,9 +30,6 @@ MISSING_SYMBOLS = [
     ("han˧˩˧k͈ɯk̚", "ko: 한국"),
     ("ʔalʕarabijja", "ar: العربية"),
 ]
-
-
-CASES = TOKENIZATION_ARTIFACTS + MISSING_SYMBOLS
 
 
 @pytest.mark.parametrize("ipa,word", CASES, ids=[word for _, word in CASES])
