@@ -67,25 +67,28 @@ def get_mouthings_without_aspiration():
     return mouthings
 
 
-def mouth_ipa_single(word: str, aspiration=False) -> Union[str, None]:
+@functools.cache
+def get_mouthing_lookup(aspiration: bool) -> tuple[dict, int]:
     mouthings = get_mouthings() if aspiration else get_mouthings_without_aspiration()
+    return mouthings, max(len(symbol) for symbol in mouthings)
 
-    # Make sure to look at long symbols first
-    mouthings = sorted(list(mouthings.items()), key=lambda x: len(x[0]), reverse=True)
+
+def mouth_ipa_single(word: str, aspiration=False) -> Union[str, None]:
+    mouthings, longest_symbol = get_mouthing_lookup(aspiration)
 
     word = unicodedata.normalize("NFD", word)
 
     sl = []
     caret = 0
     while caret < len(word):
-        found = False
-        for symbol, info in mouthings:
-            if word[caret:caret + len(symbol)].lower() == symbol:
+        # Make sure to look at long symbols first
+        for length in range(longest_symbol, 0, -1):
+            info = mouthings.get(word[caret:caret + length].lower())
+            if info is not None:
                 sl.append(info["writing"])
-                caret += len(symbol)
-                found = True
+                caret += length
                 break
-        if not found:
+        else:
             if unicodedata.category(word[caret]) in IGNORED_MARK_CATEGORIES:
                 caret += 1
                 continue
