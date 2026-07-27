@@ -107,7 +107,11 @@ def mouth_ipa(characters: str, aspiration=False) -> Union[str, None]:
 @functools.cache
 def get_epitran(language: str) -> Epitran:
     # Construction loads language data from disk (~0.7s), so reuse instances across calls
-    return Epitran(language, ligatures=True)
+    try:
+        return Epitran(language, ligatures=True)
+    except AssertionError:
+        # Dictionary backends reject ligatures; they emit tie-bar affricates anyway
+        return Epitran(language)
 
 
 def mouth(word: str, language: str, aspiration=False) -> MouthingResult:

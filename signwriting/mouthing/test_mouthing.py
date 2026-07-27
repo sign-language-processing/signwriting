@@ -1,6 +1,6 @@
 import pytest
 
-from signwriting.mouthing.mouthing import mouth_ipa
+from signwriting.mouthing.mouthing import mouth, mouth_ipa
 
 # IPA transcriptions that used to return None because a single character had no mouthing entry.
 # https://linear.app/rylo/issue/SIGN-752
@@ -51,3 +51,9 @@ def test_decomposition_does_not_collapse_cedilla_into_c():
 
 def test_unknown_phoneme_still_fails_loudly():
     assert mouth_ipa("ʘ") is None
+
+
+# Dictionary backends assert on ligatures=True, which get_epitran used to pass unconditionally.
+@pytest.mark.parametrize("language,word", [("cmn-Hans", "中国"), ("jpn-Jpan", "ありがとう")])
+def test_dictionary_backed_languages_mouth(language: str, word: str):
+    assert mouth(word, language=language).fsw is not None
