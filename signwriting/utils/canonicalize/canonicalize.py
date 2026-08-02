@@ -1,8 +1,9 @@
 """Rewrite a single FSW sign with its symbols in a canonical order.
 
-Symbols are sorted by ISWA category, then top-to-bottom and left-to-right
-within a category. The category order (faces first, movement last) was
-derived empirically from the single_signs corpus - see README.md.
+Symbols are sorted by ISWA category, then top-to-bottom, left-to-right and
+finally by symbol key within a category. The category order (faces first,
+movement last) was derived empirically from the single_signs corpus - see
+README.md.
 
 The one wrinkle is overlapping glyphs. When two symbols' inked pixels
 overlap, one is drawn on top of the other - but that only matters if the
@@ -44,7 +45,7 @@ def _category_rank(symbol: str) -> int:
 
 def _sort_key(symbol: SignSymbol):
     x, y = symbol["position"]
-    return _category_rank(symbol["symbol"]), y, x
+    return _category_rank(symbol["symbol"]), y, x, symbol["symbol"]
 
 
 # A sign's center pivot, ported from @sutton-signwriting/font-ttf signNormalize:
@@ -162,7 +163,7 @@ def _canonical_order(symbols: List[SignSymbol]) -> List[SignSymbol]:
     order = []
     for _ in range(n):
         # Among symbols whose overlap-predecessors are all placed, take the one
-        # earliest in canonical order (input index breaks ties for stability).
+        # earliest in canonical order (the index only ties duplicate symbols).
         ready = (i for i in range(n) if not placed[i] and indegree[i] == 0)
         chosen = min(ready, key=lambda i: (keys[i], i))
         placed[chosen] = True
@@ -194,7 +195,8 @@ def canonicalize(fsw: str) -> str:
     a tight box.
 
     Symbols are ordered by category (faces, other, hands, contact, movement)
-    and within a category top-to-bottom then left-to-right; overlapping symbols
+    and within a category top-to-bottom, then left-to-right, then by symbol
+    key (which orders symbols stacked on one point); overlapping symbols
     keep their original relative order so the rendered image is unchanged. Each
     sign is then centered on (500, 500) - on its face/trunk when present,
     otherwise on its bounding box - and the box recomputed to fit tightly.

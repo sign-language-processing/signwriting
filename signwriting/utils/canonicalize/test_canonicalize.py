@@ -1,5 +1,6 @@
 import re
 import unittest
+from itertools import permutations
 
 import numpy as np
 
@@ -29,6 +30,9 @@ CORPUS_SIGNS = [
     "M544x527S11511503x500S33100482x482S20600522x495",
     "M518x529S10000469x499S30a00482x482",
     "M515x516S10010500x486S15d59485x484",
+    # Symbols stacked on one anchor point, ordered by their symbol key.
+    "M518x517S31400482x482S33e00482x482",
+    "M518x582S36a00482x477S20e00494x517S10a00493x531S22e04493x564S30a00482x477S35000482x477",
 ]
 
 
@@ -85,7 +89,7 @@ class CanonicalizeOverlapCase(unittest.TestCase):
 
 class CanonicalizeCategoryOrderCase(unittest.TestCase):
     """Non-overlapping symbols sort by category (faces, other, hands, contact,
-    movement), then top-to-bottom, left-to-right."""
+    movement), then top-to-bottom, left-to-right, then by symbol key."""
 
     def test_category_order(self):
         # One symbol per category, placed far apart so none overlap. Input is
@@ -96,6 +100,13 @@ class CanonicalizeCategoryOrderCase(unittest.TestCase):
             "M525x544S33000476x507S37000426x457S10000376x407S20500326x357S26500276x307",
             canonicalize(fsw),
         )
+
+    def test_stacked_symbols_ordered_by_symbol_key(self):
+        # Three symbols on one anchor point: position can't order them, the
+        # symbol key can, so all 6 input orders canonicalize to one.
+        stacked = ["S36a00482x477", "S30a00482x477", "S35000482x477"]
+        outputs = {canonicalize("M518x582" + "".join(order)) for order in permutations(stacked)}
+        self.assertEqual({"M518x524S30a00482x477S35000482x477S36a00482x477"}, outputs)
 
     def test_top_to_bottom_then_left_to_right_within_category(self):
         # Three non-overlapping hands; canonical order is by y, then x.

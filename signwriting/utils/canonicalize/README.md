@@ -25,7 +25,9 @@ canonicalize("M524x520S15a11501x497S20600487x479 M507x507S1f720487x492")
 
 1. **Order by category.** Each symbol belongs to one ISWA category, sorted in
    the order below. Within a category, symbols are written top-to-bottom, then
-   left-to-right.
+   left-to-right, then by symbol key - the last of those orders symbols stacked
+   on a single anchor point (e.g. eyes `S31400` and mouth `S33e00` both at
+   `482x482`), which position alone can't separate.
 
    | Rank | Category  | Base range  |
    | ---- | --------- | ----------- |
