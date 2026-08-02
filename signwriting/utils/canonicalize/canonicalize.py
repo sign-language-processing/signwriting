@@ -45,8 +45,6 @@ def _category_rank(symbol: str) -> int:
 
 def _sort_key(symbol: SignSymbol):
     x, y = symbol["position"]
-    # The symbol key breaks ties between symbols stacked on one anchor point
-    # (e.g. eyes and mouth both at 482x482), which position alone can't order.
     return _category_rank(symbol["symbol"]), y, x, symbol["symbol"]
 
 
@@ -165,8 +163,7 @@ def _canonical_order(symbols: List[SignSymbol]) -> List[SignSymbol]:
     order = []
     for _ in range(n):
         # Among symbols whose overlap-predecessors are all placed, take the one
-        # earliest in canonical order (input index only ever breaks a tie
-        # between two copies of the same symbol at the same position).
+        # earliest in canonical order (the index only ties duplicate symbols).
         ready = (i for i in range(n) if not placed[i] and indegree[i] == 0)
         chosen = min(ready, key=lambda i: (keys[i], i))
         placed[chosen] = True

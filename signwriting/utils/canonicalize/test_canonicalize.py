@@ -102,14 +102,8 @@ class CanonicalizeCategoryOrderCase(unittest.TestCase):
         )
 
     def test_stacked_symbols_ordered_by_symbol_key(self):
-        # Eyes and mouth share an anchor point, so position can't order them;
-        # the symbol key does, independent of the order they were written in.
-        expected = "M518x518S31400482x482S33e00482x482"
-        self.assertEqual(expected, canonicalize("M518x517S31400482x482S33e00482x482"))
-        self.assertEqual(expected, canonicalize("M518x517S33e00482x482S31400482x482"))
-
-    def test_stacked_symbols_order_is_total(self):
-        # Three symbols on one anchor: all 6 input orders canonicalize to one.
+        # Three symbols on one anchor point: position can't order them, the
+        # symbol key can, so all 6 input orders canonicalize to one.
         stacked = ["S36a00482x477", "S30a00482x477", "S35000482x477"]
         outputs = {canonicalize("M518x582" + "".join(order)) for order in permutations(stacked)}
         self.assertEqual({"M518x524S30a00482x477S35000482x477S36a00482x477"}, outputs)
