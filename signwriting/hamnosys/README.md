@@ -12,6 +12,40 @@ https://www.signwriting.org/forums/linguistics/ling001.html
 https://www.signwriting.org/forums/linguistics/ling002.html
 https://www.signwriting.org/forums/linguistics/ling003.html
 
+## Symbols
+
+[`symbols.json`](symbols.json) lists every HamNoSys symbol: its official name (e.g. `hamfist`),
+Unicode codepoint (the font maps them into the Private Use Area, `U+E000`–`U+E0F1`),
+the character itself, and the categories under which the official on-screen keyboard
+([sign-lang.uni-hamburg.de/hamnosys/input](https://www.sign-lang.uni-hamburg.de/hamnosys/input/))
+files it: Handshape, Orientation, Location, Movement 1, Movement 2, Two-handed.
+Symbols that exist in the font but not on the keyboard (e.g. `hamversion40`, wrist movements)
+have an empty category list.
+
+[`HamNoSysUnicode.ttf`](HamNoSysUnicode.ttf) is the official font
+(from [CTAN](https://ctan.org/pkg/hamnosys), also distributed by the University of Hamburg) —
+needed to render HamNoSys strings.
+
+Both files, and everything under [`handshapes/`](handshapes), are regenerated from the official
+sources by [`extract.py`](extract.py).
+
+## Handshapes
+
+[`handshapes/`](handshapes) reconstructs the official HamNoSys 4 handshapes chart:
+each hand drawing as a separate image, paired with its HamNoSys notation,
+organized by handshape class. See [`handshapes/README.md`](handshapes/README.md).
+
+## Resources
+
+- [HamNoSys 4 Handshapes Chart](https://www.sign-lang.uni-hamburg.de/dgs-korpus/files/inhalt_pdf/HamNoSys_Handshapes.pdf) — the source of `handshapes/`
+- [HamNoSys 2018 overview](https://www.sign-lang.uni-hamburg.de/dgs-korpus/files/inhalt_pdf/HamNoSys_2018.pdf) — concise, current reference
+- [HamNoSys introduction guide](https://vhg.cmp.uea.ac.uk/tech/hamnosys/HNS-intro-guide.pdf) (UEA)
+- [HamNoSys 4.1 syntax](https://vhg.cmp.uea.ac.uk/tech/hamnosys/HNS4.1.pdf) (UEA)
+- [HamNoSys user guide draft](https://robertsmithresearch.wordpress.com/wp-content/uploads/2012/10/hamnosys-user-guide-rs-draft-v3-0.pdf) (Robert Smith)
+- [CTAN font documentation](https://mirror.init7.net/ctan/fonts/hamnosys/hamnosys.pdf) — documents every glyph in the font
+- [Official input keyboard](https://www.sign-lang.uni-hamburg.de/hamnosys/input/) — the source of symbol categories
+- [hearai/parse-hamnosys](https://github.com/hearai/parse-hamnosys) — prior art on parsing HamNoSys strings
+
 ## Translation of HamNoSys to SignWriting
 
 Around 2012, an effort from Sarah Ebling and Penny Boyes Braem was made to analyze HamNoSys and SignWriting.
@@ -25,6 +59,12 @@ Therefore, the parts of their work we are interested in keeping are:
 
 There is currently no translation "model" from HamNoSys to SignWriting, 
 but with the help of the parallel database they have created, we can train a model to do so.
+
+Our plan is:
+1. **Rule-based translation** — map what maps cleanly (handshapes, locations, orientations)
+   using the symbol inventory and category mapping above.
+2. **Human post-editing** — give the rule-based output to annotators to fix.
+3. **Learned translation** — train a model on the parallel database plus the corrected annotations.
 
 ### Category Mapping
 

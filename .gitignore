@@ -2,3 +2,4 @@
 build/
 signwriting.egg-info/
 __pycache__/
+.cache/

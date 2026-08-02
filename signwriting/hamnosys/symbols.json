@@ -1,0 +1,1679 @@
+[
+  {
+    "name": "hamspace",
+    "unicode": "U+0020",
+    "char": " ",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hamexclaim",
+    "unicode": "U+0021",
+    "char": "!",
+    "categories": [
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hamcomma",
+    "unicode": "U+002C",
+    "char": ",",
+    "categories": [
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hamfullstop",
+    "unicode": "U+002E",
+    "char": ".",
+    "categories": [
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hamquery",
+    "unicode": "U+003F",
+    "char": "?",
+    "categories": [
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hamaltbegin",
+    "unicode": "U+007B",
+    "char": "{",
+    "categories": [
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hammetaalt",
+    "unicode": "U+007C",
+    "char": "|",
+    "categories": [
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hamaltend",
+    "unicode": "U+007D",
+    "char": "}",
+    "categories": [
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hamfist",
+    "unicode": "U+E000",
+    "char": "",
+    "categories": [
+      "Handshape"
+    ]
+  },
+  {
+    "name": "hamflathand",
+    "unicode": "U+E001",
+    "char": "",
+    "categories": [
+      "Handshape"
+    ]
+  },
+  {
+    "name": "hamfinger2",
+    "unicode": "U+E002",
+    "char": "",
+    "categories": [
+      "Handshape"
+    ]
+  },
+  {
+    "name": "hamfinger23",
+    "unicode": "U+E003",
+    "char": "",
+    "categories": [
+      "Handshape"
+    ]
+  },
+  {
+    "name": "hamfinger23spread",
+    "unicode": "U+E004",
+    "char": "",
+    "categories": [
+      "Handshape"
+    ]
+  },
+  {
+    "name": "hamfinger2345",
+    "unicode": "U+E005",
+    "char": "",
+    "categories": [
+      "Handshape"
+    ]
+  },
+  {
+    "name": "hampinch12",
+    "unicode": "U+E006",
+    "char": "",
+    "categories": [
+      "Handshape"
+    ]
+  },
+  {
+    "name": "hampinchall",
+    "unicode": "U+E007",
+    "char": "",
+    "categories": [
+      "Handshape"
+    ]
+  },
+  {
+    "name": "hampinch12open",
+    "unicode": "U+E008",
+    "char": "",
+    "categories": [
+      "Handshape"
+    ]
+  },
+  {
+    "name": "hamcee12",
+    "unicode": "U+E009",
+    "char": "",
+    "categories": [
+      "Handshape"
+    ]
+  },
+  {
+    "name": "hamceeall",
+    "unicode": "U+E00A",
+    "char": "",
+    "categories": [
+      "Handshape"
+    ]
+  },
+  {
+    "name": "hamceeopen",
+    "unicode": "U+E00B",
+    "char": "",
+    "categories": [
+      "Handshape"
+    ]
+  },
+  {
+    "name": "hamthumboutmod",
+    "unicode": "U+E00C",
+    "char": "",
+    "categories": [
+      "Handshape"
+    ]
+  },
+  {
+    "name": "hamthumbacrossmod",
+    "unicode": "U+E00D",
+    "char": "",
+    "categories": [
+      "Handshape"
+    ]
+  },
+  {
+    "name": "hamthumbopenmod",
+    "unicode": "U+E00E",
+    "char": "",
+    "categories": [
+      "Handshape"
+    ]
+  },
+  {
+    "name": "hamfingerstraightmod",
+    "unicode": "U+E010",
+    "char": "",
+    "categories": [
+      "Handshape",
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hamfingerbendmod",
+    "unicode": "U+E011",
+    "char": "",
+    "categories": [
+      "Handshape"
+    ]
+  },
+  {
+    "name": "hamfingerhookmod",
+    "unicode": "U+E012",
+    "char": "",
+    "categories": [
+      "Handshape"
+    ]
+  },
+  {
+    "name": "hamdoublebent",
+    "unicode": "U+E013",
+    "char": "",
+    "categories": [
+      "Handshape",
+      "Location"
+    ]
+  },
+  {
+    "name": "hamdoublehooked",
+    "unicode": "U+E014",
+    "char": "",
+    "categories": [
+      "Handshape",
+      "Location"
+    ]
+  },
+  {
+    "name": "hamextfingeru",
+    "unicode": "U+E020",
+    "char": "",
+    "categories": [
+      "Orientation"
+    ]
+  },
+  {
+    "name": "hamextfingerur",
+    "unicode": "U+E021",
+    "char": "",
+    "categories": [
+      "Orientation"
+    ]
+  },
+  {
+    "name": "hamextfingerr",
+    "unicode": "U+E022",
+    "char": "",
+    "categories": [
+      "Orientation"
+    ]
+  },
+  {
+    "name": "hamextfingerdr",
+    "unicode": "U+E023",
+    "char": "",
+    "categories": [
+      "Orientation"
+    ]
+  },
+  {
+    "name": "hamextfingerd",
+    "unicode": "U+E024",
+    "char": "",
+    "categories": [
+      "Orientation"
+    ]
+  },
+  {
+    "name": "hamextfingerdl",
+    "unicode": "U+E025",
+    "char": "",
+    "categories": [
+      "Orientation"
+    ]
+  },
+  {
+    "name": "hamextfingerl",
+    "unicode": "U+E026",
+    "char": "",
+    "categories": [
+      "Orientation"
+    ]
+  },
+  {
+    "name": "hamextfingerul",
+    "unicode": "U+E027",
+    "char": "",
+    "categories": [
+      "Orientation"
+    ]
+  },
+  {
+    "name": "hamextfingerol",
+    "unicode": "U+E028",
+    "char": "",
+    "categories": [
+      "Orientation"
+    ]
+  },
+  {
+    "name": "hamextfingero",
+    "unicode": "U+E029",
+    "char": "",
+    "categories": [
+      "Orientation"
+    ]
+  },
+  {
+    "name": "hamextfingeror",
+    "unicode": "U+E02A",
+    "char": "",
+    "categories": [
+      "Orientation"
+    ]
+  },
+  {
+    "name": "hamextfingeril",
+    "unicode": "U+E02B",
+    "char": "",
+    "categories": [
+      "Orientation"
+    ]
+  },
+  {
+    "name": "hamextfingeri",
+    "unicode": "U+E02C",
+    "char": "",
+    "categories": [
+      "Orientation"
+    ]
+  },
+  {
+    "name": "hamextfingerir",
+    "unicode": "U+E02D",
+    "char": "",
+    "categories": [
+      "Orientation"
+    ]
+  },
+  {
+    "name": "hamextfingerui",
+    "unicode": "U+E02E",
+    "char": "",
+    "categories": [
+      "Orientation"
+    ]
+  },
+  {
+    "name": "hamextfingerdi",
+    "unicode": "U+E02F",
+    "char": "",
+    "categories": [
+      "Orientation"
+    ]
+  },
+  {
+    "name": "hamextfingerdo",
+    "unicode": "U+E030",
+    "char": "",
+    "categories": [
+      "Orientation"
+    ]
+  },
+  {
+    "name": "hamextfingeruo",
+    "unicode": "U+E031",
+    "char": "",
+    "categories": [
+      "Orientation"
+    ]
+  },
+  {
+    "name": "hampalmu",
+    "unicode": "U+E038",
+    "char": "",
+    "categories": [
+      "Orientation"
+    ]
+  },
+  {
+    "name": "hampalmur",
+    "unicode": "U+E039",
+    "char": "",
+    "categories": [
+      "Orientation"
+    ]
+  },
+  {
+    "name": "hampalmr",
+    "unicode": "U+E03A",
+    "char": "",
+    "categories": [
+      "Orientation"
+    ]
+  },
+  {
+    "name": "hampalmdr",
+    "unicode": "U+E03B",
+    "char": "",
+    "categories": [
+      "Orientation"
+    ]
+  },
+  {
+    "name": "hampalmd",
+    "unicode": "U+E03C",
+    "char": "",
+    "categories": [
+      "Orientation"
+    ]
+  },
+  {
+    "name": "hampalmdl",
+    "unicode": "U+E03D",
+    "char": "",
+    "categories": [
+      "Orientation"
+    ]
+  },
+  {
+    "name": "hampalml",
+    "unicode": "U+E03E",
+    "char": "",
+    "categories": [
+      "Orientation"
+    ]
+  },
+  {
+    "name": "hampalmul",
+    "unicode": "U+E03F",
+    "char": "",
+    "categories": [
+      "Orientation"
+    ]
+  },
+  {
+    "name": "hamhead",
+    "unicode": "U+E040",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamheadtop",
+    "unicode": "U+E041",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamforehead",
+    "unicode": "U+E042",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hameyebrows",
+    "unicode": "U+E043",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hameyes",
+    "unicode": "U+E044",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamnose",
+    "unicode": "U+E045",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamnostrils",
+    "unicode": "U+E046",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamear",
+    "unicode": "U+E047",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamearlobe",
+    "unicode": "U+E048",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamcheek",
+    "unicode": "U+E049",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamlips",
+    "unicode": "U+E04A",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamtongue",
+    "unicode": "U+E04B",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamteeth",
+    "unicode": "U+E04C",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamchin",
+    "unicode": "U+E04D",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamunderchin",
+    "unicode": "U+E04E",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamneck",
+    "unicode": "U+E04F",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamshouldertop",
+    "unicode": "U+E050",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamshoulders",
+    "unicode": "U+E051",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamchest",
+    "unicode": "U+E052",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamstomach",
+    "unicode": "U+E053",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hambelowstomach",
+    "unicode": "U+E054",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamlrbeside",
+    "unicode": "U+E058",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamlrat",
+    "unicode": "U+E059",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamcoreftag",
+    "unicode": "U+E05A",
+    "char": "",
+    "categories": [
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hamcorefref",
+    "unicode": "U+E05B",
+    "char": "",
+    "categories": [
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hamneutralspace",
+    "unicode": "U+E05F",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamupperarm",
+    "unicode": "U+E060",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamelbow",
+    "unicode": "U+E061",
+    "char": "",
+    "categories": []
+  },
+  {
+    "name": "hamelbowinside",
+    "unicode": "U+E062",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamlowerarm",
+    "unicode": "U+E063",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamwristback",
+    "unicode": "U+E064",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamwristpulse",
+    "unicode": "U+E065",
+    "char": "",
+    "categories": []
+  },
+  {
+    "name": "hamthumbball",
+    "unicode": "U+E066",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hampalm",
+    "unicode": "U+E067",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamhandback",
+    "unicode": "U+E068",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamthumbside",
+    "unicode": "U+E069",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hampinkyside",
+    "unicode": "U+E06A",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamthumb",
+    "unicode": "U+E070",
+    "char": "",
+    "categories": [
+      "Handshape",
+      "Location",
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hamindexfinger",
+    "unicode": "U+E071",
+    "char": "",
+    "categories": [
+      "Handshape",
+      "Location",
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hammiddlefinger",
+    "unicode": "U+E072",
+    "char": "",
+    "categories": [
+      "Handshape",
+      "Location",
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hamringfinger",
+    "unicode": "U+E073",
+    "char": "",
+    "categories": [
+      "Handshape",
+      "Location",
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hampinky",
+    "unicode": "U+E074",
+    "char": "",
+    "categories": [
+      "Handshape",
+      "Location",
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hamfingertip",
+    "unicode": "U+E075",
+    "char": "",
+    "categories": [
+      "Handshape",
+      "Location"
+    ]
+  },
+  {
+    "name": "hamfingernail",
+    "unicode": "U+E076",
+    "char": "",
+    "categories": [
+      "Handshape",
+      "Location"
+    ]
+  },
+  {
+    "name": "hamfingerpad",
+    "unicode": "U+E077",
+    "char": "",
+    "categories": [
+      "Handshape",
+      "Location"
+    ]
+  },
+  {
+    "name": "hamfingermidjoint",
+    "unicode": "U+E078",
+    "char": "",
+    "categories": [
+      "Handshape",
+      "Location"
+    ]
+  },
+  {
+    "name": "hamfingerbase",
+    "unicode": "U+E079",
+    "char": "",
+    "categories": [
+      "Handshape",
+      "Location"
+    ]
+  },
+  {
+    "name": "hamfingerside",
+    "unicode": "U+E07A",
+    "char": "",
+    "categories": [
+      "Handshape"
+    ]
+  },
+  {
+    "name": "hamwristtopulse",
+    "unicode": "U+E07C",
+    "char": "",
+    "categories": []
+  },
+  {
+    "name": "hamwristtoback",
+    "unicode": "U+E07D",
+    "char": "",
+    "categories": []
+  },
+  {
+    "name": "hamwristtothumb",
+    "unicode": "U+E07E",
+    "char": "",
+    "categories": []
+  },
+  {
+    "name": "hamwristtopinky",
+    "unicode": "U+E07F",
+    "char": "",
+    "categories": []
+  },
+  {
+    "name": "hammoveu",
+    "unicode": "U+E080",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hammoveur",
+    "unicode": "U+E081",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hammover",
+    "unicode": "U+E082",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hammovedr",
+    "unicode": "U+E083",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hammoved",
+    "unicode": "U+E084",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hammovedl",
+    "unicode": "U+E085",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hammovel",
+    "unicode": "U+E086",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hammoveul",
+    "unicode": "U+E087",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hammoveol",
+    "unicode": "U+E088",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hammoveo",
+    "unicode": "U+E089",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hammoveor",
+    "unicode": "U+E08A",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hammoveil",
+    "unicode": "U+E08B",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hammovei",
+    "unicode": "U+E08C",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hammoveir",
+    "unicode": "U+E08D",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hammoveui",
+    "unicode": "U+E08E",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hammovedi",
+    "unicode": "U+E08F",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hammovedo",
+    "unicode": "U+E090",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hammoveuo",
+    "unicode": "U+E091",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hamcircleo",
+    "unicode": "U+E092",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamcirclei",
+    "unicode": "U+E093",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamcircled",
+    "unicode": "U+E094",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamcircleu",
+    "unicode": "U+E095",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamcirclel",
+    "unicode": "U+E096",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamcircler",
+    "unicode": "U+E097",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamcircleul",
+    "unicode": "U+E098",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamcircledr",
+    "unicode": "U+E099",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamcircleur",
+    "unicode": "U+E09A",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamcircledl",
+    "unicode": "U+E09B",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamcircleol",
+    "unicode": "U+E09C",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamcircleir",
+    "unicode": "U+E09D",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamcircleor",
+    "unicode": "U+E09E",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamcircleil",
+    "unicode": "U+E09F",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamcircleui",
+    "unicode": "U+E0A0",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamcircledo",
+    "unicode": "U+E0A1",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamcircleuo",
+    "unicode": "U+E0A2",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamcircledi",
+    "unicode": "U+E0A3",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamfingerplay",
+    "unicode": "U+E0A4",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamnodding",
+    "unicode": "U+E0A5",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamswinging",
+    "unicode": "U+E0A6",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamtwisting",
+    "unicode": "U+E0A7",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamstircw",
+    "unicode": "U+E0A8",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamstirccw",
+    "unicode": "U+E0A9",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamreplace",
+    "unicode": "U+E0AA",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hammovecross",
+    "unicode": "U+E0AD",
+    "char": "",
+    "categories": []
+  },
+  {
+    "name": "hammoveX",
+    "unicode": "U+E0AE",
+    "char": "",
+    "categories": []
+  },
+  {
+    "name": "hamnomotion",
+    "unicode": "U+E0AF",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hamclocku",
+    "unicode": "U+E0B0",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamclockul",
+    "unicode": "U+E0B1",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamclockl",
+    "unicode": "U+E0B2",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamclockdl",
+    "unicode": "U+E0B3",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamclockd",
+    "unicode": "U+E0B4",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamclockdr",
+    "unicode": "U+E0B5",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamclockr",
+    "unicode": "U+E0B6",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamclockur",
+    "unicode": "U+E0B7",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamclockfull",
+    "unicode": "U+E0B8",
+    "char": "",
+    "categories": [
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamarcl",
+    "unicode": "U+E0B9",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hamarcu",
+    "unicode": "U+E0BA",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hamarcr",
+    "unicode": "U+E0BB",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hamarcd",
+    "unicode": "U+E0BC",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hamwavy",
+    "unicode": "U+E0BD",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hamzigzag",
+    "unicode": "U+E0BE",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hamellipseh",
+    "unicode": "U+E0C0",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hamellipseur",
+    "unicode": "U+E0C1",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hamellipsev",
+    "unicode": "U+E0C2",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hamellipseul",
+    "unicode": "U+E0C3",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hamincreasing",
+    "unicode": "U+E0C4",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hamdecreasing",
+    "unicode": "U+E0C5",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hamsmallmod",
+    "unicode": "U+E0C6",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hamlargemod",
+    "unicode": "U+E0C7",
+    "char": "",
+    "categories": [
+      "Movement 1",
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hamfast",
+    "unicode": "U+E0C8",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hamslow",
+    "unicode": "U+E0C9",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hamtense",
+    "unicode": "U+E0CA",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hamrest",
+    "unicode": "U+E0CB",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hamhalt",
+    "unicode": "U+E0CC",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hamclose",
+    "unicode": "U+E0D0",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamtouch",
+    "unicode": "U+E0D1",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "haminterlock",
+    "unicode": "U+E0D2",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamcross",
+    "unicode": "U+E0D3",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamarmextended",
+    "unicode": "U+E0D4",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hambehind",
+    "unicode": "U+E0D5",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hambrushing",
+    "unicode": "U+E0D6",
+    "char": "",
+    "categories": [
+      "Location"
+    ]
+  },
+  {
+    "name": "hamrepeatfromstart",
+    "unicode": "U+E0D8",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hamrepeatfromstartseveral",
+    "unicode": "U+E0D9",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hamrepeatcontinue",
+    "unicode": "U+E0DA",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hamrepeatcontinueseveral",
+    "unicode": "U+E0DB",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hamrepeatreverse",
+    "unicode": "U+E0DC",
+    "char": "",
+    "categories": [
+      "Movement 1"
+    ]
+  },
+  {
+    "name": "hamalternatingmotion",
+    "unicode": "U+E0DD",
+    "char": "",
+    "categories": [
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hamseqbegin",
+    "unicode": "U+E0E0",
+    "char": "",
+    "categories": [
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hamseqend",
+    "unicode": "U+E0E1",
+    "char": "",
+    "categories": [
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hamparbegin",
+    "unicode": "U+E0E2",
+    "char": "",
+    "categories": [
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hamparend",
+    "unicode": "U+E0E3",
+    "char": "",
+    "categories": [
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hamfusionbegin",
+    "unicode": "U+E0E4",
+    "char": "",
+    "categories": [
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hamfusionend",
+    "unicode": "U+E0E5",
+    "char": "",
+    "categories": [
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hambetween",
+    "unicode": "U+E0E6",
+    "char": "",
+    "categories": [
+      "Handshape",
+      "Orientation",
+      "Location",
+      "Movement 1",
+      "Movement 2"
+    ]
+  },
+  {
+    "name": "hamplus",
+    "unicode": "U+E0E7",
+    "char": "",
+    "categories": [
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hamsymmpar",
+    "unicode": "U+E0E8",
+    "char": "",
+    "categories": [
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hamsymmlr",
+    "unicode": "U+E0E9",
+    "char": "",
+    "categories": [
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hamnondominant",
+    "unicode": "U+E0EA",
+    "char": "",
+    "categories": [
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hamnonipsi",
+    "unicode": "U+E0EB",
+    "char": "",
+    "categories": [
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hametc",
+    "unicode": "U+E0EC",
+    "char": "",
+    "categories": [
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hamorirelative",
+    "unicode": "U+E0ED",
+    "char": "",
+    "categories": [
+      "Orientation"
+    ]
+  },
+  {
+    "name": "hammime",
+    "unicode": "U+E0F0",
+    "char": "",
+    "categories": [
+      "Two-handed"
+    ]
+  },
+  {
+    "name": "hamversion40",
+    "unicode": "U+E0F1",
+    "char": "",
+    "categories": []
+  }
+]
