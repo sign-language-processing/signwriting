@@ -54,7 +54,7 @@ good-names = ["i", "f", "x", "y"]
 include = ["signwriting*"]
 
 [tool.setuptools.package-data]
-signwriting = ["**/*.ttf", "**/*.txt", "**/*.json"]
+signwriting = ["**/*.ttf", "**/*.txt", "**/*.json", "**/*.html"]
 
 [tool.pytest.ini_options]
 addopts = "-v"
