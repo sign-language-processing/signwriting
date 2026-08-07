@@ -15,6 +15,7 @@ https://www.signwriting.org/forums/linguistics/ling003.html
 ## Symbols
 
 [`symbols.json`](symbols.json) lists every HamNoSys symbol: its official name (e.g. `hamfist`),
+a human-readable title (e.g. `hamheadtop` is "Top of the head"),
 Unicode codepoint (the font maps them into the Private Use Area, `U+E000`–`U+E0F1`),
 the character itself, and the categories under which the official on-screen keyboard
 ([sign-lang.uni-hamburg.de/hamnosys/input](https://www.sign-lang.uni-hamburg.de/hamnosys/input/))
@@ -25,9 +26,6 @@ have an empty category list.
 [`HamNoSysUnicode.ttf`](HamNoSysUnicode.ttf) is the official font
 (from [CTAN](https://ctan.org/pkg/hamnosys), also distributed by the University of Hamburg) —
 needed to render HamNoSys strings.
-
-Both files, and everything under [`handshapes/`](handshapes), are regenerated from the official
-sources by [`extract.py`](extract.py).
 
 ## Handshapes
 

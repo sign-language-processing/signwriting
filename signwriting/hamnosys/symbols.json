@@ -1,6 +1,7 @@
 [
   {
     "name": "hamspace",
+    "title": "Space",
     "unicode": "U+0020",
     "char": " ",
     "categories": [
@@ -9,6 +10,7 @@
   },
   {
     "name": "hamexclaim",
+    "title": "Exclamation mark",
     "unicode": "U+0021",
     "char": "!",
     "categories": [
@@ -17,6 +19,7 @@
   },
   {
     "name": "hamcomma",
+    "title": "Comma",
     "unicode": "U+002C",
     "char": ",",
     "categories": [
@@ -25,6 +28,7 @@
   },
   {
     "name": "hamfullstop",
+    "title": "Full stop",
     "unicode": "U+002E",
     "char": ".",
     "categories": [
@@ -33,6 +37,7 @@
   },
   {
     "name": "hamquery",
+    "title": "Question mark",
     "unicode": "U+003F",
     "char": "?",
     "categories": [
@@ -41,6 +46,7 @@
   },
   {
     "name": "hamaltbegin",
+    "title": "Begin alternative (opening brace)",
     "unicode": "U+007B",
     "char": "{",
     "categories": [
@@ -49,6 +55,7 @@
   },
   {
     "name": "hammetaalt",
+    "title": "Alternative separator (bar)",
     "unicode": "U+007C",
     "char": "|",
     "categories": [
@@ -57,6 +64,7 @@
   },
   {
     "name": "hamaltend",
+    "title": "End alternative (closing brace)",
     "unicode": "U+007D",
     "char": "}",
     "categories": [
@@ -65,6 +73,7 @@
   },
   {
     "name": "hamfist",
+    "title": "Fist",
     "unicode": "U+E000",
     "char": "",
     "categories": [
@@ -73,6 +82,7 @@
   },
   {
     "name": "hamflathand",
+    "title": "Flat hand",
     "unicode": "U+E001",
     "char": "",
     "categories": [
@@ -81,6 +91,7 @@
   },
   {
     "name": "hamfinger2",
+    "title": "Index finger from fist",
     "unicode": "U+E002",
     "char": "",
     "categories": [
@@ -89,6 +100,7 @@
   },
   {
     "name": "hamfinger23",
+    "title": "Index and middle fingers together",
     "unicode": "U+E003",
     "char": "",
     "categories": [
@@ -97,6 +109,7 @@
   },
   {
     "name": "hamfinger23spread",
+    "title": "Index and middle fingers spread",
     "unicode": "U+E004",
     "char": "",
     "categories": [
@@ -105,6 +118,7 @@
   },
   {
     "name": "hamfinger2345",
+    "title": "All four fingers spread",
     "unicode": "U+E005",
     "char": "",
     "categories": [
@@ -113,6 +127,7 @@
   },
   {
     "name": "hampinch12",
+    "title": "Pinch: thumb and index fingertips touch, fingers rounded",
     "unicode": "U+E006",
     "char": "",
     "categories": [
@@ -121,6 +136,7 @@
   },
   {
     "name": "hampinchall",
+    "title": "Pinch: thumb and all fingertips touch, fingers rounded",
     "unicode": "U+E007",
     "char": "",
     "categories": [
@@ -129,6 +145,7 @@
   },
   {
     "name": "hampinch12open",
+    "title": "Open pinch: thumb and index pinch, other fingers extended",
     "unicode": "U+E008",
     "char": "",
     "categories": [
@@ -137,6 +154,7 @@
   },
   {
     "name": "hamcee12",
+    "title": "Cee: thumb and index curved open (C shape)",
     "unicode": "U+E009",
     "char": "",
     "categories": [
@@ -145,6 +163,7 @@
   },
   {
     "name": "hamceeall",
+    "title": "Cee: thumb and all fingers curved open (C shape)",
     "unicode": "U+E00A",
     "char": "",
     "categories": [
@@ -153,6 +172,7 @@
   },
   {
     "name": "hamceeopen",
+    "title": "Open cee: thumb and index curved, other fingers extended",
     "unicode": "U+E00B",
     "char": "",
     "categories": [
@@ -161,6 +181,7 @@
   },
   {
     "name": "hamthumboutmod",
+    "title": "Thumb out to the side",
     "unicode": "U+E00C",
     "char": "",
     "categories": [
@@ -169,6 +190,7 @@
   },
   {
     "name": "hamthumbacrossmod",
+    "title": "Thumb across the fingers",
     "unicode": "U+E00D",
     "char": "",
     "categories": [
@@ -177,6 +199,7 @@
   },
   {
     "name": "hamthumbopenmod",
+    "title": "Thumb open, splayed away",
     "unicode": "U+E00E",
     "char": "",
     "categories": [
@@ -185,6 +208,7 @@
   },
   {
     "name": "hamfingerstraightmod",
+    "title": "Selected fingers flattened: bent at the base joint, otherwise straight",
     "unicode": "U+E010",
     "char": "",
     "categories": [
@@ -194,6 +218,7 @@
   },
   {
     "name": "hamfingerbendmod",
+    "title": "Selected fingers bent",
     "unicode": "U+E011",
     "char": "",
     "categories": [
@@ -202,6 +227,7 @@
   },
   {
     "name": "hamfingerhookmod",
+    "title": "Selected fingers hooked: bent at the outer joints",
     "unicode": "U+E012",
     "char": "",
     "categories": [
@@ -210,6 +236,7 @@
   },
   {
     "name": "hamdoublebent",
+    "title": "Selected fingers bent at base and middle joints",
     "unicode": "U+E013",
     "char": "",
     "categories": [
@@ -219,6 +246,7 @@
   },
   {
     "name": "hamdoublehooked",
+    "title": "Selected fingers hooked, also bent at the base joint",
     "unicode": "U+E014",
     "char": "",
     "categories": [
@@ -228,6 +256,7 @@
   },
   {
     "name": "hamextfingeru",
+    "title": "Extended fingers point up",
     "unicode": "U+E020",
     "char": "",
     "categories": [
@@ -236,6 +265,7 @@
   },
   {
     "name": "hamextfingerur",
+    "title": "Extended fingers point up-right",
     "unicode": "U+E021",
     "char": "",
     "categories": [
@@ -244,6 +274,7 @@
   },
   {
     "name": "hamextfingerr",
+    "title": "Extended fingers point right",
     "unicode": "U+E022",
     "char": "",
     "categories": [
@@ -252,6 +283,7 @@
   },
   {
     "name": "hamextfingerdr",
+    "title": "Extended fingers point down-right",
     "unicode": "U+E023",
     "char": "",
     "categories": [
@@ -260,6 +292,7 @@
   },
   {
     "name": "hamextfingerd",
+    "title": "Extended fingers point down",
     "unicode": "U+E024",
     "char": "",
     "categories": [
@@ -268,6 +301,7 @@
   },
   {
     "name": "hamextfingerdl",
+    "title": "Extended fingers point down-left",
     "unicode": "U+E025",
     "char": "",
     "categories": [
@@ -276,6 +310,7 @@
   },
   {
     "name": "hamextfingerl",
+    "title": "Extended fingers point left",
     "unicode": "U+E026",
     "char": "",
     "categories": [
@@ -284,6 +319,7 @@
   },
   {
     "name": "hamextfingerul",
+    "title": "Extended fingers point up-left",
     "unicode": "U+E027",
     "char": "",
     "categories": [
@@ -292,6 +328,7 @@
   },
   {
     "name": "hamextfingerol",
+    "title": "Extended fingers point away from the body, left",
     "unicode": "U+E028",
     "char": "",
     "categories": [
@@ -300,6 +337,7 @@
   },
   {
     "name": "hamextfingero",
+    "title": "Extended fingers point away from the body",
     "unicode": "U+E029",
     "char": "",
     "categories": [
@@ -308,6 +346,7 @@
   },
   {
     "name": "hamextfingeror",
+    "title": "Extended fingers point away from the body, right",
     "unicode": "U+E02A",
     "char": "",
     "categories": [
@@ -316,6 +355,7 @@
   },
   {
     "name": "hamextfingeril",
+    "title": "Extended fingers point towards the body, left",
     "unicode": "U+E02B",
     "char": "",
     "categories": [
@@ -324,6 +364,7 @@
   },
   {
     "name": "hamextfingeri",
+    "title": "Extended fingers point towards the body",
     "unicode": "U+E02C",
     "char": "",
     "categories": [
@@ -332,6 +373,7 @@
   },
   {
     "name": "hamextfingerir",
+    "title": "Extended fingers point towards the body, right",
     "unicode": "U+E02D",
     "char": "",
     "categories": [
@@ -340,6 +382,7 @@
   },
   {
     "name": "hamextfingerui",
+    "title": "Extended fingers point up, towards the body",
     "unicode": "U+E02E",
     "char": "",
     "categories": [
@@ -348,6 +391,7 @@
   },
   {
     "name": "hamextfingerdi",
+    "title": "Extended fingers point down, towards the body",
     "unicode": "U+E02F",
     "char": "",
     "categories": [
@@ -356,6 +400,7 @@
   },
   {
     "name": "hamextfingerdo",
+    "title": "Extended fingers point down, away from the body",
     "unicode": "U+E030",
     "char": "",
     "categories": [
@@ -364,6 +409,7 @@
   },
   {
     "name": "hamextfingeruo",
+    "title": "Extended fingers point up, away from the body",
     "unicode": "U+E031",
     "char": "",
     "categories": [
@@ -372,6 +418,7 @@
   },
   {
     "name": "hampalmu",
+    "title": "Palm faces up",
     "unicode": "U+E038",
     "char": "",
     "categories": [
@@ -380,6 +427,7 @@
   },
   {
     "name": "hampalmur",
+    "title": "Palm faces up-right",
     "unicode": "U+E039",
     "char": "",
     "categories": [
@@ -388,6 +436,7 @@
   },
   {
     "name": "hampalmr",
+    "title": "Palm faces right",
     "unicode": "U+E03A",
     "char": "",
     "categories": [
@@ -396,6 +445,7 @@
   },
   {
     "name": "hampalmdr",
+    "title": "Palm faces down-right",
     "unicode": "U+E03B",
     "char": "",
     "categories": [
@@ -404,6 +454,7 @@
   },
   {
     "name": "hampalmd",
+    "title": "Palm faces down",
     "unicode": "U+E03C",
     "char": "",
     "categories": [
@@ -412,6 +463,7 @@
   },
   {
     "name": "hampalmdl",
+    "title": "Palm faces down-left",
     "unicode": "U+E03D",
     "char": "",
     "categories": [
@@ -420,6 +472,7 @@
   },
   {
     "name": "hampalml",
+    "title": "Palm faces left",
     "unicode": "U+E03E",
     "char": "",
     "categories": [
@@ -428,6 +481,7 @@
   },
   {
     "name": "hampalmul",
+    "title": "Palm faces up-left",
     "unicode": "U+E03F",
     "char": "",
     "categories": [
@@ -436,6 +490,7 @@
   },
   {
     "name": "hamhead",
+    "title": "Head",
     "unicode": "U+E040",
     "char": "",
     "categories": [
@@ -444,6 +499,7 @@
   },
   {
     "name": "hamheadtop",
+    "title": "Top of the head",
     "unicode": "U+E041",
     "char": "",
     "categories": [
@@ -452,6 +508,7 @@
   },
   {
     "name": "hamforehead",
+    "title": "Forehead",
     "unicode": "U+E042",
     "char": "",
     "categories": [
@@ -460,6 +517,7 @@
   },
   {
     "name": "hameyebrows",
+    "title": "Eyebrows",
     "unicode": "U+E043",
     "char": "",
     "categories": [
@@ -468,6 +526,7 @@
   },
   {
     "name": "hameyes",
+    "title": "Eyes",
     "unicode": "U+E044",
     "char": "",
     "categories": [
@@ -476,6 +535,7 @@
   },
   {
     "name": "hamnose",
+    "title": "Nose",
     "unicode": "U+E045",
     "char": "",
     "categories": [
@@ -484,6 +544,7 @@
   },
   {
     "name": "hamnostrils",
+    "title": "Nostrils",
     "unicode": "U+E046",
     "char": "",
     "categories": [
@@ -492,6 +553,7 @@
   },
   {
     "name": "hamear",
+    "title": "Ear",
     "unicode": "U+E047",
     "char": "",
     "categories": [
@@ -500,6 +562,7 @@
   },
   {
     "name": "hamearlobe",
+    "title": "Earlobe",
     "unicode": "U+E048",
     "char": "",
     "categories": [
@@ -508,6 +571,7 @@
   },
   {
     "name": "hamcheek",
+    "title": "Cheek",
     "unicode": "U+E049",
     "char": "",
     "categories": [
@@ -516,6 +580,7 @@
   },
   {
     "name": "hamlips",
+    "title": "Lips",
     "unicode": "U+E04A",
     "char": "",
     "categories": [
@@ -524,6 +589,7 @@
   },
   {
     "name": "hamtongue",
+    "title": "Tongue",
     "unicode": "U+E04B",
     "char": "",
     "categories": [
@@ -532,6 +598,7 @@
   },
   {
     "name": "hamteeth",
+    "title": "Teeth",
     "unicode": "U+E04C",
     "char": "",
     "categories": [
@@ -540,6 +607,7 @@
   },
   {
     "name": "hamchin",
+    "title": "Chin",
     "unicode": "U+E04D",
     "char": "",
     "categories": [
@@ -548,6 +616,7 @@
   },
   {
     "name": "hamunderchin",
+    "title": "Under the chin",
     "unicode": "U+E04E",
     "char": "",
     "categories": [
@@ -556,6 +625,7 @@
   },
   {
     "name": "hamneck",
+    "title": "Neck",
     "unicode": "U+E04F",
     "char": "",
     "categories": [
@@ -564,6 +634,7 @@
   },
   {
     "name": "hamshouldertop",
+    "title": "Top of the shoulders",
     "unicode": "U+E050",
     "char": "",
     "categories": [
@@ -572,6 +643,7 @@
   },
   {
     "name": "hamshoulders",
+    "title": "Shoulder line",
     "unicode": "U+E051",
     "char": "",
     "categories": [
@@ -580,6 +652,7 @@
   },
   {
     "name": "hamchest",
+    "title": "Chest",
     "unicode": "U+E052",
     "char": "",
     "categories": [
@@ -588,6 +661,7 @@
   },
   {
     "name": "hamstomach",
+    "title": "Stomach",
     "unicode": "U+E053",
     "char": "",
     "categories": [
@@ -596,6 +670,7 @@
   },
   {
     "name": "hambelowstomach",
+    "title": "Below the stomach",
     "unicode": "U+E054",
     "char": "",
     "categories": [
@@ -604,6 +679,7 @@
   },
   {
     "name": "hamlrbeside",
+    "title": "Beside the named location (further out to the side)",
     "unicode": "U+E058",
     "char": "",
     "categories": [
@@ -612,6 +688,7 @@
   },
   {
     "name": "hamlrat",
+    "title": "Directly at the side of the named location",
     "unicode": "U+E059",
     "char": "",
     "categories": [
@@ -620,6 +697,7 @@
   },
   {
     "name": "hamcoreftag",
+    "title": "Coreference tag: labels a location in space",
     "unicode": "U+E05A",
     "char": "",
     "categories": [
@@ -628,6 +706,7 @@
   },
   {
     "name": "hamcorefref",
+    "title": "Coreference reference: points to a tagged location",
     "unicode": "U+E05B",
     "char": "",
     "categories": [
@@ -636,6 +715,7 @@
   },
   {
     "name": "hamneutralspace",
+    "title": "Neutral signing space",
     "unicode": "U+E05F",
     "char": "",
     "categories": [
@@ -644,6 +724,7 @@
   },
   {
     "name": "hamupperarm",
+    "title": "Upper arm",
     "unicode": "U+E060",
     "char": "",
     "categories": [
@@ -652,12 +733,14 @@
   },
   {
     "name": "hamelbow",
+    "title": "Elbow",
     "unicode": "U+E061",
     "char": "",
     "categories": []
   },
   {
     "name": "hamelbowinside",
+    "title": "Inside of the elbow",
     "unicode": "U+E062",
     "char": "",
     "categories": [
@@ -666,6 +749,7 @@
   },
   {
     "name": "hamlowerarm",
+    "title": "Lower arm",
     "unicode": "U+E063",
     "char": "",
     "categories": [
@@ -674,6 +758,7 @@
   },
   {
     "name": "hamwristback",
+    "title": "Back of the wrist",
     "unicode": "U+E064",
     "char": "",
     "categories": [
@@ -682,12 +767,14 @@
   },
   {
     "name": "hamwristpulse",
+    "title": "Pulse side of the wrist",
     "unicode": "U+E065",
     "char": "",
     "categories": []
   },
   {
     "name": "hamthumbball",
+    "title": "Ball of the thumb",
     "unicode": "U+E066",
     "char": "",
     "categories": [
@@ -696,6 +783,7 @@
   },
   {
     "name": "hampalm",
+    "title": "Palm",
     "unicode": "U+E067",
     "char": "",
     "categories": [
@@ -704,6 +792,7 @@
   },
   {
     "name": "hamhandback",
+    "title": "Back of the hand",
     "unicode": "U+E068",
     "char": "",
     "categories": [
@@ -712,6 +801,7 @@
   },
   {
     "name": "hamthumbside",
+    "title": "Thumb side of the hand",
     "unicode": "U+E069",
     "char": "",
     "categories": [
@@ -720,6 +810,7 @@
   },
   {
     "name": "hampinkyside",
+    "title": "Pinky side of the hand",
     "unicode": "U+E06A",
     "char": "",
     "categories": [
@@ -728,6 +819,7 @@
   },
   {
     "name": "hamthumb",
+    "title": "Thumb",
     "unicode": "U+E070",
     "char": "",
     "categories": [
@@ -738,6 +830,7 @@
   },
   {
     "name": "hamindexfinger",
+    "title": "Index finger",
     "unicode": "U+E071",
     "char": "",
     "categories": [
@@ -748,6 +841,7 @@
   },
   {
     "name": "hammiddlefinger",
+    "title": "Middle finger",
     "unicode": "U+E072",
     "char": "",
     "categories": [
@@ -758,6 +852,7 @@
   },
   {
     "name": "hamringfinger",
+    "title": "Ring finger",
     "unicode": "U+E073",
     "char": "",
     "categories": [
@@ -768,6 +863,7 @@
   },
   {
     "name": "hampinky",
+    "title": "Pinky (little finger)",
     "unicode": "U+E074",
     "char": "",
     "categories": [
@@ -778,6 +874,7 @@
   },
   {
     "name": "hamfingertip",
+    "title": "Fingertip",
     "unicode": "U+E075",
     "char": "",
     "categories": [
@@ -787,6 +884,7 @@
   },
   {
     "name": "hamfingernail",
+    "title": "Fingernail",
     "unicode": "U+E076",
     "char": "",
     "categories": [
@@ -796,6 +894,7 @@
   },
   {
     "name": "hamfingerpad",
+    "title": "Finger pad",
     "unicode": "U+E077",
     "char": "",
     "categories": [
@@ -805,6 +904,7 @@
   },
   {
     "name": "hamfingermidjoint",
+    "title": "Middle joint of the finger",
     "unicode": "U+E078",
     "char": "",
     "categories": [
@@ -814,6 +914,7 @@
   },
   {
     "name": "hamfingerbase",
+    "title": "Base joint of the finger",
     "unicode": "U+E079",
     "char": "",
     "categories": [
@@ -823,6 +924,7 @@
   },
   {
     "name": "hamfingerside",
+    "title": "Side of the finger",
     "unicode": "U+E07A",
     "char": "",
     "categories": [
@@ -831,30 +933,35 @@
   },
   {
     "name": "hamwristtopulse",
+    "title": "Wrist bends towards the pulse side",
     "unicode": "U+E07C",
     "char": "",
     "categories": []
   },
   {
     "name": "hamwristtoback",
+    "title": "Wrist bends towards the back of the hand",
     "unicode": "U+E07D",
     "char": "",
     "categories": []
   },
   {
     "name": "hamwristtothumb",
+    "title": "Wrist bends towards the thumb side",
     "unicode": "U+E07E",
     "char": "",
     "categories": []
   },
   {
     "name": "hamwristtopinky",
+    "title": "Wrist bends towards the pinky side",
     "unicode": "U+E07F",
     "char": "",
     "categories": []
   },
   {
     "name": "hammoveu",
+    "title": "Straight movement up",
     "unicode": "U+E080",
     "char": "",
     "categories": [
@@ -863,6 +970,7 @@
   },
   {
     "name": "hammoveur",
+    "title": "Straight movement up-right",
     "unicode": "U+E081",
     "char": "",
     "categories": [
@@ -871,6 +979,7 @@
   },
   {
     "name": "hammover",
+    "title": "Straight movement right",
     "unicode": "U+E082",
     "char": "",
     "categories": [
@@ -879,6 +988,7 @@
   },
   {
     "name": "hammovedr",
+    "title": "Straight movement down-right",
     "unicode": "U+E083",
     "char": "",
     "categories": [
@@ -887,6 +997,7 @@
   },
   {
     "name": "hammoved",
+    "title": "Straight movement down",
     "unicode": "U+E084",
     "char": "",
     "categories": [
@@ -895,6 +1006,7 @@
   },
   {
     "name": "hammovedl",
+    "title": "Straight movement down-left",
     "unicode": "U+E085",
     "char": "",
     "categories": [
@@ -903,6 +1015,7 @@
   },
   {
     "name": "hammovel",
+    "title": "Straight movement left",
     "unicode": "U+E086",
     "char": "",
     "categories": [
@@ -911,6 +1024,7 @@
   },
   {
     "name": "hammoveul",
+    "title": "Straight movement up-left",
     "unicode": "U+E087",
     "char": "",
     "categories": [
@@ -919,6 +1033,7 @@
   },
   {
     "name": "hammoveol",
+    "title": "Straight movement away from the body, left",
     "unicode": "U+E088",
     "char": "",
     "categories": [
@@ -927,6 +1042,7 @@
   },
   {
     "name": "hammoveo",
+    "title": "Straight movement away from the body",
     "unicode": "U+E089",
     "char": "",
     "categories": [
@@ -935,6 +1051,7 @@
   },
   {
     "name": "hammoveor",
+    "title": "Straight movement away from the body, right",
     "unicode": "U+E08A",
     "char": "",
     "categories": [
@@ -943,6 +1060,7 @@
   },
   {
     "name": "hammoveil",
+    "title": "Straight movement towards the body, left",
     "unicode": "U+E08B",
     "char": "",
     "categories": [
@@ -951,6 +1069,7 @@
   },
   {
     "name": "hammovei",
+    "title": "Straight movement towards the body",
     "unicode": "U+E08C",
     "char": "",
     "categories": [
@@ -959,6 +1078,7 @@
   },
   {
     "name": "hammoveir",
+    "title": "Straight movement towards the body, right",
     "unicode": "U+E08D",
     "char": "",
     "categories": [
@@ -967,6 +1087,7 @@
   },
   {
     "name": "hammoveui",
+    "title": "Straight movement up, towards the body",
     "unicode": "U+E08E",
     "char": "",
     "categories": [
@@ -975,6 +1096,7 @@
   },
   {
     "name": "hammovedi",
+    "title": "Straight movement down, towards the body",
     "unicode": "U+E08F",
     "char": "",
     "categories": [
@@ -983,6 +1105,7 @@
   },
   {
     "name": "hammovedo",
+    "title": "Straight movement down, away from the body",
     "unicode": "U+E090",
     "char": "",
     "categories": [
@@ -991,6 +1114,7 @@
   },
   {
     "name": "hammoveuo",
+    "title": "Straight movement up, away from the body",
     "unicode": "U+E091",
     "char": "",
     "categories": [
@@ -999,6 +1123,7 @@
   },
   {
     "name": "hamcircleo",
+    "title": "Circular movement away from the body",
     "unicode": "U+E092",
     "char": "",
     "categories": [
@@ -1007,6 +1132,7 @@
   },
   {
     "name": "hamcirclei",
+    "title": "Circular movement towards the body",
     "unicode": "U+E093",
     "char": "",
     "categories": [
@@ -1015,6 +1141,7 @@
   },
   {
     "name": "hamcircled",
+    "title": "Circular movement down",
     "unicode": "U+E094",
     "char": "",
     "categories": [
@@ -1023,6 +1150,7 @@
   },
   {
     "name": "hamcircleu",
+    "title": "Circular movement up",
     "unicode": "U+E095",
     "char": "",
     "categories": [
@@ -1031,6 +1159,7 @@
   },
   {
     "name": "hamcirclel",
+    "title": "Circular movement left",
     "unicode": "U+E096",
     "char": "",
     "categories": [
@@ -1039,6 +1168,7 @@
   },
   {
     "name": "hamcircler",
+    "title": "Circular movement right",
     "unicode": "U+E097",
     "char": "",
     "categories": [
@@ -1047,6 +1177,7 @@
   },
   {
     "name": "hamcircleul",
+    "title": "Circular movement up-left",
     "unicode": "U+E098",
     "char": "",
     "categories": [
@@ -1055,6 +1186,7 @@
   },
   {
     "name": "hamcircledr",
+    "title": "Circular movement down-right",
     "unicode": "U+E099",
     "char": "",
     "categories": [
@@ -1063,6 +1195,7 @@
   },
   {
     "name": "hamcircleur",
+    "title": "Circular movement up-right",
     "unicode": "U+E09A",
     "char": "",
     "categories": [
@@ -1071,6 +1204,7 @@
   },
   {
     "name": "hamcircledl",
+    "title": "Circular movement down-left",
     "unicode": "U+E09B",
     "char": "",
     "categories": [
@@ -1079,6 +1213,7 @@
   },
   {
     "name": "hamcircleol",
+    "title": "Circular movement away from the body, left",
     "unicode": "U+E09C",
     "char": "",
     "categories": [
@@ -1087,6 +1222,7 @@
   },
   {
     "name": "hamcircleir",
+    "title": "Circular movement towards the body, right",
     "unicode": "U+E09D",
     "char": "",
     "categories": [
@@ -1095,6 +1231,7 @@
   },
   {
     "name": "hamcircleor",
+    "title": "Circular movement away from the body, right",
     "unicode": "U+E09E",
     "char": "",
     "categories": [
@@ -1103,6 +1240,7 @@
   },
   {
     "name": "hamcircleil",
+    "title": "Circular movement towards the body, left",
     "unicode": "U+E09F",
     "char": "",
     "categories": [
@@ -1111,6 +1249,7 @@
   },
   {
     "name": "hamcircleui",
+    "title": "Circular movement up, towards the body",
     "unicode": "U+E0A0",
     "char": "",
     "categories": [
@@ -1119,6 +1258,7 @@
   },
   {
     "name": "hamcircledo",
+    "title": "Circular movement down, away from the body",
     "unicode": "U+E0A1",
     "char": "",
     "categories": [
@@ -1127,6 +1267,7 @@
   },
   {
     "name": "hamcircleuo",
+    "title": "Circular movement up, away from the body",
     "unicode": "U+E0A2",
     "char": "",
     "categories": [
@@ -1135,6 +1276,7 @@
   },
   {
     "name": "hamcircledi",
+    "title": "Circular movement down, towards the body",
     "unicode": "U+E0A3",
     "char": "",
     "categories": [
@@ -1143,6 +1285,7 @@
   },
   {
     "name": "hamfingerplay",
+    "title": "Finger play: fingers wiggle",
     "unicode": "U+E0A4",
     "char": "",
     "categories": [
@@ -1151,6 +1294,7 @@
   },
   {
     "name": "hamnodding",
+    "title": "Nodding movement of the hand",
     "unicode": "U+E0A5",
     "char": "",
     "categories": [
@@ -1159,6 +1303,7 @@
   },
   {
     "name": "hamswinging",
+    "title": "Swinging movement",
     "unicode": "U+E0A6",
     "char": "",
     "categories": [
@@ -1167,6 +1312,7 @@
   },
   {
     "name": "hamtwisting",
+    "title": "Twisting movement (forearm rotation)",
     "unicode": "U+E0A7",
     "char": "",
     "categories": [
@@ -1175,6 +1321,7 @@
   },
   {
     "name": "hamstircw",
+    "title": "Stirring movement, clockwise",
     "unicode": "U+E0A8",
     "char": "",
     "categories": [
@@ -1183,6 +1330,7 @@
   },
   {
     "name": "hamstirccw",
+    "title": "Stirring movement, counterclockwise",
     "unicode": "U+E0A9",
     "char": "",
     "categories": [
@@ -1191,6 +1339,7 @@
   },
   {
     "name": "hamreplace",
+    "title": "Replace: hand changes into the following posture",
     "unicode": "U+E0AA",
     "char": "",
     "categories": [
@@ -1199,18 +1348,21 @@
   },
   {
     "name": "hammovecross",
+    "title": "Crossing movement",
     "unicode": "U+E0AD",
     "char": "",
     "categories": []
   },
   {
     "name": "hammoveX",
+    "title": "X-shaped crossing movement",
     "unicode": "U+E0AE",
     "char": "",
     "categories": []
   },
   {
     "name": "hamnomotion",
+    "title": "No motion",
     "unicode": "U+E0AF",
     "char": "",
     "categories": [
@@ -1219,6 +1371,7 @@
   },
   {
     "name": "hamclocku",
+    "title": "Clock position: up",
     "unicode": "U+E0B0",
     "char": "",
     "categories": [
@@ -1227,6 +1380,7 @@
   },
   {
     "name": "hamclockul",
+    "title": "Clock position: up-left",
     "unicode": "U+E0B1",
     "char": "",
     "categories": [
@@ -1235,6 +1389,7 @@
   },
   {
     "name": "hamclockl",
+    "title": "Clock position: left",
     "unicode": "U+E0B2",
     "char": "",
     "categories": [
@@ -1243,6 +1398,7 @@
   },
   {
     "name": "hamclockdl",
+    "title": "Clock position: down-left",
     "unicode": "U+E0B3",
     "char": "",
     "categories": [
@@ -1251,6 +1407,7 @@
   },
   {
     "name": "hamclockd",
+    "title": "Clock position: down",
     "unicode": "U+E0B4",
     "char": "",
     "categories": [
@@ -1259,6 +1416,7 @@
   },
   {
     "name": "hamclockdr",
+    "title": "Clock position: down-right",
     "unicode": "U+E0B5",
     "char": "",
     "categories": [
@@ -1267,6 +1425,7 @@
   },
   {
     "name": "hamclockr",
+    "title": "Clock position: right",
     "unicode": "U+E0B6",
     "char": "",
     "categories": [
@@ -1275,6 +1434,7 @@
   },
   {
     "name": "hamclockur",
+    "title": "Clock position: up-right",
     "unicode": "U+E0B7",
     "char": "",
     "categories": [
@@ -1283,6 +1443,7 @@
   },
   {
     "name": "hamclockfull",
+    "title": "Full circle",
     "unicode": "U+E0B8",
     "char": "",
     "categories": [
@@ -1291,6 +1452,7 @@
   },
   {
     "name": "hamarcl",
+    "title": "Arc: curves left",
     "unicode": "U+E0B9",
     "char": "",
     "categories": [
@@ -1299,6 +1461,7 @@
   },
   {
     "name": "hamarcu",
+    "title": "Arc: curves up",
     "unicode": "U+E0BA",
     "char": "",
     "categories": [
@@ -1307,6 +1470,7 @@
   },
   {
     "name": "hamarcr",
+    "title": "Arc: curves right",
     "unicode": "U+E0BB",
     "char": "",
     "categories": [
@@ -1315,6 +1479,7 @@
   },
   {
     "name": "hamarcd",
+    "title": "Arc: curves down",
     "unicode": "U+E0BC",
     "char": "",
     "categories": [
@@ -1323,6 +1488,7 @@
   },
   {
     "name": "hamwavy",
+    "title": "Wavy movement",
     "unicode": "U+E0BD",
     "char": "",
     "categories": [
@@ -1331,6 +1497,7 @@
   },
   {
     "name": "hamzigzag",
+    "title": "Zigzag movement",
     "unicode": "U+E0BE",
     "char": "",
     "categories": [
@@ -1339,6 +1506,7 @@
   },
   {
     "name": "hamellipseh",
+    "title": "Elliptical movement, horizontal axis",
     "unicode": "U+E0C0",
     "char": "",
     "categories": [
@@ -1347,6 +1515,7 @@
   },
   {
     "name": "hamellipseur",
+    "title": "Elliptical movement, diagonal axis (up-right)",
     "unicode": "U+E0C1",
     "char": "",
     "categories": [
@@ -1355,6 +1524,7 @@
   },
   {
     "name": "hamellipsev",
+    "title": "Elliptical movement, vertical axis",
     "unicode": "U+E0C2",
     "char": "",
     "categories": [
@@ -1363,6 +1533,7 @@
   },
   {
     "name": "hamellipseul",
+    "title": "Elliptical movement, diagonal axis (up-left)",
     "unicode": "U+E0C3",
     "char": "",
     "categories": [
@@ -1371,6 +1542,7 @@
   },
   {
     "name": "hamincreasing",
+    "title": "Increasing size",
     "unicode": "U+E0C4",
     "char": "",
     "categories": [
@@ -1379,6 +1551,7 @@
   },
   {
     "name": "hamdecreasing",
+    "title": "Decreasing size",
     "unicode": "U+E0C5",
     "char": "",
     "categories": [
@@ -1387,6 +1560,7 @@
   },
   {
     "name": "hamsmallmod",
+    "title": "Small (reduced size)",
     "unicode": "U+E0C6",
     "char": "",
     "categories": [
@@ -1395,6 +1569,7 @@
   },
   {
     "name": "hamlargemod",
+    "title": "Large (increased size)",
     "unicode": "U+E0C7",
     "char": "",
     "categories": [
@@ -1404,6 +1579,7 @@
   },
   {
     "name": "hamfast",
+    "title": "Fast",
     "unicode": "U+E0C8",
     "char": "",
     "categories": [
@@ -1412,6 +1588,7 @@
   },
   {
     "name": "hamslow",
+    "title": "Slow",
     "unicode": "U+E0C9",
     "char": "",
     "categories": [
@@ -1420,6 +1597,7 @@
   },
   {
     "name": "hamtense",
+    "title": "Tense",
     "unicode": "U+E0CA",
     "char": "",
     "categories": [
@@ -1428,6 +1606,7 @@
   },
   {
     "name": "hamrest",
+    "title": "Relaxed (lax)",
     "unicode": "U+E0CB",
     "char": "",
     "categories": [
@@ -1436,6 +1615,7 @@
   },
   {
     "name": "hamhalt",
+    "title": "Halt: abrupt stop",
     "unicode": "U+E0CC",
     "char": "",
     "categories": [
@@ -1444,6 +1624,7 @@
   },
   {
     "name": "hamclose",
+    "title": "Close to",
     "unicode": "U+E0D0",
     "char": "",
     "categories": [
@@ -1452,6 +1633,7 @@
   },
   {
     "name": "hamtouch",
+    "title": "Touching",
     "unicode": "U+E0D1",
     "char": "",
     "categories": [
@@ -1460,6 +1642,7 @@
   },
   {
     "name": "haminterlock",
+    "title": "Interlocked",
     "unicode": "U+E0D2",
     "char": "",
     "categories": [
@@ -1468,6 +1651,7 @@
   },
   {
     "name": "hamcross",
+    "title": "Crossed",
     "unicode": "U+E0D3",
     "char": "",
     "categories": [
@@ -1476,6 +1660,7 @@
   },
   {
     "name": "hamarmextended",
+    "title": "Arm extended",
     "unicode": "U+E0D4",
     "char": "",
     "categories": [
@@ -1484,6 +1669,7 @@
   },
   {
     "name": "hambehind",
+    "title": "Behind",
     "unicode": "U+E0D5",
     "char": "",
     "categories": [
@@ -1492,6 +1678,7 @@
   },
   {
     "name": "hambrushing",
+    "title": "Brushing contact",
     "unicode": "U+E0D6",
     "char": "",
     "categories": [
@@ -1500,6 +1687,7 @@
   },
   {
     "name": "hamrepeatfromstart",
+    "title": "Repeat from the start",
     "unicode": "U+E0D8",
     "char": "",
     "categories": [
@@ -1508,6 +1696,7 @@
   },
   {
     "name": "hamrepeatfromstartseveral",
+    "title": "Repeat from the start several times",
     "unicode": "U+E0D9",
     "char": "",
     "categories": [
@@ -1516,6 +1705,7 @@
   },
   {
     "name": "hamrepeatcontinue",
+    "title": "Repeat, continuing from the end position",
     "unicode": "U+E0DA",
     "char": "",
     "categories": [
@@ -1524,6 +1714,7 @@
   },
   {
     "name": "hamrepeatcontinueseveral",
+    "title": "Repeat, continuing, several times",
     "unicode": "U+E0DB",
     "char": "",
     "categories": [
@@ -1532,6 +1723,7 @@
   },
   {
     "name": "hamrepeatreverse",
+    "title": "Repeat in reverse",
     "unicode": "U+E0DC",
     "char": "",
     "categories": [
@@ -1540,6 +1732,7 @@
   },
   {
     "name": "hamalternatingmotion",
+    "title": "Alternating movement",
     "unicode": "U+E0DD",
     "char": "",
     "categories": [
@@ -1548,6 +1741,7 @@
   },
   {
     "name": "hamseqbegin",
+    "title": "Begin sequence bracket",
     "unicode": "U+E0E0",
     "char": "",
     "categories": [
@@ -1556,6 +1750,7 @@
   },
   {
     "name": "hamseqend",
+    "title": "End sequence bracket",
     "unicode": "U+E0E1",
     "char": "",
     "categories": [
@@ -1564,6 +1759,7 @@
   },
   {
     "name": "hamparbegin",
+    "title": "Begin simultaneous (parallel) bracket",
     "unicode": "U+E0E2",
     "char": "",
     "categories": [
@@ -1572,6 +1768,7 @@
   },
   {
     "name": "hamparend",
+    "title": "End simultaneous (parallel) bracket",
     "unicode": "U+E0E3",
     "char": "",
     "categories": [
@@ -1580,6 +1777,7 @@
   },
   {
     "name": "hamfusionbegin",
+    "title": "Begin fusion bracket",
     "unicode": "U+E0E4",
     "char": "",
     "categories": [
@@ -1588,6 +1786,7 @@
   },
   {
     "name": "hamfusionend",
+    "title": "End fusion bracket",
     "unicode": "U+E0E5",
     "char": "",
     "categories": [
@@ -1596,6 +1795,7 @@
   },
   {
     "name": "hambetween",
+    "title": "Between (e.g. thumb between two fingers)",
     "unicode": "U+E0E6",
     "char": "",
     "categories": [
@@ -1608,6 +1808,7 @@
   },
   {
     "name": "hamplus",
+    "title": "Plus: combines symbols",
     "unicode": "U+E0E7",
     "char": "",
     "categories": [
@@ -1616,6 +1817,7 @@
   },
   {
     "name": "hamsymmpar",
+    "title": "Symmetry: both hands parallel",
     "unicode": "U+E0E8",
     "char": "",
     "categories": [
@@ -1624,6 +1826,7 @@
   },
   {
     "name": "hamsymmlr",
+    "title": "Symmetry: hands mirror left/right",
     "unicode": "U+E0E9",
     "char": "",
     "categories": [
@@ -1632,6 +1835,7 @@
   },
   {
     "name": "hamnondominant",
+    "title": "Non-dominant hand",
     "unicode": "U+E0EA",
     "char": "",
     "categories": [
@@ -1640,6 +1844,7 @@
   },
   {
     "name": "hamnonipsi",
+    "title": "Non-ipsilateral: crossed to the other side",
     "unicode": "U+E0EB",
     "char": "",
     "categories": [
@@ -1648,6 +1853,7 @@
   },
   {
     "name": "hametc",
+    "title": "Et cetera",
     "unicode": "U+E0EC",
     "char": "",
     "categories": [
@@ -1656,6 +1862,7 @@
   },
   {
     "name": "hamorirelative",
+    "title": "Orientation relative to movement",
     "unicode": "U+E0ED",
     "char": "",
     "categories": [
@@ -1664,6 +1871,7 @@
   },
   {
     "name": "hammime",
+    "title": "Mime: act out",
     "unicode": "U+E0F0",
     "char": "",
     "categories": [
@@ -1672,6 +1880,7 @@
   },
   {
     "name": "hamversion40",
+    "title": "HamNoSys version 4.0 marker",
     "unicode": "U+E0F1",
     "char": "",
     "categories": []
