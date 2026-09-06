@@ -15,6 +15,11 @@
 - `generate_heights` "5' 9"" / "5'9"" / "5 feet 9 inches" / "5 ft. 9 in." / "5 feet 9"
 - `generate_units` "49 feet" / "an inch" / "3 meters"
 
+## `punctuation.py`
+
+- `construct_punctuation` constructs commas, periods, semicolons, colons, and parentheses
+- `generate_punctuation` yields each supported punctuation mark and its FSW
+
 ## TODO
 
 3. Currency

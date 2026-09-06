@@ -1,14 +1,10 @@
 import datetime
-import locale
 
 from signwriting.fingerspelling.fingerspelling import spell
 from signwriting.primitives.ase.numbers import construct_integer, construct_ordinals
 from signwriting.utils.join_signs import join_signs_horizontal
 
 SPELLING_LANGUAGE_CODE = 'en-us-ase-asl'
-
-locale.setlocale(locale.LC_ALL, "en_US")
-
 
 def construct_month(month: int):
     if month < 1 or month > 12:
