@@ -1,4 +1,3 @@
-import locale
 import math
 import random
 from decimal import Decimal
@@ -11,9 +10,6 @@ from signwriting.formats.sign_to_fsw import sign_to_fsw
 from signwriting.utils.join_signs import join_signs_horizontal, join_signs_vertical, sign_from_symbols
 
 SPELLING_LANGUAGE_CODE = 'en-us-ase-asl'
-
-locale.setlocale(locale.LC_ALL, 'en_US')
-
 
 def _get_base_symbol(fsw: str) -> str:
     sign = fsw_to_sign(fsw)
@@ -149,7 +145,7 @@ def construct_faction(numerator: int, denominator: int) -> str:
 def _generate_integer(number: int) -> Tuple[str, str]:
     fsw = construct_integer(number)
     yield str(number), fsw
-    yield locale.format_string("%d", number, grouping=True)
+    yield f"{number:,}"
     # TODO verbalize the number
 
 
@@ -174,7 +170,7 @@ def generate_integers():
 def _generate_float(number: float) -> Tuple[str, str]:
     fsw = construct_float(number)
     yield str(number), fsw
-    yield locale.format_string("%f", number, grouping=True)
+    yield f"{number:,.6f}"
     # TODO verbalize the number
 
 
