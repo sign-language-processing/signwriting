@@ -19,10 +19,10 @@ docker run --platform linux/amd64 --rm -p 9090:8080 -e PORT=8080 signwriting:pyt
 ### `signwriting.morphology.ase` (placeholders only)
 
 `pluralize(fsw)`, `repeat_action(fsw)`, and `sustain_action(fsw)` reserve hooks for
-ASL plural and action-aspect realization. **All currently raise `NotImplementedError`.**
-They do not yet produce modified SignWriting and must not be treated as successful
-inflections when generating training data. These experimental signatures may need
-additional context as linguistic rules are implemented.
+ASL plural and action-aspect realization. **`pluralize` currently returns the input FSW
+unchanged**, with a TODO for implementation. `repeat_action` and `sustain_action`
+still raise `NotImplementedError`. None produces modified SignWriting yet.
+These experimental signatures may need additional context as linguistic rules are implemented.
 
 The upstream translation planner should preserve source morphology (for example,
 spaCy's `Number=Plur`) and decide whether a sign transformation is needed. An

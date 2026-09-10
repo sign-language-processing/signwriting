@@ -2,19 +2,20 @@
 
 An upstream grammar planner must decide whether a transformation is appropriate
 for the lexical sign and sentence context. English inflection alone is not enough.
-Every hook raises rather than silently presenting unchanged FSW as inflected.
+Pluralization currently passes FSW through unchanged; action-aspect hooks raise.
 """
 # The FSW argument reserves the input contract for these explicitly unimplemented hooks.
 # pylint: disable=unused-argument
 
 
 def pluralize(fsw: str) -> str:
-    """Placeholder for a lexically appropriate ASL plural realization.
+    """Return FSW unchanged until ASL plural realization is implemented.
 
     Not a generic sign duplication operation: quantifiers, spatial distribution,
     classifiers, or an unchanged sign may instead be appropriate in context.
     """
-    raise NotImplementedError("ASL pluralize requires validated, sign-specific realization rules")
+    # TODO: implement validated, sign-specific ASL plural realization rules.
+    return fsw
 
 
 def repeat_action(fsw: str) -> str:
