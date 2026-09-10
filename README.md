@@ -16,6 +16,26 @@ docker run --platform linux/amd64 --rm -p 9090:8080 -e PORT=8080 signwriting:pyt
 
 ## Utilities
 
+### `signwriting.morphology.ase` (placeholders only)
+
+`pluralize(fsw)`, `repeat_action(fsw)`, and `sustain_action(fsw)` reserve hooks for
+ASL plural and action-aspect realization. **All currently raise `NotImplementedError`.**
+They do not yet produce modified SignWriting and must not be treated as successful
+inflections when generating training data. These experimental signatures may need
+additional context as linguistic rules are implemented.
+
+The upstream translation planner should preserve source morphology (for example,
+spaCy's `Number=Plur`) and decide whether a sign transformation is needed. An
+explicit quantity may already express plurality; repetition is not valid for every
+sign. See [HandSpeak's pluralization examples](https://www.handspeak.com/topic/44/).
+
+There is deliberately no generic `inflect_past(fsw)`: a past time frame is often
+established at sentence/discourse level rather than by modifying each verb.
+See [ASL University's time concepts](https://www.lifeprint.com/asl101/lessons/lesson06.htm).
+Grammar selection belongs in `spoken-to-signed`, with validated sign-level
+transformations implemented here. Automatic dispatch from English suffixes is
+out of scope.
+
 ### `signwriting.formats`
 
 This module provides utilities for converting between different formats of SignWriting.
