@@ -2,6 +2,7 @@ import functools
 import json
 import random
 import re
+import unicodedata
 from pathlib import Path
 from typing import Dict, List, Union
 
@@ -32,6 +33,7 @@ def variant_signs(char_variants: CharVariants, variants: List[str] = None) -> Li
 
 def spell(word: str, language=None, chars=None, vertical=True, variants=None, seed=None, rng=None) -> Union[str, None]:
     # pylint: disable=too-many-arguments
+    word = unicodedata.normalize("NFC", word)
     if chars is None:
         if language is None:
             raise ValueError("Either language or chars must be provided")
@@ -53,14 +55,19 @@ def spell(word: str, language=None, chars=None, vertical=True, variants=None, se
                 found = True
                 break
         if not found:
-            return None
+            # Prefer the alphabet's exact character; strip accents only if it is unsupported.
+            decomposed = unicodedata.normalize("NFD", word[caret])
+            base = "".join(char for char in decomposed if not unicodedata.combining(char))
+            if not base or base == decomposed:
+                return None
+            word = word[:caret] + base + word[caret + 1:]
     if vertical:
         return join_signs_vertical(*sl, spacing=5)
     return join_signs_horizontal(*sl, spacing=5)
 
 
 def tokenize(text: str) -> List[str]:
-    return re.findall(r'[^\W_]+|[^\w\s]|_', text)
+    return re.findall(r'[^\W_]+|[^\w\s]|_', unicodedata.normalize("NFC", text))
 
 
 def spell_text(text: str, language=None, vertical=True, variants=None, seed=None) -> Union[str, None]:

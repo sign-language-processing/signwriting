@@ -118,5 +118,27 @@ class FingerspellingCase(unittest.TestCase):
         self.assertNotEqual(one_hand, default)
 
 
+class AccentFallbackCase(unittest.TestCase):
+
+    def test_unsupported_accents_fall_back_to_base_letters(self):
+        for text, base in [("résumé", "resume"), ("Léonor", "Leonor"), ("Čapek", "Capek"),
+                           ("Família", "Familia"), ("re\u0301sume\u0301", "resume")]:
+            with self.subTest(text=text):
+                for vertical in (True, False):
+                    self.assertEqual(spell_text(text, language="ase", seed=0, vertical=vertical),
+                                     spell_text(base, language="ase", seed=0, vertical=vertical))
+
+    def test_exact_accented_character_wins_before_fallback(self):
+        chars = {key: get_chars("ase")[key] for key in ("a", "b", "e")}
+        chars["é"] = chars["b"]
+        self.assertEqual(spell("éá", chars=chars, seed=0), spell("ba", chars=chars, seed=0))
+        self.assertEqual(spell("e\u0301á", chars=chars, seed=0), spell("ba", chars=chars, seed=0))
+
+    def test_accent_fallback_does_not_drop_other_unsupported_characters(self):
+        for text in ("'s", "résumé🙂", "ø", "∧", "\u0301"):
+            with self.subTest(text=text):
+                self.assertIsNone(spell_text(text, language="ase", seed=0))
+
+
 if __name__ == '__main__':
     unittest.main()
