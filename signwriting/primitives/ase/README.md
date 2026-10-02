@@ -1,5 +1,14 @@
 # American Sign Language
 
+## Text adapters
+
+`text.construct_number(text)` renders nonnegative integer/decimal quantities,
+including English comma grouping, without float rounding. Leading-zero integer
+strings, negatives and unsupported formats return `None` for another fallback.
+`text.construct_date(text)` renders valid full ISO (`2026-03-04`) or English
+month-name dates (`March 4, 2026`, `4 March 2026`). Ambiguous numeric dates,
+relative dates and invalid calendar dates return `None`; no locale is guessed.
+
 ## `numbers.py`
 
 - `generate_integers` "1549" / "1,549"
