@@ -1,5 +1,8 @@
 PUNCTUATION = {
     ",": "S38700463x496",
+    # Ellipses represent a pause, using the comma primitive.
+    "...": "S38700463x496",
+    "…": "S38700463x496",
     ".": "S38800464x496",
     ";": "S38900464x496",
     ":": "S38a00464x496",

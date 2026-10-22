@@ -6,8 +6,10 @@ from signwriting.primitives.ase.punctuation import PUNCTUATION, construct_punctu
 class PunctuationCase(unittest.TestCase):
 
     def test_punctuation(self):
-        expected = ((",", "S38700463x496"), (".", "S38800464x496"), (";", "S38900464x496"),
+        expected = ((",", "S38700463x496"), ("...", "S38700463x496"), ("…", "S38700463x496"),
+                    (".", "S38800464x496"), (";", "S38900464x496"),
                     (":", "S38a00464x496"), ("(", "S38b00464x496"), (")", "S38b04464x496"))
+        self.assertEqual(dict(expected), PUNCTUATION)
         self.assertEqual(PUNCTUATION, dict(generate_punctuation()))
         for character, fsw in expected:
             with self.subTest(character=character):
