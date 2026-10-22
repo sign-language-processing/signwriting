@@ -1,8 +1,25 @@
 PUNCTUATION = {
     ",": "S38700463x496",
-    # Ellipses represent a pause, using the comma primitive.
+    # Ellipses, dashes, and comma variants represent pauses.
     "...": "S38700463x496",
     "…": "S38700463x496",
+    "-": "S38700463x496",
+    "--": "S38700463x496",
+    "‐": "S38700463x496",
+    "‑": "S38700463x496",
+    "‒": "S38700463x496",
+    "–": "S38700463x496",
+    "—": "S38700463x496",
+    "―": "S38700463x496",
+    "﹘": "S38700463x496",
+    "﹣": "S38700463x496",
+    "－": "S38700463x496",
+    "，": "S38700463x496",
+    "、": "S38700463x496",
+    "､": "S38700463x496",
+    "﹐": "S38700463x496",
+    "﹑": "S38700463x496",
+    "،": "S38700463x496",
     ".": "S38800464x496",
     ";": "S38900464x496",
     ":": "S38a00464x496",
@@ -12,6 +29,10 @@ PUNCTUATION = {
 
 
 def construct_punctuation(character: str) -> str:
+    if (len(character) >= 3 and set(character) == {"."}) or (character and set(character) == {"…"}):
+        return PUNCTUATION[","]
+    if character and all(mark in "-‐‑‒–—―﹘﹣－" for mark in character):
+        return PUNCTUATION[","]
     try:
         return PUNCTUATION[character]
     except KeyError as error:
