@@ -37,7 +37,7 @@ def join_signs_vertical(*fsws: str, spacing: int = 0):
         return "M500x500"
 
     new_sign = sign_from_symbols(symbols, fix_x=False)
-    return sign_to_fsw(new_sign)
+    return sign_to_fsw(new_sign, fix_out_of_range=False)  # callers rely on the raise to abstain
 
 
 def join_signs_horizontal(*fsws: str, spacing: int = 0):
@@ -60,7 +60,7 @@ def join_signs_horizontal(*fsws: str, spacing: int = 0):
         return "M500x500"
 
     new_sign = sign_from_symbols(symbols, fix_y=False)
-    return sign_to_fsw(new_sign)
+    return sign_to_fsw(new_sign, fix_out_of_range=False)  # callers rely on the raise to abstain
 
 
 Point = namedtuple("Point", ["x", "y"])
