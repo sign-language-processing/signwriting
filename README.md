@@ -39,6 +39,21 @@ swu2fsw('𝠃𝤟𝤩񋛩𝣵𝤐񀀒𝤇𝣤񋚥𝤐𝤆񀀚𝣮𝣭')
 # M525x535S2e748483x510S10011501x466S2e704510x500S10019476x475
 ```
 
+3. To validate complete, unstyled FSW text:
+
+```python
+from signwriting.formats.fsw import is_fsw
+
+is_fsw("M518x529S14c20481x471")  # True
+is_fsw("M518x529S14c20481x471 S38800464x496")  # True
+is_fsw("M500x500")  # False: an empty signbox
+is_fsw("M518x529S14c20481x471-C")  # False: styling is excluded
+```
+
+`is_fsw` accepts a nonempty sequence of signs or standalone punctuation separated
+by whitespace, including signs with sorting prefixes. It checks the entire text's
+syntax; it does not check whether every symbol variant has a renderable glyph.
+
 ### `signwriting.tokenizer`
 
 This module provides utilities for tokenizing SignWriting strings for use in NLP tasks[^1].
