@@ -1,0 +1,2071 @@
+[
+  {
+    "section": "Handshape Classes",
+    "row": "Fist",
+    "column": "Selection",
+    "hamnosys": "",
+    "symbols": [
+      "hamfist"
+    ],
+    "image": "images/e000.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Fist",
+    "column": "Selected Fingers Extended",
+    "hamnosys": "",
+    "symbols": [
+      "hamfist",
+      "hamthumbacrossmod"
+    ],
+    "image": "images/e000-e00d.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Fist",
+    "column": "Selected Fingers Extended",
+    "hamnosys": "",
+    "symbols": [
+      "hamfist",
+      "hamthumboutmod"
+    ],
+    "image": "images/e000-e00c.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Fist",
+    "column": "Selected Fingers Extended",
+    "hamnosys": "",
+    "symbols": [
+      "hamfist",
+      "hamthumbopenmod"
+    ],
+    "image": "images/e000-e00e.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Fist",
+    "column": "Selected Fingers Bent",
+    "hamnosys": "",
+    "symbols": [
+      "hamfist",
+      "hamfingerbendmod",
+      "hamthumboutmod"
+    ],
+    "image": "images/e000-e011-e00c.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Fist",
+    "column": "Selected Fingers Bent",
+    "hamnosys": "",
+    "symbols": [
+      "hamfist",
+      "hamfingerbendmod",
+      "hamthumbopenmod"
+    ],
+    "image": "images/e000-e011-e00e.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Fist",
+    "column": "Selected Fingers Hooked",
+    "hamnosys": "",
+    "symbols": [
+      "hamfist",
+      "hamfingerhookmod",
+      "hamthumboutmod"
+    ],
+    "image": "images/e000-e012-e00c.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Fist",
+    "column": "Derivation Examples",
+    "hamnosys": "",
+    "symbols": [
+      "hamfist",
+      "hamindexfinger",
+      "hambetween",
+      "hammiddlefinger"
+    ],
+    "image": "images/e000-e071-e0e6-e072.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Fist",
+    "column": "Derivation Examples",
+    "hamnosys": "",
+    "symbols": [
+      "hamfist",
+      "hammiddlefinger",
+      "hambetween",
+      "hamringfinger"
+    ],
+    "image": "images/e000-e072-e0e6-e073.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Fist",
+    "column": "Derivation Examples",
+    "hamnosys": "",
+    "symbols": [
+      "hamfist",
+      "hamringfinger",
+      "hambetween",
+      "hampinky"
+    ],
+    "image": "images/e000-e073-e0e6-e074.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Fist",
+    "column": "Derivation Examples",
+    "hamnosys": "",
+    "symbols": [
+      "hamfist",
+      "hambetween"
+    ],
+    "image": "images/e000-e0e6.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Fist",
+    "column": "Derivation Examples",
+    "hamnosys": "",
+    "symbols": [
+      "hamfist",
+      "hamdoublebent"
+    ],
+    "image": "images/e000-e013.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "One Finger",
+    "column": "Selection",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2"
+    ],
+    "image": "images/e002.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "One Finger",
+    "column": "Selected Fingers Extended",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2",
+      "hamthumbacrossmod"
+    ],
+    "image": "images/e002-e00d.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "One Finger",
+    "column": "Selected Fingers Extended",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2",
+      "hamthumboutmod"
+    ],
+    "image": "images/e002-e00c.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "One Finger",
+    "column": "Selected Fingers Extended",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2",
+      "hamthumbopenmod"
+    ],
+    "image": "images/e002-e00e.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "One Finger",
+    "column": "Selected Fingers Flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2",
+      "hamfingerstraightmod"
+    ],
+    "image": "images/e002-e010.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "One Finger",
+    "column": "Selected Fingers Flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2",
+      "hamfingerstraightmod",
+      "hamthumbacrossmod"
+    ],
+    "image": "images/e002-e010-e00d.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "One Finger",
+    "column": "Selected Fingers Flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2",
+      "hamfingerstraightmod",
+      "hamthumboutmod"
+    ],
+    "image": "images/e002-e010-e00c.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "One Finger",
+    "column": "Selected Fingers Flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamcee12",
+      "hamfingerstraightmod",
+      "hamthumbopenmod"
+    ],
+    "image": null
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "One Finger",
+    "column": "Selected Fingers Bent",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2",
+      "hamfingerbendmod"
+    ],
+    "image": "images/e002-e011.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "One Finger",
+    "column": "Selected Fingers Bent",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2",
+      "hamfingerbendmod",
+      "hamthumbacrossmod"
+    ],
+    "image": "images/e002-e011-e00d.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "One Finger",
+    "column": "Selected Fingers Bent",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2",
+      "hamfingerbendmod",
+      "hamthumboutmod"
+    ],
+    "image": "images/e002-e011-e00c.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "One Finger",
+    "column": "Selected Fingers Bent",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2",
+      "hamfingerbendmod",
+      "hamthumboutmod",
+      "hamthumb"
+    ],
+    "image": "images/e002-e011-e00c-e070.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "One Finger",
+    "column": "Selected Fingers Bent",
+    "hamnosys": "",
+    "symbols": [
+      "hamcee12",
+      "hamthumbopenmod"
+    ],
+    "image": null
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "One Finger",
+    "column": "Selected Fingers Hooked",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2",
+      "hamfingerhookmod"
+    ],
+    "image": "images/e002-e012.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "One Finger",
+    "column": "Selected Fingers Hooked",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2",
+      "hamfingerhookmod",
+      "hamthumbacrossmod"
+    ],
+    "image": "images/e002-e012-e00d.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "One Finger",
+    "column": "Selected Fingers Hooked",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2",
+      "hamfingerhookmod",
+      "hamthumboutmod"
+    ],
+    "image": "images/e002-e012-e00c.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "One Finger",
+    "column": "Selected Fingers Hooked",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2",
+      "hamfingerhookmod",
+      "hamthumboutmod",
+      "hamthumb"
+    ],
+    "image": "images/e002-e012-e00c-e070.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "One Finger",
+    "column": "Derivation Examples",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2",
+      "hamthumbacrossmod",
+      "hammiddlefinger"
+    ],
+    "image": "images/e002-e00d-e072.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "One Finger",
+    "column": "Derivation Examples",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2",
+      "hamthumbacrossmod",
+      "hampinky"
+    ],
+    "image": "images/e002-e00d-e074.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "One Finger",
+    "column": "Derivation Examples",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2",
+      "hamthumboutmod",
+      "hampinky"
+    ],
+    "image": "images/e002-e00c-e074.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "One Finger",
+    "column": "Derivation Examples",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2",
+      "hamthumboutmod",
+      "hamthumb",
+      "hamfingerhookmod"
+    ],
+    "image": "images/e002-e00c-e070-e012.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "One Finger",
+    "column": "Derivation Examples",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2",
+      "hambetween"
+    ],
+    "image": "images/e002-e0e6.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (nonspread)",
+    "column": "Selection",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23"
+    ],
+    "image": "images/e003.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (nonspread)",
+    "column": "Selected Fingers Extended",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23",
+      "hamthumbacrossmod"
+    ],
+    "image": "images/e003-e00d.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (nonspread)",
+    "column": "Selected Fingers Extended",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23",
+      "hamthumboutmod"
+    ],
+    "image": "images/e003-e00c.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (nonspread)",
+    "column": "Selected Fingers Extended",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23",
+      "hamthumbopenmod"
+    ],
+    "image": "images/e003-e00e.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (nonspread)",
+    "column": "Selected Fingers Flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23",
+      "hamfingerstraightmod"
+    ],
+    "image": "images/e003-e010.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (nonspread)",
+    "column": "Selected Fingers Flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23",
+      "hamfingerstraightmod",
+      "hamthumbacrossmod"
+    ],
+    "image": "images/e003-e010-e00d.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (nonspread)",
+    "column": "Selected Fingers Flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23",
+      "hamfingerstraightmod",
+      "hamthumboutmod"
+    ],
+    "image": "images/e003-e010-e00c.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (nonspread)",
+    "column": "Selected Fingers Flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamcee12",
+      "hamfingerstraightmod",
+      "hamthumbopenmod",
+      "hamindexfinger",
+      "hammiddlefinger"
+    ],
+    "image": null
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (nonspread)",
+    "column": "Selected Fingers Bent",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23",
+      "hamfingerbendmod"
+    ],
+    "image": "images/e003-e011.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (nonspread)",
+    "column": "Selected Fingers Bent",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23",
+      "hamfingerbendmod",
+      "hamthumbacrossmod"
+    ],
+    "image": "images/e003-e011-e00d.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (nonspread)",
+    "column": "Selected Fingers Bent",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23",
+      "hamfingerbendmod",
+      "hamthumboutmod"
+    ],
+    "image": "images/e003-e011-e00c.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (nonspread)",
+    "column": "Selected Fingers Bent",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23",
+      "hamfingerbendmod",
+      "hamthumboutmod",
+      "hamthumb"
+    ],
+    "image": "images/e003-e011-e00c-e070.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (nonspread)",
+    "column": "Selected Fingers Bent",
+    "hamnosys": "",
+    "symbols": [
+      "hamcee12",
+      "hamthumbopenmod",
+      "hamindexfinger",
+      "hammiddlefinger"
+    ],
+    "image": null
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (nonspread)",
+    "column": "Selected Fingers Hooked",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23",
+      "hamfingerhookmod"
+    ],
+    "image": "images/e003-e012.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (nonspread)",
+    "column": "Selected Fingers Hooked",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23",
+      "hamfingerhookmod",
+      "hamthumbacrossmod"
+    ],
+    "image": "images/e003-e012-e00d.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (nonspread)",
+    "column": "Selected Fingers Hooked",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23",
+      "hamfingerhookmod",
+      "hamthumboutmod"
+    ],
+    "image": "images/e003-e012-e00c.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (nonspread)",
+    "column": "Selected Fingers Hooked",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23",
+      "hamfingerhookmod",
+      "hamthumboutmod",
+      "hamthumb"
+    ],
+    "image": "images/e003-e012-e00c-e070.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (nonspread)",
+    "column": "Derivation Examples",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23",
+      "hamthumbacrossmod",
+      "hamindexfinger",
+      "hamfingernail",
+      "hammiddlefinger"
+    ],
+    "image": "images/e003-e00d-e071-e076-e072.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (nonspread)",
+    "column": "Derivation Examples",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23",
+      "hamthumbacrossmod",
+      "hammiddlefinger",
+      "hamfingernail",
+      "hamindexfinger"
+    ],
+    "image": "images/e003-e00d-e072-e076-e071.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (spread)",
+    "column": "Selection",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23spread"
+    ],
+    "image": "images/e004.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (spread)",
+    "column": "Selected Fingers Extended",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23spread",
+      "hamthumbacrossmod"
+    ],
+    "image": "images/e004-e00d.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (spread)",
+    "column": "Selected Fingers Extended",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23spread",
+      "hamthumboutmod"
+    ],
+    "image": "images/e004-e00c.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (spread)",
+    "column": "Selected Fingers Extended",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23spread",
+      "hamthumbopenmod"
+    ],
+    "image": "images/e004-e00e.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (spread)",
+    "column": "Selected Fingers Flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23spread",
+      "hamfingerstraightmod"
+    ],
+    "image": "images/e004-e010.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (spread)",
+    "column": "Selected Fingers Flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23spread",
+      "hamfingerstraightmod",
+      "hamthumbacrossmod"
+    ],
+    "image": "images/e004-e010-e00d.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (spread)",
+    "column": "Selected Fingers Flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23spread",
+      "hamfingerstraightmod",
+      "hamthumboutmod"
+    ],
+    "image": "images/e004-e010-e00c.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (spread)",
+    "column": "Selected Fingers Flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23spread",
+      "hamthumbopenmod",
+      "hamfingerstraightmod"
+    ],
+    "image": "images/e004-e00e-e010.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (spread)",
+    "column": "Selected Fingers Bent",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23spread",
+      "hamfingerbendmod"
+    ],
+    "image": "images/e004-e011.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (spread)",
+    "column": "Selected Fingers Bent",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23spread",
+      "hamfingerbendmod",
+      "hamthumbacrossmod"
+    ],
+    "image": "images/e004-e011-e00d.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (spread)",
+    "column": "Selected Fingers Bent",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23spread",
+      "hamfingerbendmod",
+      "hamthumboutmod"
+    ],
+    "image": "images/e004-e011-e00c.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (spread)",
+    "column": "Selected Fingers Bent",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23spread",
+      "hamfingerbendmod",
+      "hamthumboutmod",
+      "hamthumb"
+    ],
+    "image": "images/e004-e011-e00c-e070.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (spread)",
+    "column": "Selected Fingers Bent",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23spread",
+      "hamthumbopenmod",
+      "hamfingerbendmod"
+    ],
+    "image": "images/e004-e00e-e011.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (spread)",
+    "column": "Selected Fingers Hooked",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23spread",
+      "hamfingerhookmod"
+    ],
+    "image": "images/e004-e012.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (spread)",
+    "column": "Selected Fingers Hooked",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23spread",
+      "hamfingerhookmod",
+      "hamthumbacrossmod"
+    ],
+    "image": "images/e004-e012-e00d.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (spread)",
+    "column": "Selected Fingers Hooked",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23spread",
+      "hamfingerhookmod",
+      "hamthumboutmod"
+    ],
+    "image": "images/e004-e012-e00c.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (spread)",
+    "column": "Selected Fingers Hooked",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23spread",
+      "hamfingerhookmod",
+      "hamthumboutmod",
+      "hamthumb"
+    ],
+    "image": "images/e004-e012-e00c-e070.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (spread)",
+    "column": "Derivation Examples",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23spread",
+      "hamthumboutmod",
+      "hamindexfinger",
+      "hampinky"
+    ],
+    "image": "images/e004-e00c-e071-e074.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Two Fingers (spread)",
+    "column": "Derivation Examples",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23spread",
+      "hamthumbacrossmod",
+      "hamindexfinger",
+      "hampinky"
+    ],
+    "image": "images/e004-e00d-e071-e074.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Flathand (Four Fingers nonspread)",
+    "column": "Selection",
+    "hamnosys": "",
+    "symbols": [
+      "hamflathand"
+    ],
+    "image": "images/e001.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Flathand (Four Fingers nonspread)",
+    "column": "Selected Fingers Extended",
+    "hamnosys": "",
+    "symbols": [
+      "hamflathand",
+      "hamthumbacrossmod"
+    ],
+    "image": "images/e001-e00d.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Flathand (Four Fingers nonspread)",
+    "column": "Selected Fingers Extended",
+    "hamnosys": "",
+    "symbols": [
+      "hamflathand",
+      "hamthumboutmod"
+    ],
+    "image": "images/e001-e00c.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Flathand (Four Fingers nonspread)",
+    "column": "Selected Fingers Extended",
+    "hamnosys": "",
+    "symbols": [
+      "hamflathand",
+      "hamthumbopenmod"
+    ],
+    "image": "images/e001-e00e.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Flathand (Four Fingers nonspread)",
+    "column": "Selected Fingers Flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamflathand",
+      "hamfingerstraightmod"
+    ],
+    "image": "images/e001-e010.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Flathand (Four Fingers nonspread)",
+    "column": "Selected Fingers Flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamflathand",
+      "hamfingerstraightmod",
+      "hamthumbacrossmod"
+    ],
+    "image": "images/e001-e010-e00d.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Flathand (Four Fingers nonspread)",
+    "column": "Selected Fingers Flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamflathand",
+      "hamfingerstraightmod",
+      "hamthumboutmod"
+    ],
+    "image": "images/e001-e010-e00c.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Flathand (Four Fingers nonspread)",
+    "column": "Selected Fingers Flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamceeall",
+      "hamfingerstraightmod",
+      "hamthumbopenmod"
+    ],
+    "image": null
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Flathand (Four Fingers nonspread)",
+    "column": "Selected Fingers Bent",
+    "hamnosys": "",
+    "symbols": [
+      "hamflathand",
+      "hamfingerbendmod"
+    ],
+    "image": "images/e001-e011.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Flathand (Four Fingers nonspread)",
+    "column": "Selected Fingers Bent",
+    "hamnosys": "",
+    "symbols": [
+      "hamflathand",
+      "hamfingerbendmod",
+      "hamthumbacrossmod"
+    ],
+    "image": "images/e001-e011-e00d.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Flathand (Four Fingers nonspread)",
+    "column": "Selected Fingers Bent",
+    "hamnosys": "",
+    "symbols": [
+      "hamflathand",
+      "hamfingerbendmod",
+      "hamthumboutmod"
+    ],
+    "image": "images/e001-e011-e00c.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Flathand (Four Fingers nonspread)",
+    "column": "Selected Fingers Bent",
+    "hamnosys": "",
+    "symbols": [
+      "hamflathand",
+      "hamfingerbendmod",
+      "hamthumboutmod",
+      "hamthumb"
+    ],
+    "image": "images/e001-e011-e00c-e070.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Flathand (Four Fingers nonspread)",
+    "column": "Selected Fingers Bent",
+    "hamnosys": "",
+    "symbols": [
+      "hamceeall",
+      "hamthumbopenmod"
+    ],
+    "image": null
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Flathand (Four Fingers nonspread)",
+    "column": "Selected Fingers Hooked",
+    "hamnosys": "",
+    "symbols": [
+      "hamflathand",
+      "hamfingerhookmod"
+    ],
+    "image": "images/e001-e012.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Flathand (Four Fingers nonspread)",
+    "column": "Selected Fingers Hooked",
+    "hamnosys": "",
+    "symbols": [
+      "hamflathand",
+      "hamfingerhookmod",
+      "hamthumbacrossmod"
+    ],
+    "image": "images/e001-e012-e00d.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Flathand (Four Fingers nonspread)",
+    "column": "Selected Fingers Hooked",
+    "hamnosys": "",
+    "symbols": [
+      "hamflathand",
+      "hamfingerhookmod",
+      "hamthumboutmod"
+    ],
+    "image": "images/e001-e012-e00c.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Flathand (Four Fingers nonspread)",
+    "column": "Selected Fingers Hooked",
+    "hamnosys": "",
+    "symbols": [
+      "hamflathand",
+      "hamfingerhookmod",
+      "hamthumboutmod",
+      "hamthumb"
+    ],
+    "image": "images/e001-e012-e00c-e070.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Flathand (Four Fingers nonspread)",
+    "column": "Derivation Examples",
+    "hamnosys": "",
+    "symbols": [
+      "hamflathand",
+      "hamthumbacrossmod",
+      "hampinky",
+      "hamfingerhookmod"
+    ],
+    "image": "images/e001-e00d-e074-e012.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Four Fingers (spread)",
+    "column": "Selection",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2345"
+    ],
+    "image": "images/e005.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Four Fingers (spread)",
+    "column": "Selected Fingers Extended",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2345",
+      "hamthumbacrossmod"
+    ],
+    "image": "images/e005-e00d.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Four Fingers (spread)",
+    "column": "Selected Fingers Extended",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2345",
+      "hamthumboutmod"
+    ],
+    "image": "images/e005-e00c.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Four Fingers (spread)",
+    "column": "Selected Fingers Extended",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2345",
+      "hamthumbopenmod"
+    ],
+    "image": "images/e005-e00e.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Four Fingers (spread)",
+    "column": "Selected Fingers Flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2345",
+      "hamfingerstraightmod"
+    ],
+    "image": "images/e005-e010.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Four Fingers (spread)",
+    "column": "Selected Fingers Flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2345",
+      "hamfingerstraightmod",
+      "hamthumbacrossmod"
+    ],
+    "image": "images/e005-e010-e00d.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Four Fingers (spread)",
+    "column": "Selected Fingers Flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2345",
+      "hamfingerstraightmod",
+      "hamthumboutmod"
+    ],
+    "image": "images/e005-e010-e00c.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Four Fingers (spread)",
+    "column": "Selected Fingers Flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2345",
+      "hamthumbopenmod",
+      "hamfingerstraightmod"
+    ],
+    "image": "images/e005-e00e-e010.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Four Fingers (spread)",
+    "column": "Selected Fingers Bent",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2345",
+      "hamfingerbendmod"
+    ],
+    "image": "images/e005-e011.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Four Fingers (spread)",
+    "column": "Selected Fingers Bent",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2345",
+      "hamfingerbendmod",
+      "hamthumbacrossmod"
+    ],
+    "image": "images/e005-e011-e00d.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Four Fingers (spread)",
+    "column": "Selected Fingers Bent",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2345",
+      "hamfingerbendmod",
+      "hamthumboutmod"
+    ],
+    "image": "images/e005-e011-e00c.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Four Fingers (spread)",
+    "column": "Selected Fingers Bent",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2345",
+      "hamfingerbendmod",
+      "hamthumboutmod",
+      "hamthumb"
+    ],
+    "image": "images/e005-e011-e00c-e070.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Four Fingers (spread)",
+    "column": "Selected Fingers Bent",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2345",
+      "hamthumbopenmod",
+      "hamfingerbendmod"
+    ],
+    "image": "images/e005-e00e-e011.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Four Fingers (spread)",
+    "column": "Selected Fingers Hooked",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2345",
+      "hamfingerhookmod"
+    ],
+    "image": "images/e005-e012.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Four Fingers (spread)",
+    "column": "Selected Fingers Hooked",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2345",
+      "hamfingerhookmod",
+      "hamthumbacrossmod"
+    ],
+    "image": "images/e005-e012-e00d.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Four Fingers (spread)",
+    "column": "Selected Fingers Hooked",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2345",
+      "hamfingerhookmod",
+      "hamthumboutmod"
+    ],
+    "image": "images/e005-e012-e00c.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Four Fingers (spread)",
+    "column": "Selected Fingers Hooked",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2345",
+      "hamfingerhookmod",
+      "hamthumboutmod",
+      "hamthumb"
+    ],
+    "image": "images/e005-e012-e00c-e070.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Four Fingers (spread)",
+    "column": "Derivation Examples",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2345",
+      "hamthumboutmod",
+      "hamindexfinger",
+      "hamfingerstraightmod"
+    ],
+    "image": "images/e005-e00c-e071-e010.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Four Fingers (spread)",
+    "column": "Derivation Examples",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2345",
+      "hamthumboutmod",
+      "hammiddlefinger",
+      "hamfingerstraightmod"
+    ],
+    "image": "images/e005-e00c-e072-e010.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Four Fingers (spread)",
+    "column": "Derivation Examples",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2345",
+      "hamthumboutmod",
+      "hamringfinger",
+      "hamfingerstraightmod"
+    ],
+    "image": "images/e005-e00c-e073-e010.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Four Fingers (spread)",
+    "column": "Derivation Examples",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2345",
+      "hamthumboutmod",
+      "hampinky",
+      "hamdoublehooked"
+    ],
+    "image": "images/e005-e00c-e074-e014.png"
+  },
+  {
+    "section": "Handshape Classes",
+    "row": "Four Fingers (spread)",
+    "column": "Derivation Examples",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2345",
+      "hamthumboutmod",
+      "hamindexfinger",
+      "hamfingerside",
+      "hammiddlefinger",
+      "hamringfinger",
+      "hamfingerside",
+      "hampinky"
+    ],
+    "image": "images/e005-e00c-e071-e07a-e072-e073-e07a-e074.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others in fist position",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers rounded",
+    "hamnosys": "",
+    "symbols": [
+      "hampinch12"
+    ],
+    "image": "images/e006.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others in fist position",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers rounded",
+    "hamnosys": "",
+    "symbols": [
+      "hamcee12",
+      "hamthumbacrossmod"
+    ],
+    "image": "images/e009-e00d.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others in fist position",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers rounded",
+    "hamnosys": "",
+    "symbols": [
+      "hamcee12"
+    ],
+    "image": "images/e009.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others in fist position",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers rounded",
+    "hamnosys": "",
+    "symbols": [
+      "hamcee12",
+      "hamthumbopenmod"
+    ],
+    "image": "images/e009-e00e.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others in fist position",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hampinch12",
+      "hamfingerstraightmod"
+    ],
+    "image": "images/e006-e010.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others in fist position",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamcee12",
+      "hamfingerstraightmod",
+      "hamthumbacrossmod"
+    ],
+    "image": "images/e009-e010-e00d.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others in fist position",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamcee12",
+      "hamfingerstraightmod"
+    ],
+    "image": "images/e009-e010.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others in fist position",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamcee12",
+      "hamfingerstraightmod",
+      "hamthumbopenmod"
+    ],
+    "image": "images/e009-e010-e00e.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others in fist position",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers straight",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2",
+      "hamthumbopenmod"
+    ],
+    "image": null
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others in fist position",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers straight",
+    "hamnosys": "",
+    "symbols": [
+      "hampinch12",
+      "hamdoublebent"
+    ],
+    "image": "images/e006-e013.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others in fist position",
+    "column": "Fingertip-Thumbtip Opposition w/ hitchhiker's fingers",
+    "hamnosys": "",
+    "symbols": [
+      "hampinch12",
+      "hamfingerbendmod"
+    ],
+    "image": "images/e006-e011.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others in fist position",
+    "column": "Fingertip-Thumb's Interphalangeal Joint Opposition",
+    "hamnosys": "",
+    "symbols": [
+      "hampinch12",
+      "hamfingerhookmod"
+    ],
+    "image": "images/e006-e012.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others in fist position",
+    "column": "Fingertip-Thumb's Metacarpophalangeal Joint Opposition",
+    "hamnosys": "",
+    "symbols": [
+      "hampinch12",
+      "hammiddlefinger"
+    ],
+    "image": "images/e006-e072.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others in fist position",
+    "column": "Derivation Examples",
+    "hamnosys": "",
+    "symbols": [
+      "hampinch12",
+      "hamfingerpad"
+    ],
+    "image": "images/e006-e077.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others in fist position",
+    "column": "Derivation Examples",
+    "hamnosys": "",
+    "symbols": [
+      "hampinch12",
+      "hamfingermidjoint"
+    ],
+    "image": "images/e006-e078.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Two Fingers (nonspread), others in fist position",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers rounded",
+    "hamnosys": "",
+    "symbols": [
+      "hampinch12",
+      "hamindexfinger",
+      "hammiddlefinger"
+    ],
+    "image": "images/e006-e071-e072.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Two Fingers (nonspread), others in fist position",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers rounded",
+    "hamnosys": "",
+    "symbols": [
+      "hamcee12",
+      "hamthumbacrossmod",
+      "hamindexfinger",
+      "hammiddlefinger"
+    ],
+    "image": "images/e009-e00d-e071-e072.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Two Fingers (nonspread), others in fist position",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers rounded",
+    "hamnosys": "",
+    "symbols": [
+      "hamcee12",
+      "hamindexfinger",
+      "hammiddlefinger"
+    ],
+    "image": "images/e009-e071-e072.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Two Fingers (nonspread), others in fist position",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers rounded",
+    "hamnosys": "",
+    "symbols": [
+      "hamcee12",
+      "hamthumbopenmod",
+      "hamindexfinger",
+      "hammiddlefinger"
+    ],
+    "image": "images/e009-e00e-e071-e072.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Two Fingers (nonspread), others in fist position",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hampinch12",
+      "hamfingerstraightmod",
+      "hamindexfinger",
+      "hammiddlefinger"
+    ],
+    "image": "images/e006-e010-e071-e072.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Two Fingers (nonspread), others in fist position",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamcee12",
+      "hamfingerstraightmod",
+      "hamthumbacrossmod",
+      "hamindexfinger",
+      "hammiddlefinger"
+    ],
+    "image": "images/e009-e010-e00d-e071-e072.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Two Fingers (nonspread), others in fist position",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamcee12",
+      "hamfingerstraightmod",
+      "hamindexfinger",
+      "hammiddlefinger"
+    ],
+    "image": "images/e009-e010-e071-e072.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Two Fingers (nonspread), others in fist position",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamcee12",
+      "hamfingerstraightmod",
+      "hamthumbopenmod",
+      "hamindexfinger",
+      "hammiddlefinger"
+    ],
+    "image": "images/e009-e010-e00e-e071-e072.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Two Fingers (nonspread), others in fist position",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers straight",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23",
+      "hamthumbopenmod"
+    ],
+    "image": null
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Two Fingers (nonspread), others in fist position",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers straight",
+    "hamnosys": "",
+    "symbols": [
+      "hampinch12",
+      "hamdoublebent",
+      "hamindexfinger",
+      "hammiddlefinger"
+    ],
+    "image": "images/e006-e013-e071-e072.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Two Fingers (nonspread), others in fist position",
+    "column": "Fingertip-Thumbtip Opposition w/ hitchhiker's fingers",
+    "hamnosys": "",
+    "symbols": [
+      "hampinch12",
+      "hamfingerbendmod",
+      "hamindexfinger",
+      "hammiddlefinger"
+    ],
+    "image": "images/e006-e011-e071-e072.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Two Fingers (nonspread), others in fist position",
+    "column": "Fingertip-Thumb's Interphalangeal Joint Opposition",
+    "hamnosys": "",
+    "symbols": [
+      "hampinch12",
+      "hamfingerhookmod",
+      "hamindexfinger",
+      "hammiddlefinger"
+    ],
+    "image": "images/e006-e012-e071-e072.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Two Fingers (nonspread), others in fist position",
+    "column": "Fingertip-Thumb's Metacarpophalangeal Joint Opposition",
+    "hamnosys": "",
+    "symbols": [
+      "hamcee12",
+      "hamfingerstraightmod",
+      "hammiddlefinger",
+      "hamfingermidjoint",
+      "hamindexfinger"
+    ],
+    "image": "images/e009-e010-e072-e078-e071.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Two Fingers (spread), others in fist position",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers rounded",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23spread",
+      "hamthumbopenmod",
+      "hamfingerbendmod"
+    ],
+    "image": null
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Two Fingers (spread), others in fist position",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23spread",
+      "hamthumbopenmod",
+      "hamfingerstraightmod"
+    ],
+    "image": null
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Two Fingers (spread), others in fist position",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers straight",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger23spread",
+      "hamthumbopenmod"
+    ],
+    "image": null
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Four Fingers (nonspread)",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers rounded",
+    "hamnosys": "",
+    "symbols": [
+      "hampinchall"
+    ],
+    "image": "images/e007.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Four Fingers (nonspread)",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers rounded",
+    "hamnosys": "",
+    "symbols": [
+      "hamceeall",
+      "hamthumbacrossmod"
+    ],
+    "image": "images/e00a-e00d.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Four Fingers (nonspread)",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers rounded",
+    "hamnosys": "",
+    "symbols": [
+      "hamceeall"
+    ],
+    "image": "images/e00a.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Four Fingers (nonspread)",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers rounded",
+    "hamnosys": "",
+    "symbols": [
+      "hamceeall",
+      "hamthumbopenmod"
+    ],
+    "image": "images/e00a-e00e.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Four Fingers (nonspread)",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hampinchall",
+      "hamfingerstraightmod"
+    ],
+    "image": "images/e007-e010.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Four Fingers (nonspread)",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamceeall",
+      "hamthumbacrossmod",
+      "hamfingerstraightmod"
+    ],
+    "image": "images/e00a-e00d-e010.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Four Fingers (nonspread)",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamceeall",
+      "hamfingerstraightmod"
+    ],
+    "image": "images/e00a-e010.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Four Fingers (nonspread)",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamceeall",
+      "hamthumbopenmod",
+      "hamfingerstraightmod"
+    ],
+    "image": "images/e00a-e00e-e010.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Four Fingers (nonspread)",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers straight",
+    "hamnosys": "",
+    "symbols": [
+      "hamflathand",
+      "hamthumbopenmod"
+    ],
+    "image": null
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Four Fingers (nonspread)",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers straight",
+    "hamnosys": "",
+    "symbols": [
+      "hampinchall",
+      "hamdoublebent"
+    ],
+    "image": "images/e007-e013.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Four Fingers (nonspread)",
+    "column": "Fingertip-Thumbtip Opposition w/ hitchhiker's fingers",
+    "hamnosys": "",
+    "symbols": [
+      "hampinchall",
+      "hamfingerbendmod"
+    ],
+    "image": "images/e007-e011.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Four Fingers (nonspread)",
+    "column": "Fingertip-Thumb's Interphalangeal Joint Opposition",
+    "hamnosys": "",
+    "symbols": [
+      "hampinchall",
+      "hamfingerhookmod"
+    ],
+    "image": "images/e007-e012.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Four Fingers (spread)",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers rounded",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2345",
+      "hamthumbopenmod",
+      "hamfingerbendmod"
+    ],
+    "image": null
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Four Fingers (spread)",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2345",
+      "hamthumbopenmod",
+      "hamfingerstraightmod"
+    ],
+    "image": null
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "Four Fingers (spread)",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers straight",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2345",
+      "hamthumbopenmod"
+    ],
+    "image": null
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others extended (spread)",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers rounded",
+    "hamnosys": "",
+    "symbols": [
+      "hampinch12open"
+    ],
+    "image": "images/e008.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others extended (spread)",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers rounded",
+    "hamnosys": "",
+    "symbols": [
+      "hamceeopen",
+      "hamthumbacrossmod"
+    ],
+    "image": "images/e00b-e00d.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others extended (spread)",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers rounded",
+    "hamnosys": "",
+    "symbols": [
+      "hamceeopen"
+    ],
+    "image": "images/e00b.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others extended (spread)",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers rounded",
+    "hamnosys": "",
+    "symbols": [
+      "hamceeopen",
+      "hamthumbopenmod"
+    ],
+    "image": "images/e00b-e00e.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others extended (spread)",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hampinch12open",
+      "hamfingerstraightmod"
+    ],
+    "image": "images/e008-e010.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others extended (spread)",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamceeopen",
+      "hamthumbacrossmod",
+      "hamfingerstraightmod"
+    ],
+    "image": "images/e00b-e00d-e010.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others extended (spread)",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamceeopen",
+      "hamfingerstraightmod"
+    ],
+    "image": "images/e00b-e010.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others extended (spread)",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers flattened",
+    "hamnosys": "",
+    "symbols": [
+      "hamceeopen",
+      "hamthumbopenmod",
+      "hamfingerstraightmod"
+    ],
+    "image": "images/e00b-e00e-e010.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others extended (spread)",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers straight",
+    "hamnosys": "",
+    "symbols": [
+      "hamfinger2345",
+      "hamthumbopenmod"
+    ],
+    "image": null
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others extended (spread)",
+    "column": "Fingertip-Thumbtip Opposition w/ fingers straight",
+    "hamnosys": "",
+    "symbols": [
+      "hampinch12open",
+      "hamdoublebent"
+    ],
+    "image": "images/e008-e013.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others extended (spread)",
+    "column": "Fingertip-Thumbtip Opposition w/ hitchhiker's fingers",
+    "hamnosys": "",
+    "symbols": [
+      "hampinch12open",
+      "hamfingerbendmod"
+    ],
+    "image": "images/e008-e011.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others extended (spread)",
+    "column": "Fingertip-Thumb's Interphalangeal Joint Opposition",
+    "hamnosys": "",
+    "symbols": [
+      "hampinch12open",
+      "hamfingerhookmod"
+    ],
+    "image": "images/e008-e012.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others extended (spread)",
+    "column": "Fingertip-Thumb's Metacarpophalangeal Joint Opposition",
+    "hamnosys": "",
+    "symbols": [
+      "hampinch12open",
+      "hammiddlefinger"
+    ],
+    "image": "images/e008-e072.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others extended (spread)",
+    "column": "Derivation Examples",
+    "hamnosys": "",
+    "symbols": [
+      "hampinch12open",
+      "hammiddlefinger",
+      "hamringfinger",
+      "hampinky"
+    ],
+    "image": "images/e008-e072-e073-e074.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others extended (spread)",
+    "column": "Derivation Examples",
+    "hamnosys": "",
+    "symbols": [
+      "hampinch12open",
+      "hamfingerstraightmod",
+      "hammiddlefinger"
+    ],
+    "image": "images/e008-e010-e072.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others extended (spread)",
+    "column": "Derivation Examples",
+    "hamnosys": "",
+    "symbols": [
+      "hampinch12open",
+      "hamfingerhookmod",
+      "hampinky"
+    ],
+    "image": "images/e008-e012-e074.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others extended (spread)",
+    "column": "Derivation Examples",
+    "hamnosys": "",
+    "symbols": [
+      "hamceeopen",
+      "hammiddlefinger"
+    ],
+    "image": "images/e00b-e072.png"
+  },
+  {
+    "section": "Thumb Opposition",
+    "row": "One Finger, others extended (spread)",
+    "column": "Derivation Examples",
+    "hamnosys": "",
+    "symbols": [
+      "hampinch12open",
+      "hammiddlefinger",
+      "hamfingerside",
+      "hamringfinger",
+      "hamringfinger",
+      "hamfingerside",
+      "hampinky"
+    ],
+    "image": "images/e008-e072-e07a-e073-e073-e07a-e074.png"
+  }
+]
