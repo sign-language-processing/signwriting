@@ -1,6 +1,6 @@
 from datetime import datetime, UTC
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_restful import Api
 from flask_cors import CORS
 
@@ -10,6 +10,15 @@ from signwriting.visualizer.server import Visualizer
 
 app = Flask(__name__)
 CORS(app)
+app.config["MAX_CONTENT_LENGTH"] = 1024 * 1024
+
+
+@app.before_request
+def bound_inputs():
+    for name in ("text", "fsw", "swu"):
+        if len(request.args.get(name, "")) > 4096:
+            return jsonify(message="Input exceeds 4096 characters"), 413
+
 
 @app.route('/health', methods=['GET'])
 def health_check():

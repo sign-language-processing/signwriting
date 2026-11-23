@@ -16,13 +16,13 @@ from signwriting.types import Sign
 RGBA = Tuple[int, int, int, int]
 
 
-@lru_cache(maxsize=None)
+@lru_cache(maxsize=4096)
 def get_font(font_name: str) -> ImageFont.FreeTypeFont:
     font_path = Path(__file__).parent / f'{font_name}.ttf'
     return ImageFont.truetype(str(font_path), 30)
 
 
-@lru_cache(maxsize=None)
+@lru_cache(maxsize=4096)
 def get_symbol_size(symbol: str):
     font = get_font('SuttonSignWritingLine')
     line_id = symbol_line(key2id(symbol))
@@ -73,6 +73,8 @@ def visualize_sign(fsw: str, antialiasing=True, trust_box=True, embedded_color=F
     if not trust_box:
         max_x, max_y = signwriting_box(sign)
 
+    if (max_x - min_x) * (max_y - min_y) > 16_000_000:
+        raise ValueError('Rendered sign exceeds 16 million pixels')
     img = Image.new('RGBA', (max_x - min_x, max_y - min_y), (255, 255, 255, 0))
     draw = ImageDraw.Draw(img, 'RGBA')
     if not antialiasing:
@@ -104,6 +106,8 @@ def stack_signs(images: List[Image.Image], box_symbols: List[str]) -> Image.Imag
     width = max(img.width for img in images)
     height = sum(img.height for img in images) + GAP * (len(images) - 1)
 
+    if width * height > 16_000_000:
+        raise ValueError('Rendered text exceeds 16 million pixels')
     layout_image = Image.new("RGBA", (width, height), (255, 255, 255, 0))
     y = 0
     for img, box in zip(images, box_symbols):

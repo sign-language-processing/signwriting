@@ -13,10 +13,15 @@ FINGERSPELLING_DIR = Path(__file__).parent / "data"
 CharVariants = Union[List[str], Dict[str, Union[List[str], Dict[str, List[str]]]]]
 
 
-@functools.lru_cache(maxsize=None)
+@functools.lru_cache(maxsize=128)
 def get_chars(language: str) -> Dict[str, CharVariants]:
+    if not re.fullmatch(r"[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*", language):
+        raise ValueError("Invalid language code")
     if "-" in language:
-        language = language.split("-")[2]
+        parts = language.split("-")
+        if len(parts) < 3:
+            raise ValueError("Invalid language code")
+        language = parts[2]
 
     with open(FINGERSPELLING_DIR / f"{language}.json", "r", encoding="utf-8") as f:
         return {char.lower(): variants for char, variants in json.load(f).items()}
