@@ -1,5 +1,5 @@
 # ---- Build stage: compile flite and install python dependencies ----
-FROM python:3.12.16-slim-trixie AS builder
+FROM python:3.12.16-slim-trixie@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b AS builder
 
 RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y --no-install-recommends build-essential git ca-certificates && \
@@ -22,7 +22,8 @@ COPY . .
 RUN pip install --no-cache-dir -r /opt/requirements.lock && pip install --no-deps ".[mouthing,server]"
 
 # ---- Runtime stage ----
-FROM python:3.12.16-slim-trixie
+FROM python:3.12.16-slim-trixie@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b
+RUN apt-get update && apt-get upgrade -y && rm -rf /var/lib/apt/lists/*
 
 # Allow statements and log messages to immediately appear in the native logs
 ENV PYTHONUNBUFFERED=True
@@ -35,6 +36,11 @@ ENV PATH="/opt/venv/bin:$PATH"
 RUN python -c "import epitran; print(epitran.Epitran('eng-Latn').transliterate('hello'))"
 
 RUN useradd --create-home --uid 1000 app
+RUN rm -rf /usr/local/lib/python*/ensurepip /usr/local/lib/python*/site-packages/pip /usr/local/lib/python*/site-packages/pip-*.dist-info /opt/venv/lib/python*/site-packages/pip /opt/venv/lib/python*/site-packages/pip-*.dist-info
+
+# The serving image has no JVM; g2pk uses the native Mecab adapter. Omit
+# KoNLPy's unused Java taggers and their bundled, outdated SnakeYAML.
+RUN rm -rf /opt/venv/lib/python*/site-packages/konlpy/java
 USER app
 ENV PORT=8080
 
