@@ -19,6 +19,8 @@ def bound_inputs():
         if len(request.args.get(name, "")) > 4096:
             return jsonify(message="Input exceeds 4096 characters"), 413
 
+    return None
+
 
 @app.route('/health', methods=['GET'])
 def health_check():
