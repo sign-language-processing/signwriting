@@ -14,6 +14,7 @@ from signwriting.types import Sign
 
 # Type alias representing a tuple of four integers: Red, Green, Blue, Alpha
 RGBA = Tuple[int, int, int, int]
+MAX_RENDER_PIXELS = 16_000_000
 
 
 @lru_cache(maxsize=4096)
@@ -73,8 +74,8 @@ def visualize_sign(fsw: str, antialiasing=True, trust_box=True, embedded_color=F
     if not trust_box:
         max_x, max_y = signwriting_box(sign)
 
-    if (max_x - min_x) * (max_y - min_y) > 16_000_000:
-        raise ValueError('Rendered sign exceeds 16 million pixels')
+    if (max_x - min_x) * (max_y - min_y) > MAX_RENDER_PIXELS:
+        raise ValueError(f'Rendered sign exceeds {MAX_RENDER_PIXELS // 1_000_000} million pixels')
     img = Image.new('RGBA', (max_x - min_x, max_y - min_y), (255, 255, 255, 0))
     draw = ImageDraw.Draw(img, 'RGBA')
     if not antialiasing:
@@ -106,8 +107,8 @@ def stack_signs(images: List[Image.Image], box_symbols: List[str]) -> Image.Imag
     width = max(img.width for img in images)
     height = sum(img.height for img in images) + GAP * (len(images) - 1)
 
-    if width * height > 16_000_000:
-        raise ValueError('Rendered text exceeds 16 million pixels')
+    if width * height > MAX_RENDER_PIXELS:
+        raise ValueError(f'Rendered text exceeds {MAX_RENDER_PIXELS // 1_000_000} million pixels')
     layout_image = Image.new("RGBA", (width, height), (255, 255, 255, 0))
     y = 0
     for img, box in zip(images, box_symbols):

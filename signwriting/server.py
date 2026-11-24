@@ -8,16 +8,19 @@ from signwriting.fingerspelling.server import Fingerspelling
 from signwriting.mouthing.server import Mouthing
 from signwriting.visualizer.server import Visualizer
 
+MAX_INPUT_CHARS = 4096
+MAX_REQUEST_BYTES = 1024 * 1024
+
 app = Flask(__name__)
 CORS(app)
-app.config["MAX_CONTENT_LENGTH"] = 1024 * 1024
+app.config["MAX_CONTENT_LENGTH"] = MAX_REQUEST_BYTES
 
 
 @app.before_request
 def bound_inputs():
     for name in ("text", "fsw", "swu"):
-        if len(request.args.get(name, "")) > 4096:
-            return jsonify(message="Input exceeds 4096 characters"), 413
+        if len(request.args.get(name, "")) > MAX_INPUT_CHARS:
+            return jsonify(message=f"Input exceeds {MAX_INPUT_CHARS} characters"), 413
 
     return None
 
