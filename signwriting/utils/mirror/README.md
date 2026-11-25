@@ -12,6 +12,9 @@ mirror_sign("M507x507S1f720487x492")             # "M513x507S1f728493x492"
 `mirror_sign` accepts ASCII **Formal SignWriting (FSW)**. For SWU input,
 convert first via `signwriting.formats.swu_to_fsw.swu2fsw`.
 
+Both functions raise `UnmirrorableSymbolError` (a `ValueError`) for glyphs
+with no representable horizontal mirror. The exception includes the FSW key.
+
 ## Algorithm
 
 The Sutton SignWriting symbol set (ISWA) splits into ranges that mirror
@@ -114,6 +117,19 @@ image will look "off". Known cases:
   — Double Alternating Movement, Wall Plane. Fill `1<->0` swap + rotation
   +8 produces the correct codepoint, but several font glyphs in S231 don't
   reflect a true horizontal mirror.
-* `S22922 → S22926` (and the reverse) — Finger Contact Movement, Floor
-  Plane. Codepoint mapping is correct (face-style rotation 2 <-> 6) but
-  the font glyph isn't the visual mirror.
+## Shared mirror manifest
+
+[`mirror_manifest.json`](mirror_manifest.json) exports the Python decisions
+for consumers using the same ISWA font. Each entry in `pairs` is reversible.
+The `aliases` normalize duplicate drawings to the key used in the review
+before mirroring. `unmirrorable` lists the keys that raise. For hands, swap
+rotation halves using `handRule` only when both glyphs exist. Remaining keys
+are unchanged.
+
+Regenerate after changing the rules and use the ES module form for
+`@sutton-signwriting/font-ttf`.
+
+```sh
+python -m signwriting.utils.mirror.export_manifest > signwriting/utils/mirror/mirror_manifest.json
+python -m signwriting.utils.mirror.export_manifest --javascript > /path/to/font-ttf/src/mirror-manifest.js
+```

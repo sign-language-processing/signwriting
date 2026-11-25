@@ -11,15 +11,14 @@ differently. This module groups them as:
   handedness, so the fill is preserved. Rotations cover ``n`` evenly-spaced
   angles around the circle (``n`` is 1, 4, or 8 depending on the base), and
   horizontal mirror reflects ``rotation -> (n - rotation) % n``.
-* **Movement arrows** (S217-S2f6): fills encode arrow style (e.g. small vs
-  large arrowhead, hollow vs filled), not handedness, so the fill is
-  preserved. Bases that ship all 16 rotations use the hand convention
+* **Movement arrows** (S217-S2f6): directional geometry and arrowhead fills
+  are mirrored independently. Many bases with 16 rotations use the hand convention
   ``rotation -> (rotation + 8) % 16`` (rotations 0-7 are one chirality at
   eight compass directions; 8-15 are the corresponding mirrored variants).
   Bases that ship fewer rotations use the contact convention
   ``rotation -> (n - rotation) % n``.
 * **Everything else** (S2f7+: dynamics, heads, faces, eyes, mouth, trunk,
-  ...): only eight rotations exist. Mirroring reflects the direction across
+  ...): many glyphs use eight rotations. Mirroring reflects the direction across
   the vertical axis: ``0`` and ``4`` are fixed, and the diagonals swap
   (``1<->7``, ``2<->6``, ``3<->5``). Some head bases (e.g. asymmetric
   eyebrows) additionally encode handedness in fill ``1`` vs fill ``2``; we
@@ -33,8 +32,9 @@ the bulk of this module is a set of per-base override tables - the
 Each table names the bases it covers and the rule it applies; the
 dispatchers (`_mirror_movement`, `_mirror_face`) consult them before
 falling back to the section default. The tables were calibrated against a
-corpus of human-confirmed mirror pairs (see ``test_mirror.py``), and every
-existing ISWA symbol satisfies ``mirror(mirror(s)) == s``.
+corpus of human-confirmed mirror pairs (see ``test_mirror.py``). Mirroring
+twice returns the original key for representable glyphs, with duplicate
+drawings normalized to their reviewed key.
 
 The sign-level mirror reflects each symbol's x-position across ``x = 500``
 (the box centerline), recomputes the box's right edge, and flips the ``L``
@@ -44,7 +44,6 @@ The symbol-level rotation logic started as a section-typed reformulation of
 signmaker's ``ssw.mirror`` (https://github.com/sutton-signwriting/signmaker)
 and was extended with the per-base tables described above.
 """
-import warnings
 from functools import lru_cache
 from typing import Tuple
 
@@ -52,13 +51,20 @@ from signwriting.formats.fsw_to_sign import fsw_to_sign
 from signwriting.formats.sign_to_fsw import sign_to_fsw
 from signwriting.visualizer.visualize import get_symbol_size
 
-# Symbols whose horizontal mirror is not representable as another ISWA
-# symbol in the font. ``mirror_symbol`` returns them unchanged and emits a
-# warning so callers know the result is approximate.
+class UnmirrorableSymbolError(ValueError):
+    """The symbol has no equivalent horizontal mirror in the ISWA font."""
+
+
 _NO_MIRROR_SYMBOLS = frozenset({
-    "S2ef24", "S2ef25",
-    "S2f024", "S2f025",
+    "S22823", "S22825", "S22922", "S22926",  # Alternating finger contact.
+    "S2a34d", "S2d82a",  # Missing opposite solid or open arrow drawing.
+    "S2ef24", "S2ef25", "S2f024", "S2f025",  # Neutral wrist circles.
+    "S38112", "S38113", "S38114", "S38115", "S38116", "S38117",  # Side-view height.
+    "S38638", "S3863c",  # Open joint marker on incomplete side-view pair.
 })
+
+# The font draws each of these keys identically to the reviewed source.
+_MIRROR_ALIASES = {"S2a33d": "S2a335", "S2d802": "S2d822"}
 
 # One-off per-symbol overrides for cases that don't fit any base-level
 # rule. mirror_symbol consults this (and its inverse) first, which both
@@ -70,6 +76,12 @@ _SPECIAL_MIRROR_OVERRIDES = {
     "S32320": "S32324",
     "S32630": "S32630",
     "S32634": "S32634",
+    "S2a335": "S2a345",
+    "S2d822": "S2d81a",
+    # The last three tongue-against-cheek full-face drawings trade outlines.
+    "S35e05": "S35e15",
+    "S35e06": "S35e16",
+    "S35e07": "S35e17",
 }
 # Pre-computed inverse for an O(1) reverse lookup in mirror_symbol. Exclude
 # self-pairs: they're already served by the forward dict, and a self-entry
@@ -152,6 +164,8 @@ def _mirror_contact(base: str, fill: str, rotation: int) -> Tuple[str, int]:
 # ---------------------------------------------------------------------------
 _FACE_ROTATION_MIRROR = {0: 0, 1: 7, 2: 6, 3: 5, 4: 4, 5: 3, 6: 2, 7: 1}
 _FACE_FILL_MIRROR = {"1": "2", "2": "1"}
+_FACE_WITH_0_4_SWAP_ROTATION = {**_FACE_ROTATION_MIRROR, 0: 4, 4: 0}
+_XOR_2_ROTATION = {0: 2, 1: 3, 2: 0, 3: 1}
 
 # 16-rotation "other" bases that follow the hand-style +8 convention
 # instead of the 8-rotation face reflection. Mostly body/movement glyphs
@@ -167,12 +181,10 @@ _OTHER_16_ROTATION_BASES = frozenset({
     "S308", "S309", "S327", "S36f", "S370", "S371", "S37e",
 })
 
-# Limb Length 1..7 (S377-S37d): rotation 0 (vertical down) and rotation 8
-# (vertical up) are axis-aligned and self-mirror; all other rotations
-# follow the +8 chirality swap. (S376 Limb Combinations uses a slightly
-# different map - see _OTHER_BASE_ROTATION_MAPS.)
+# Limb Combinations and Limb Length 1..7 use +8 except for the
+# self-mirrored vertical rotations 0 and 8.
 _LIMB_BASES = frozenset({
-    "S377", "S378", "S379", "S37a", "S37b", "S37c", "S37d",
+    "S376", "S377", "S378", "S379", "S37a", "S37b", "S37c", "S37d",
 })
 
 
@@ -188,8 +200,7 @@ def _mirror_limb_rotation(rotation: int) -> int:
 #   S32c Cheeks Sucked          - both 1/2 and 3/4 swap
 #   S330 Ears                   - both 1/2 and 3/4 swap
 #   S33a Breath Inhale          - fills 0/1, 2/3, 4/5 all pair
-#   S357 Mouth Wrinkles Single  - fills 4/5 swap
-#   S358 Mouth Wrinkles Double  - fills 4/5 swap
+#   S357/S358 Mouth Wrinkles   - fills 1/2 and 4/5 swap
 #   S361 Teeth                  - fills are independent variants, no swap
 #   S368 Jaw Move Wall Plane    - no fill swap, only face-style rotation
 #   S369 Jaw Move Floor Plane   - no fill swap
@@ -199,10 +210,11 @@ def _mirror_limb_rotation(rotation: int) -> int:
 # fill swap on mirror. (Rotation handling varies; that's in the other
 # rotation sets below.)
 _NO_FILL_SWAP_BASES = frozenset({
-    "S302", "S304", "S305", "S306", "S307", "S308", "S309",
+    "S301", "S302", "S303", "S304", "S305", "S306", "S307", "S308", "S309",
     "S321", "S322", "S323", "S324", "S325", "S326", "S327", "S328", "S329",
-    "S361", "S368", "S369", "S36f", "S370", "S371",
-    "S372", "S373", "S374", "S376", "S37e", "S382", "S386", "S387",
+    "S35e", "S35f", "S360", "S361", "S362", "S363", "S364", "S366", "S368", "S369", "S36a",
+    "S36f", "S370", "S371", "S372", "S373", "S374", "S375", "S376",
+    "S37e", "S37f", "S380", "S382", "S385", "S386", "S387", "S388",
 })
 _FACE_FILL_OVERRIDES = {
     # Eyebrow-shape fill swap (1<->2 and 4<->5).
@@ -213,15 +225,18 @@ _FACE_FILL_OVERRIDES = {
     "S335": _FILL_12_45_SWAP,  # Air Blowing Out.
     "S336": _FILL_12_45_SWAP,  # Air Sucking In.
     "S356": _FILL_12_45_SWAP,  # Mouth Corners.
+    "S357": _FILL_12_45_SWAP,  # Mouth Wrinkles Single.
+    "S358": _FILL_12_45_SWAP,  # Mouth Wrinkles Double.
     # 1<->2 AND 3<->4 swap.
     "S317": _FILL_12_34_SWAP,  # Eye Blink Single (other S314-S320 use default).
+    "S32a": _FILL_12_34_SWAP,  # Cheeks Puffy.
     "S32b": _FILL_12_34_SWAP,  # Cheeks Neutral.
     "S32c": _FILL_12_34_SWAP,  # Cheeks Sucked.
     "S330": _FILL_12_34_SWAP,  # Ears.
     # 4<->5 swap only.
-    "S357": _FILL_45_SWAP,
-    "S358": _FILL_45_SWAP,
     "S365": _FILL_45_SWAP,
+    "S367": _FILL_45_SWAP,  # Teeth Bite Lips.
+    "S384": {"2": "4", "4": "2"},  # Location Head Neck side views.
     # 2<->3 swap only.
     "S36b": _FILL_23_SWAP,  # Hair.
     "S36c": _FILL_23_SWAP,  # Excitement.
@@ -260,14 +275,9 @@ _OTHER_XOR_2_BASES = frozenset({
 # Per-base rotation override maps for "other" range bases that don't fit
 # any of the simpler rules.
 #   S382 Location Width (9 rotations): 0 self, (1,2), (3,4), (5,6), (7,8).
-#   S376 Limb Combinations (16 rotations): 0/8 self; 1<->9, 2<->a, 3<->b,
-#   4<->c (lower half +8), 5<->e, 6<->f, 7<->d (upper half differs).
 _OTHER_BASE_ROTATION_MAPS = {
+    "S2ff": {1: 3, 3: 1},  # Four rotations for head outlines.
     "S382": {0: 0, 1: 2, 2: 1, 3: 4, 4: 3, 5: 6, 6: 5, 7: 8, 8: 7},
-    "S376": {
-        0: 0, 1: 9, 2: 10, 3: 11, 4: 12, 5: 14, 6: 15, 7: 13,
-        8: 8, 9: 1, 10: 2, 11: 3, 12: 4, 13: 7, 14: 5, 15: 6,
-    },
 }
 
 # Bases where rotation k mirrors to rotation k XOR 1 (2-rotation set).
@@ -289,28 +299,37 @@ _OTHER_XOR_1_BASES = frozenset({
 _FACE_WITH_0_4_SWAP_BASES = frozenset({
     "S326", "S387",
 })
-_FACE_WITH_0_4_SWAP_ROTATION = {0: 4, 1: 7, 2: 6, 3: 5, 4: 0, 5: 3, 6: 2, 7: 1}
-
 # Per-(base, fill) rotation override maps. Used for bases where the rotation
 # rule depends on which fill we're at - e.g. Shoulder Hip Positions (S36e),
 # where fill 0 is the only one with rotation 0 as self.
 _PER_FILL_ROTATION_MAPS = {
+    "S2ff": {"3": _XOR_2_ROTATION},
+    # Alternating head movements and upper-body tilt reverse the mark order.
+    "S301": {"2": _FACE_WITH_0_4_SWAP_ROTATION},
+    "S303": {"2": _FACE_WITH_0_4_SWAP_ROTATION},
+    "S375": {"2": _FACE_WITH_0_4_SWAP_ROTATION},
+    # Tongue Against Cheek uses four-way reflection for the side drawings.
+    "S35e": {
+        "0": {0: 4, 1: 3, 3: 1, 4: 0},
+        "1": {0: 4, 1: 3, 3: 1, 4: 0},
+        "2": {0: 4, 1: 3, 3: 1, 4: 0},
+    },
+    "S36d": {"2": _XOR_2_ROTATION},
     # Shoulder Hip Positions (S36e). 5 fills x 6 rotations.
-    # Fill 0:        0 self, 1<->5, 2<->4, 3 self.
+    # Fill 0:        0 self, 1<->2, 3 self, 4<->5.
     # Fills 1,2,3:   0<->3, 1<->5, 2<->4.
     # Fill 4:        0<->1, 2 self, 3 self, 4<->5.
     "S36e": {
-        "0": {0: 0, 1: 5, 2: 4, 3: 3, 4: 2, 5: 1},
+        "0": {1: 2, 2: 1, 4: 5, 5: 4},
         "1": {0: 3, 1: 5, 2: 4, 3: 0, 4: 2, 5: 1},
         "2": {0: 3, 1: 5, 2: 4, 3: 0, 4: 2, 5: 1},
         "3": {0: 3, 1: 5, 2: 4, 3: 0, 4: 2, 5: 1},
         "4": {0: 1, 1: 0, 2: 2, 3: 3, 4: 5, 5: 4},
     },
-    # Torso Straight Stretch Wall (S372): default is XOR-2, but fill 2 has
-    # rotations 0 and 2 as self (with 1<->3 still pairing via XOR-2).
-    "S372": {
-        "2": {0: 0, 1: 3, 2: 2, 3: 1},
-    },
+    # Vertical stretch arrows in fills 0 and 2 retain their direction.
+    "S372": {"0": {1: 3, 3: 1}, "2": {1: 3, 3: 1}},
+    "S384": {"5": {1: 3, 3: 1, 5: 7, 7: 5}},  # Neck markers.
+    "S388": {"1": _FACE_WITH_0_4_SWAP_ROTATION, "2": _FACE_WITH_0_4_SWAP_ROTATION},
 }
 
 
@@ -337,7 +356,7 @@ def _mirror_face(base: str, fill: str, rotation: int) -> Tuple[str, int]:
         rotation_map = _PER_FILL_ROTATION_MAPS[base].get(fill)
         if rotation_map is not None:
             return fill, rotation_map.get(rotation, rotation)
-    if base == "S383":  # Location Depth - every symbol is self-mirror.
+    if base in ("S381", "S383"):  # Front-view height and depth marks.
         return fill, rotation
     if base in _OTHER_BASE_ROTATION_MAPS:
         rotation_map = _OTHER_BASE_ROTATION_MAPS[base]
@@ -359,21 +378,12 @@ def _mirror_face(base: str, fill: str, rotation: int) -> Tuple[str, int]:
 # ---------------------------------------------------------------------------
 # Movement arrows  (S217-S2f6)
 # ---------------------------------------------------------------------------
-# Rotation k mirrors to rotation k XOR 1 - the lowest bit encodes chirality
-# at each direction. Covers the "Hits Front Wall / Chest / Ceiling / Floor"
-# arrow families (Curve, Hump, Loop, Wave, Rotation). The fill 0<->1 swap
-# encodes handedness; the rotation XOR 1 pairs adjacent directions.
-# (See ISWA base names for the full taxonomy.)
+# Front-wall and chest movements pair adjacent rotations via XOR 1.
 _XOR_PAIRED_BASES = frozenset({
     # S2a6-S2ab: Curve / Hump / Loop / Wave Hits Front Wall
     "S2a6", "S2a7", "S2a8", "S2a9", "S2aa", "S2ab",
     # S2ad-S2b2: Curve / Hump / Loop / Wave Hits Chest
     "S2ad", "S2ae", "S2af", "S2b0", "S2b1", "S2b2",
-    # S2ba-S2c2: Hump / Loop / Wave / Rotation Hits Ceiling
-    # (S2b7, S2b8, S2c3, S2c5 use the dual-axis pair rule - see
-    # _CEILING_HITS_*; S2b9, S2bb use the _FLOOR_HITS_* fill 0/1 swap.)
-    "S2ba", "S2bc", "S2bd", "S2be", "S2bf",
-    "S2c0", "S2c1", "S2c2",
 })
 
 # "Rotation Alternating" arrows (S2ac Hits Front Wall, S2b3 Hits Chest):
@@ -386,14 +396,11 @@ _ALTERNATING_ROTATION_BASES = frozenset({"S2ac", "S2b3"})
 # duplicated).
 _AXIS_FOLD_ROTATION = {0: 1, 1: 0, 2: 7, 3: 6, 4: 5, 5: 4, 6: 3, 7: 2}
 
-# "Dual-axis pair" bases - fills 0<->1 and 3<->4 swap (fills 2/5 stay);
-# rotation uses _AXIS_FOLD_ROTATION.
-#   S2b7, S2b8 Curve Hits Ceiling Small/Large
-#   S2c3, S2c4, S2c5 Rotation Single/Double/Alternating Hits Ceiling
-#   S2c6, S2c7 Curve Hits Floor Small/Large
-#   S2d2, S2d3 Rotation Single/Double Hits Floor
+# Humps, loops, waves, curves and rotations that use the same axis fold.
+# Fill changes follow the movement handedness rule.
 _CEILING_HITS_BASES = frozenset({
-    "S2b7", "S2b8", "S2c3", "S2c4", "S2c5", "S2c6", "S2c7", "S2d2", "S2d3",
+    "S2b7", "S2b8", "S2ba", "S2bc", "S2bd", "S2be", "S2bf",
+    "S2c0", "S2c1", "S2c2", "S2c3", "S2c4", "S2c5", "S2c6", "S2c7", "S2d2", "S2d3",
 })
 
 # Rotation Alternating Hits Floor (S2d4): rotation 0<->4, 1<->5, 2<->7,
@@ -501,7 +508,7 @@ def _movement_rotation(base: str, fill: str, rotation: int) -> int:
         return _S2D4_ROTATION.get(rotation, rotation)
     if base in _PLUS_8_ROTATION_BASES:
         return (rotation + 8) % 16
-    if base == "S2f2":  # Finger Circles Wall Double.
+    if base in ("S2f1", "S2f2"):  # Finger Circles Wall Single/Double.
         return rotation ^ 4
     if base in _ALTERNATING_ROTATION_BASES:
         return 3 - rotation
@@ -531,22 +538,17 @@ def _mirror_movement(base: str, fill: str, rotation: int) -> Tuple[str, int]:
 def mirror_symbol(symbol: str) -> str:
     """Return the horizontal mirror of an FSW symbol key (e.g. ``S2e748``).
 
-    Symbols that don't exist in the font pass through unchanged. Symbols
-    listed in :data:`_NO_MIRROR_SYMBOLS` also pass through unchanged because
-    no other ISWA symbol represents their horizontal mirror; a warning is
-    emitted so callers know the result is approximate.
+    Symbols that don't exist in the font pass through unchanged. Raises
+    :class:`UnmirrorableSymbolError` for known glyphs without an equivalent
+    horizontal mirror.
     """
+    if symbol in _NO_MIRROR_SYMBOLS:
+        raise UnmirrorableSymbolError(f"{symbol} has no representable horizontal mirror in ISWA")
+    symbol = _MIRROR_ALIASES.get(symbol, symbol)
     if symbol in _SPECIAL_MIRROR_OVERRIDES:
         return _SPECIAL_MIRROR_OVERRIDES[symbol]
     if symbol in _SPECIAL_MIRROR_REVERSE:
         return _SPECIAL_MIRROR_REVERSE[symbol]
-    if symbol in _NO_MIRROR_SYMBOLS:
-        warnings.warn(
-            f"{symbol} has no representable horizontal mirror in ISWA; "
-            f"returning the original symbol unchanged.",
-            stacklevel=2,
-        )
-        return symbol
     if not _symbol_exists(symbol):
         return symbol
     base, fill = symbol[:4], symbol[4]
@@ -585,7 +587,8 @@ def mirror_sign(fsw: str) -> str:
     """Return the horizontal mirror of an FSW sign.
 
     ``fsw`` must be ASCII Formal SignWriting. For SWU input, convert with
-    ``signwriting.formats.swu_to_fsw.swu2fsw`` first.
+    ``signwriting.formats.swu_to_fsw.swu2fsw`` first. Raises
+    :class:`UnmirrorableSymbolError` if a spatial symbol has no mirror.
     """
     if not fsw.isascii():
         raise ValueError(
