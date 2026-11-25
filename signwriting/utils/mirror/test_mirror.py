@@ -961,7 +961,9 @@ class MirrorSymbolCase(unittest.TestCase):
                     self.assertTrue(_symbol_exists(mirrored), f'{symbol} produced nonexistent {mirrored}')
                     self.assertEqual(aliases.get(symbol, symbol), mirror_symbol(mirrored), f'{symbol} -> {mirrored}')
         self.assertEqual(errors, {
-            'S22823', 'S22825', 'S22922', 'S22926', 'S2a34d', 'S2d82a',
+            'S22820', 'S22821', 'S22823', 'S22824', 'S22825', 'S22827',
+            'S22920', 'S22921', 'S22922', 'S22923', 'S22924', 'S22925', 'S22926', 'S22927',
+            'S2a34d', 'S2d82a',
             'S2ef24', 'S2ef25', 'S2f024', 'S2f025', 'S38112', 'S38113', 'S38114',
             'S38115', 'S38116', 'S38117', 'S38638', 'S3863c',
         })

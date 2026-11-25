@@ -56,7 +56,9 @@ class UnmirrorableSymbolError(ValueError):
 
 
 _NO_MIRROR_SYMBOLS = frozenset({
-    "S22823", "S22825", "S22922", "S22926",  # Alternating finger contact.
+    # Alternating finger contact. The S22822/S22826 pair was reviewed separately.
+    "S22820", "S22821", "S22823", "S22824", "S22825", "S22827",
+    "S22920", "S22921", "S22922", "S22923", "S22924", "S22925", "S22926", "S22927",
     "S2a34d", "S2d82a",  # Missing opposite solid or open arrow drawing.
     "S2ef24", "S2ef25", "S2f024", "S2f025",  # Neutral wrist circles.
     "S38112", "S38113", "S38114", "S38115", "S38116", "S38117",  # Side-view height.
@@ -76,8 +78,20 @@ _SPECIAL_MIRROR_OVERRIDES = {
     "S32320": "S32324",
     "S32630": "S32630",
     "S32634": "S32634",
+    # The reviewed pair takes precedence over the old rotation pairing.
+    "S26c29": "S26c25",
+    "S26c21": "S26c2d",
+    "S29032": "S29034",
+    "S2903a": "S2903c",
     "S2a335": "S2a345",
     "S2d822": "S2d81a",
+    # The dots and vertical pauses are symmetric even when their sizes differ.
+    "S25b41": "S25b41",
+    "S25b47": "S25b47",
+    "S25c41": "S25c41",
+    "S25c47": "S25c47",
+    "S38a02": "S38a02",
+    "S38a06": "S38a06",
     # The last three tongue-against-cheek full-face drawings trade outlines.
     "S35e05": "S35e15",
     "S35e06": "S35e16",
