@@ -1,5 +1,6 @@
-"""Export the mirror rules for consumers of the same Sutton SignWriting font."""
+"""Export compact mirror rules for consumers using the same Sutton SignWriting font."""
 import argparse
+from collections import defaultdict
 import json
 
 from signwriting.utils.mirror import mirror_symbol
@@ -8,38 +9,98 @@ from signwriting.utils.mirror.mirror import (
     _HAND_BASE_MIN,
     _MIRROR_ALIASES,
     _NO_MIRROR_SYMBOLS,
+    _SPECIAL_MIRROR_OVERRIDES,
+    _SPECIAL_MIRROR_REVERSE,
     _mirror_hand,
     _symbol_exists,
 )
 
 
+def _rotation_rule(rotations: dict[int, int]) -> tuple:
+    """Find an arithmetic rule before falling back to a small digit map."""
+    source, target = next(iter(rotations.items()))
+    mask = source ^ target
+    if all(start ^ mask == end for start, end in rotations.items()):
+        return ("xor", mask)
+
+    for modulus in (4, 8, 16):
+        if max(*rotations, *rotations.values()) >= modulus:
+            continue
+        axis = (source + target) % modulus
+        if all((axis - start) % modulus == end for start, end in rotations.items()):
+            return ("reflectModulo", modulus, axis)
+
+    return ("map", tuple((start, end) for start, end in rotations.items() if start != end))
+
+
+def _rotation_data(rule: tuple) -> dict:
+    op, *args = rule
+    if op == "xor":
+        return {"op": op, "mask": args[0]}
+    if op == "reflectModulo":
+        return {"op": op, "modulus": args[0], "axis": args[1]}
+    return {"op": op, "digits": dict(args[0])}
+
+
+def _fill_rules(base: str, exceptions: dict[str, str]) -> dict[str, tuple]:
+    rules = {}
+    for fill in range(6):
+        prefix = f"{base}{fill:x}"
+        matches = {}
+        for rotation in range(16):
+            key = f"{prefix}{rotation:x}"
+            if key not in exceptions and key not in _NO_MIRROR_SYMBOLS and key not in _MIRROR_ALIASES:
+                if _symbol_exists(key):
+                    matches[key] = mirror_symbol(key)
+        if not matches:
+            continue
+
+        if any(mirror[:4] != base for mirror in matches.values()):
+            exceptions.update(matches)
+            continue
+        masks = {fill ^ int(mirror[4], 16) for mirror in matches.values()}
+        if len(masks) != 1:
+            exceptions.update(matches)
+            continue
+        rotations = {int(key[5], 16): int(mirror[5], 16) for key, mirror in matches.items()}
+        rules[prefix] = (masks.pop(), _rotation_rule(rotations))
+    return rules
+
+
 def export_manifest() -> str:
-    """Return deterministic JSON with each non-hand pair listed once."""
-    pairs = []
-    for base in range(_HAND_BASE_MAX + 1, 0x38c):
-        for fill in range(6):
-            for rotation in range(16):
-                key = f"S{base:x}{fill}{rotation:x}"
-                if key in _NO_MIRROR_SYMBOLS or key in _MIRROR_ALIASES or not _symbol_exists(key):
-                    continue
-                mirror = mirror_symbol(key)
-                if key < mirror:
-                    pairs.append("    " + json.dumps([key, mirror]))
-    hand_rule = {
-        "firstBase": f"S{_HAND_BASE_MIN:x}",
-        "lastBase": f"S{_HAND_BASE_MAX:x}",
-        "rotationOffset": _mirror_hand("0", 0)[1],
+    """Return deterministic JSON with a shared rule per group of key prefixes."""
+    exceptions = {**_SPECIAL_MIRROR_OVERRIDES, **_SPECIAL_MIRROR_REVERSE}
+    groups = defaultdict(list)
+    identity = (0, ("xor", 0))
+    for value in range(_HAND_BASE_MAX + 1, 0x38c):
+        base = f"S{value:x}"
+        fills = _fill_rules(base, exceptions)
+        rules = set(fills.values())
+        if len(rules) == 1:
+            rule = rules.pop()
+            if rule != identity:
+                groups[rule].append(base)
+        else:
+            for prefix, rule in fills.items():
+                if rule != identity:
+                    groups[rule].append(prefix)
+
+    manifest = {
+        "version": 2,
+        "handRule": {
+            "firstBase": f"S{_HAND_BASE_MIN:x}",
+            "lastBase": f"S{_HAND_BASE_MAX:x}",
+            "rotation": _rotation_data(_rotation_rule({k: _mirror_hand("0", k)[1] for k in range(16)})),
+        },
+        "unmirrorable": sorted(_NO_MIRROR_SYMBOLS),
+        "aliases": dict(sorted(_MIRROR_ALIASES.items())),
+        "overrides": dict(sorted(exceptions.items())),
+        "groups": [
+            {"fillXor": mask, "rotation": _rotation_data(rule), "prefixes": prefixes}
+            for (mask, rule), prefixes in groups.items()
+        ],
     }
-    pair_rows = ",\n".join(pairs)
-    return (
-        "{\n"
-        '  "version": 1,\n'
-        f'  "handRule": {json.dumps(hand_rule)},\n'
-        f'  "unmirrorable": {json.dumps(sorted(_NO_MIRROR_SYMBOLS))},\n'
-        f'  "aliases": {json.dumps(_MIRROR_ALIASES, sort_keys=True)},\n'
-        f'  "pairs": [\n{pair_rows}\n  ]\n'
-        "}\n"
-    )
+    return json.dumps(manifest, indent=2) + "\n"
 
 
 def main() -> None:

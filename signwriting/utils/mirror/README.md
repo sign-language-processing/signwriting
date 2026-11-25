@@ -120,12 +120,19 @@ image will look "off". Known cases:
 
 ## Shared mirror manifest
 
-The exporter reads the rules in `mirror.py` and writes a manifest to
-stdout for consumers using the same ISWA font. Each entry in `pairs` is reversible.
-The `aliases` normalize duplicate drawings to the key used in the review
-before mirroring. `unmirrorable` lists the keys that raise. For hands, swap
-rotation halves using `handRule` only when both glyphs exist. Remaining keys
-are unchanged.
+The exporter reads `mirror.py` and groups equivalent mappings over valid
+glyphs in the bundled ISWA font. It writes a versioned manifest to stdout.
+Each group selects a base (`S22a`) or a base and fill (`S22a0`). It XORs
+the fill with `fillXor` and applies one rotation rule:
+
+- `xor` uses `rotation ^ mask`.
+- `reflectModulo` uses `(axis - rotation) mod modulus`.
+- `map` replaces the listed rotation digits and leaves other digits unchanged.
+
+Check `unmirrorable` on the input key, resolve any alias, then apply an
+explicit override or the matching group. Hands use the rotation rule in
+`handRule`. Apply a result only when both glyphs exist in the font.
+Keys without a matching rule are unchanged.
 
 Use the JSON form for tools that read JSON and the ES module form to
 update the snapshot in `@sutton-signwriting/font-ttf`.
