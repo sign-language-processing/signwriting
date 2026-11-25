@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SignWriting ↔ HamNoSys handshapes</title>
+<style>
+  @font-face { font-family: HamNoSys; src: url(/fonts/hamnosys.ttf); }
+  body { font-family: sans-serif; margin: 1em; }
+  table { border-collapse: collapse; width: 100%; }
+  td, th { border: 1px solid #ddd; padding: 4px 8px; text-align: center; }
+  tr.unmapped { background: #fff7e6; }
+  img.sw { height: 48px; }
+  img.photo, img.chart { height: 64px; }
+  .ham { font-family: HamNoSys, sans-serif; font-size: 32px; }
+  #toolbar { position: sticky; top: 0; background: white; padding: 8px 0; z-index: 1; }
+  #toolbar button.dir { font-weight: bold; }
+  dialog { width: 760px; }
+  #palette button, #chartPalette img, #swPicker img { cursor: pointer; margin: 2px; }
+  #palette button { font-family: HamNoSys, sans-serif; font-size: 26px; }
+  #value { font-family: HamNoSys, sans-serif; font-size: 30px; width: 100%; }
+  #chartPalette, #swPicker { max-height: 300px; overflow-y: auto; }
+  .chip { display: inline-block; border: 1px solid #ccc; border-radius: 6px; padding: 2px 6px; margin: 2px; }
+  .chip button { margin-left: 4px; }
+  #swPicker img { border: 1px solid #eee; padding: 2px; }
+  #hoverPreview { position: fixed; display: none; z-index: 10; background: white; border: 1px solid #999;
+                  border-radius: 6px; padding: 6px; box-shadow: 0 2px 8px rgba(0,0,0,.25); pointer-events: none;
+                  text-align: center; }
+  #hoverPreview img { height: 160px; display: block; }
+</style>
+</head>
+<body>
+<div id="toolbar">
+  <button class="dir" id="direction"></button>
+  <input id="filter" placeholder="filter">
+  <label><input type="checkbox" id="onlyUnmapped"> only unmapped</label>
+  <span id="progress"></span>
+</div>
+<table>
+  <thead><tr id="headers"></tr></thead>
+  <tbody id="rows"></tbody>
+</table>
+
+<dialog id="editor"></dialog>
+<div id="hoverPreview"><img alt=""><small></small></div>
+
+<script>
+let DATA, mode = "sw";  // "sw": SignWriting -> HamNoSys, "hns": HamNoSys -> SignWriting
+const editor = document.getElementById("editor");
+const GROUP_NAMES = {"01": "Index", "02": "Index Middle", "03": "Index Middle Thumb", "04": "Four Fingers",
+                     "05": "Five Fingers", "06": "Baby Finger", "07": "Ring Finger", "08": "Middle Finger",
+                     "09": "Index Thumb", "10": "Thumb"};
+
+const chartImg = c => c ? `<img class="chart" src="/chart/${c.split("/").pop()}">` : "";
+let shapeToBase = new Map(), shapeToImage = new Map();
+function reindex() {
+  shapeToBase = new Map();
+  for (const b of DATA.bases)
+    for (const h of b.hamnosys)
+      if (!shapeToBase.has(h)) shapeToBase.set(h, b);
+  shapeToImage = new Map(DATA.inventory.filter(i => i.image).map(i => [i.hamnosys, i.image]));
+}
+const appendValue = text => { document.getElementById("value").value += text; };
+const setValue = text => { document.getElementById("value").value = text; };
+const baseFor = shape => shapeToBase.get(shape);
+const chartImageFor = shape => shapeToImage.get(shape);
+
+async function save(key, spellings) {
+  const response = await fetch("/mappings", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({key, hamnosys: spellings}),
+  });
+  if (!response.ok) { alert((await response.json()).message); return false; }
+  DATA.bases.find(b => b.key === key).hamnosys = spellings;
+  reindex();
+  return true;
+}
+
+function renderRows() {
+  const filter = document.getElementById("filter").value.toLowerCase();
+  const onlyUnmapped = document.getElementById("onlyUnmapped").checked;
+  const headers = document.getElementById("headers");
+  const rows = document.getElementById("rows");
+
+  if (mode === "sw") {
+    headers.innerHTML = "<th>Key</th><th>Name</th><th>SignWriting</th><th>Photo</th><th>HamNoSys</th><th></th>";
+    const bases = DATA.bases
+      .filter(b => !onlyUnmapped || !b.hamnosys.length)
+      .filter(b => b.key.toLowerCase().includes(filter) || b.name.toLowerCase().includes(filter));
+    rows.innerHTML = bases.map(b => `<tr class="${b.hamnosys.length ? "" : "unmapped"}">
+        <td>${b.key}<br><small>${b.symid.slice(0, 9)}</small></td>
+        <td>${b.name}</td>
+        <td><img class="sw" src="/symbol/${b.key}.png" alt="${b.key}"></td>
+        <td><img class="photo" src="${b.photo}" loading="lazy" alt=""></td>
+        <td>${b.hamnosys.map(h => `<span class="chip"><span class="ham">${h}</span>${chartImg(chartImageFor(h))}</span>`).join(" ")}</td>
+        <td><button onclick="editBase('${b.key}')">edit</button></td>
+      </tr>`).join("");
+    const mapped = DATA.bases.filter(b => b.hamnosys.length).length;
+    document.getElementById("progress").textContent = ` ${mapped}/${DATA.bases.length} bases mapped`;
+  } else {
+    headers.innerHTML = "<th>HamNoSys</th><th>Chart</th><th>Seen</th><th>SignWriting</th><th></th>";
+    const shapes = DATA.inventory
+      .filter(i => !onlyUnmapped || !baseFor(i.hamnosys))
+      .filter(i => i.sources.join(" ").includes(filter));
+    rows.innerHTML = shapes.map((i, n) => {
+      const base = baseFor(i.hamnosys);
+      return `<tr class="${base ? "" : "unmapped"}">
+        <td class="ham">${i.hamnosys}</td>
+        <td>${chartImg(i.image)}</td>
+        <td>${i.count || ""}</td>
+        <td>${base ? `<img class="sw" src="/symbol/${base.key}.png"> <img class="photo" src="${base.photo}" loading="lazy" alt=""> ${base.key} ${base.name}` : ""}</td>
+        <td><button onclick="editShape(${n})">edit</button></td>
+      </tr>`;
+    }).join("");
+    const mapped = DATA.inventory.filter(i => baseFor(i.hamnosys)).length;
+    document.getElementById("progress").textContent = ` ${mapped}/${DATA.inventory.length} shapes mapped`;
+  }
+}
+
+// --- SignWriting -> HamNoSys editor: manage the list of spellings for one base
+function editBase(key) {
+  const base = DATA.bases.find(b => b.key === key);
+  let spellings = [...base.hamnosys];
+  editor.innerHTML = `
+    <h3>${base.key} — ${base.name} <img class="sw" src="/symbol/${base.key}.png"> <img class="photo" src="${base.photo}"></h3>
+    <div id="chips"></div>
+    <p><input id="value" placeholder="add HamNoSys spelling"> <button id="add">Add</button></p>
+    <div id="palette"></div>
+    <hr><div id="chartPalette"></div>
+    <p><button id="save">Save</button> <button onclick="editor.close()">Cancel</button></p>`;
+  const value = document.getElementById("value");
+  const renderChips = () => {
+    document.getElementById("chips").innerHTML = spellings.map((h, i) =>
+      `<span class="chip"><span class="ham">${h}</span>${chartImg(chartImageFor(h))}
+       <button onclick="removeSpelling(${i})">✕</button></span>`
+    ).join(" ") || "<i>no spellings yet</i>";
+  };
+  window.removeSpelling = i => { spellings.splice(i, 1); renderChips(); };
+  document.getElementById("add").onclick = () => {
+    if (value.value && !spellings.includes(value.value)) spellings.push(value.value);
+    value.value = "";
+    renderChips();
+  };
+  document.getElementById("save").onclick = async () => {
+    if (value.value && !spellings.includes(value.value)) spellings.push(value.value);
+    if (await save(key, spellings)) { editor.close(); renderRows(); }
+  };
+  renderPalettes(value);
+  renderChips();
+  editor.showModal();
+}
+
+// --- HamNoSys -> SignWriting editor: assign a base to one observed shape
+function editShape(index) {
+  const shape = DATA.inventory[index];
+  const current = baseFor(shape.hamnosys);
+  editor.innerHTML = `
+    <h3><span class="ham">${shape.hamnosys}</span> ${chartImg(shape.image)}
+        <small>seen ${shape.count || 0}× (${shape.sources.join(", ")})</small></h3>
+    <p id="current"></p>
+    <input id="pickerFilter" placeholder="filter by key or name">
+    <div id="swPicker"></div>
+    <p><button onclick="editor.close()">Close</button></p>`;
+  const renderCurrent = () => {
+    const base = baseFor(shape.hamnosys);
+    document.getElementById("current").innerHTML = base
+      ? `Mapped to <img class="sw" src="/symbol/${base.key}.png"> <img class="photo" src="${base.photo}" alt=""> <b>${base.key}</b> ${base.name}
+         <button id="unassign">Remove</button>`
+      : "<i>not mapped to any SignWriting base yet — pick one below</i>";
+    const unassign = document.getElementById("unassign");
+    if (unassign) unassign.onclick = async () => {
+      if (await save(base.key, base.hamnosys.filter(h => h !== shape.hamnosys))) { renderCurrent(); renderRows(); }
+    };
+  };
+  const renderPicker = () => {
+    const filter = document.getElementById("pickerFilter").value.toLowerCase();
+    const groups = {};
+    for (const b of DATA.bases) {
+      if (!b.key.toLowerCase().includes(filter) && !b.name.toLowerCase().includes(filter)) continue;
+      (groups[b.symid.slice(3, 5)] ??= []).push(b);
+    }
+    document.getElementById("swPicker").innerHTML = Object.entries(groups)
+      .map(([g, bases]) => `<div><b>${GROUP_NAMES[g]}</b><br>${bases
+        .map(b => `<img class="sw" src="/symbol/${b.key}.png" data-photo="${b.photo}"
+                        data-label="${b.key} ${b.name}${b.hamnosys.length ? " (mapped)" : ""}"
+                        onclick="assign('${b.key}', ${index})">`)
+        .join("")}</div>`)
+      .join("");
+  };
+  document.getElementById("pickerFilter").oninput = renderPicker;
+  window.assign = async (key, i) => {
+    const target = DATA.bases.find(b => b.key === key);
+    if (!target.hamnosys.includes(shape.hamnosys)
+        && await save(key, [...target.hamnosys, shape.hamnosys])) { renderCurrent(); renderRows(); }
+  };
+  renderCurrent();
+  renderPicker();
+  editor.showModal();
+}
+
+// HamNoSys handshapes are structured: base form + thumb position + bending + finger selection
+function renderPalettes(input) {
+  const PALETTE_GROUPS = [
+    ["Base forms", 0xE000, 0xE00B], ["Thumb", 0xE00C, 0xE00E], ["Bending", 0xE010, 0xE014],
+    ["Fingers", 0xE070, 0xE074], ["Finger parts", 0xE075, 0xE07B], ["Between", 0xE0E6, 0xE0E6],
+  ];
+  document.getElementById("palette").innerHTML = PALETTE_GROUPS.map(([label, from, to]) => {
+    const buttons = DATA.symbols
+      .filter(s => from <= s.char.codePointAt(0) && s.char.codePointAt(0) <= to)
+      .map(s => `<button title="${s.name}: ${s.title}" onclick="appendValue('${s.char}')">${s.char}</button>`);
+    return `<div><b>${label}</b><br>${buttons.join("")}</div>`;
+  }).join("");
+  document.getElementById("chartPalette").innerHTML = DATA.inventory
+    .filter(i => i.image)
+    .map(i => `<img class="chart" src="/chart/${i.image.split("/").pop()}" title="seen ${i.count || 0}×"
+                    onclick="setValue('${i.hamnosys}')">`)
+    .join("");
+}
+
+function setMode(newMode) {
+  mode = newMode;
+  document.getElementById("direction").textContent =
+    mode === "sw" ? "SignWriting → HamNoSys (switch)" : "HamNoSys → SignWriting (switch)";
+  renderRows();
+}
+
+// Hover any element with data-photo to see the hand photo enlarged
+const preview = document.getElementById("hoverPreview");
+document.addEventListener("mouseover", e => {
+  const target = e.target.closest("[data-photo]");
+  if (!target) { preview.style.display = "none"; return; }
+  // a modal <dialog> paints above everything else, so the preview must live inside it while open
+  const host = editor.open ? editor : document.body;
+  if (preview.parentElement !== host) host.appendChild(preview);
+  preview.querySelector("img").src = target.dataset.photo;
+  preview.querySelector("small").textContent = target.dataset.label || "";
+  preview.style.display = "block";
+});
+document.addEventListener("mousemove", e => {
+  if (preview.style.display === "none") return;
+  const x = Math.min(e.clientX + 16, window.innerWidth - preview.offsetWidth - 8);
+  const y = Math.min(e.clientY + 16, window.innerHeight - preview.offsetHeight - 8);
+  preview.style.left = x + "px";
+  preview.style.top = y + "px";
+});
+
+async function main() {
+  DATA = await (await fetch("/data")).json();
+  reindex();
+  document.getElementById("direction").onclick = () => setMode(mode === "sw" ? "hns" : "sw");
+  document.getElementById("filter").oninput = renderRows;
+  document.getElementById("onlyUnmapped").onchange = renderRows;
+  setMode("sw");
+  if (location.hash.startsWith("#edit-")) editBase(location.hash.slice(6));
+  if (location.hash === "#hns") setMode("hns");
+}
+main();
+</script>
+</body>
+</html>
