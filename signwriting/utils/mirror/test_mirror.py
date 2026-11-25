@@ -465,6 +465,10 @@ _PAIRS_RAW = [
     # S35e Tongue Moves Against Cheek.
     ("S35e33", "S35e35"),
 
+    # Both full-face and isolated lip-bite glyphs switch sides.
+    ("S36710", "S36720"),
+    ("S36740", "S36750"),
+
     # S36d Shoulder Hip Spine.
     ("S36d00", "S36d00"),
     ("S36d01", "S36d03"),

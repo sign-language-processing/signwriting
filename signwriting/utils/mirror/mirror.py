@@ -235,7 +235,7 @@ _FACE_FILL_OVERRIDES = {
     "S330": _FILL_12_34_SWAP,  # Ears.
     # 4<->5 swap only.
     "S365": _FILL_45_SWAP,
-    "S367": _FILL_45_SWAP,  # Teeth Bite Lips.
+    "S367": _FILL_12_45_SWAP,  # Teeth Bite Lips.
     "S384": {"2": "4", "4": "2"},  # Location Head Neck side views.
     # 2<->3 swap only.
     "S36b": _FILL_23_SWAP,  # Hair.
