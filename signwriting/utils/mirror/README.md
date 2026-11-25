@@ -117,19 +117,20 @@ image will look "off". Known cases:
   — Double Alternating Movement, Wall Plane. Fill `1<->0` swap + rotation
   +8 produces the correct codepoint, but several font glyphs in S231 don't
   reflect a true horizontal mirror.
+
 ## Shared mirror manifest
 
-[`mirror_manifest.json`](mirror_manifest.json) exports the Python decisions
-for consumers using the same ISWA font. Each entry in `pairs` is reversible.
+The exporter reads the rules in `mirror.py` and writes a manifest to
+stdout for consumers using the same ISWA font. Each entry in `pairs` is reversible.
 The `aliases` normalize duplicate drawings to the key used in the review
 before mirroring. `unmirrorable` lists the keys that raise. For hands, swap
 rotation halves using `handRule` only when both glyphs exist. Remaining keys
 are unchanged.
 
-Regenerate after changing the rules and use the ES module form for
-`@sutton-signwriting/font-ttf`.
+Use the JSON form for tools that read JSON and the ES module form to
+update the snapshot in `@sutton-signwriting/font-ttf`.
 
 ```sh
-python -m signwriting.utils.mirror.export_manifest > signwriting/utils/mirror/mirror_manifest.json
+python -m signwriting.utils.mirror.export_manifest > /path/to/mirror_manifest.json
 python -m signwriting.utils.mirror.export_manifest --javascript > /path/to/font-ttf/src/mirror-manifest.js
 ```

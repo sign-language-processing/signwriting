@@ -1,14 +1,11 @@
 # pylint: disable=too-many-lines  # dominated by the _PAIRS_RAW data table
 import unittest
-import json
-from pathlib import Path
 
 import numpy as np
 from PIL import ImageOps
 
 from signwriting.formats.swu_to_fsw import swu2fsw
 from signwriting.utils.mirror import UnmirrorableSymbolError, mirror_sign, mirror_symbol
-from signwriting.utils.mirror.export_manifest import export_manifest
 from signwriting.utils.mirror.mirror import _symbol_exists
 from signwriting.visualizer.visualize import signwriting_to_image
 
@@ -581,6 +578,16 @@ _PAIRS_RAW = [
     ("S36e42", "S36e42"),
     ("S36e43", "S36e43"),
     ("S36e44", "S36e45"),
+
+    # Glyphs where the old rules swapped the wrong fill or direction.
+    ("S26c29", "S26c25"),
+    ("S29032", "S29034"),
+    ("S2ba02", "S2ba17"),
+    ("S2f111", "S2f115"),
+    ("S32a30", "S32a40"),
+    ("S35e10", "S35e14"),
+    ("S38420", "S38440"),
+    ("S38810", "S38814"),
 ]
 CONFIRMED_PAIRS = {(a, b) for pair in _PAIRS_RAW for a, b in (pair, pair[::-1])}
 
@@ -915,23 +922,7 @@ class MirrorUserReportedRegressionCase(unittest.TestCase):
         # User: S22632 mirror is S22636 (face-style 2 -> 6 reflection).
         self.assertEqual('S22636', mirror_symbol('S22632'))
         self.assertEqual('S22632', mirror_symbol('S22636'))
-
-    def test_symmetry_review(self):
-        decisions = json.loads(Path(__file__).with_name('test_mirror_review.json').read_text(encoding='utf-8'))
-        for source, expected in decisions.items():
-            with self.subTest(source=source):
-                if expected is None:
-                    with self.assertRaisesRegex(UnmirrorableSymbolError, source):
-                        mirror_symbol(source)
-                else:
-                    self.assertEqual(expected, mirror_symbol(source))
-
-
 class MirrorSymbolCase(unittest.TestCase):
-
-    def test_manifest_matches_python_rules(self):
-        expected = Path(__file__).with_name('mirror_manifest.json').read_text(encoding='utf-8')
-        self.assertEqual(expected, export_manifest())
 
     def test_unknown_symbol_passes_through(self):
         self.assertEqual('Szzzzz', mirror_symbol('Szzzzz'))
