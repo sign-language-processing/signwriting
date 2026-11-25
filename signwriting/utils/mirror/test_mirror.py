@@ -1,12 +1,11 @@
 # pylint: disable=too-many-lines  # dominated by the _PAIRS_RAW data table
 import unittest
-import warnings
 
 import numpy as np
 from PIL import ImageOps
 
 from signwriting.formats.swu_to_fsw import swu2fsw
-from signwriting.utils.mirror import mirror_sign, mirror_symbol
+from signwriting.utils.mirror import UnmirrorableSymbolError, mirror_sign, mirror_symbol
 from signwriting.utils.mirror.mirror import _symbol_exists
 from signwriting.visualizer.visualize import signwriting_to_image
 
@@ -61,7 +60,7 @@ _PAIRS_RAW = [
     ("S26500", "S26510"),
     ("S26502", "S26516"),
 
-    # S2c0 XOR-1 within fill 3.
+    # S2c0 paired axis-aligned rotations within fill 3.
     ("S2c030", "S2c031"),
     ("S2c034", "S2c035"),
 
@@ -70,12 +69,6 @@ _PAIRS_RAW = [
     ("S2ef20", "S2ef21"),
     ("S2ef22", "S2ef23"),
     ("S2f010", "S2f000"),
-    # S2ef / S2f0 fill 2 rotations 4/5 have no representable horizontal
-    # mirror in ISWA, so they pass through unchanged (with a warning).
-    ("S2ef24", "S2ef24"),
-    ("S2ef25", "S2ef25"),
-    ("S2f024", "S2f024"),
-    ("S2f025", "S2f025"),
 
     # S2f3 / S2f4 Finger Circles Hits Wall: fill stays; rotation 0<->2,
     # 1<->3, 4<->5, 6<->7.
@@ -201,7 +194,6 @@ _PAIRS_RAW = [
     ("S22822", "S22826"),
     ("S2311b", "S23103"),
     ("S23104", "S2311c"),
-    ("S22922", "S22926"),
 
     # Newly confirmed pairs.
     ("S32911", "S32915"),
@@ -328,7 +320,8 @@ _PAIRS_RAW = [
     ("S36921", "S36927"),
 
     # S372 / S373 / S374 Torso bases - rotation XOR 2.
-    ("S37200", "S37202"),
+    ("S37200", "S37200"),
+    ("S37202", "S37202"),
     ("S37201", "S37203"),
     ("S37220", "S37220"),
     ("S37222", "S37222"),
@@ -469,6 +462,10 @@ _PAIRS_RAW = [
     # S35e Tongue Moves Against Cheek.
     ("S35e33", "S35e35"),
 
+    # Both full-face and isolated lip-bite glyphs switch sides.
+    ("S36710", "S36720"),
+    ("S36740", "S36750"),
+
     # S36d Shoulder Hip Spine.
     ("S36d00", "S36d00"),
     ("S36d01", "S36d03"),
@@ -483,9 +480,9 @@ _PAIRS_RAW = [
     ("S37600", "S37600"),
     ("S37601", "S37609"),
     ("S37604", "S3760c"),
-    ("S37605", "S3760e"),
-    ("S37606", "S3760f"),
-    ("S37607", "S3760d"),
+    ("S37605", "S3760d"),
+    ("S37606", "S3760e"),
+    ("S37607", "S3760f"),
     ("S37608", "S37608"),
 
     # S382 Location Width - custom rotation map.
@@ -568,8 +565,8 @@ _PAIRS_RAW = [
 
     # S36e Shoulder Hip Positions.
     ("S36e00", "S36e00"),
-    ("S36e01", "S36e05"),
-    ("S36e02", "S36e04"),
+    ("S36e01", "S36e02"),
+    ("S36e04", "S36e05"),
     ("S36e03", "S36e03"),
     ("S36e10", "S36e13"),
     ("S36e11", "S36e15"),
@@ -581,6 +578,16 @@ _PAIRS_RAW = [
     ("S36e42", "S36e42"),
     ("S36e43", "S36e43"),
     ("S36e44", "S36e45"),
+
+    # Glyphs where the old rules swapped the wrong fill or direction.
+    ("S26c29", "S26c25"),
+    ("S29032", "S29034"),
+    ("S2ba02", "S2ba17"),
+    ("S2f111", "S2f115"),
+    ("S32a30", "S32a40"),
+    ("S35e10", "S35e14"),
+    ("S38420", "S38440"),
+    ("S38810", "S38814"),
 ]
 CONFIRMED_PAIRS = {(a, b) for pair in _PAIRS_RAW for a, b in (pair, pair[::-1])}
 
@@ -915,19 +922,6 @@ class MirrorUserReportedRegressionCase(unittest.TestCase):
         # User: S22632 mirror is S22636 (face-style 2 -> 6 reflection).
         self.assertEqual('S22636', mirror_symbol('S22632'))
         self.assertEqual('S22632', mirror_symbol('S22636'))
-
-    def test_no_mirror_symbols_warn_and_pass_through(self):
-        # User: S2ef24/25 and S2f024/25 have no representable horizontal
-        # mirror in ISWA; mirror_symbol returns them unchanged with a warning.
-        for s in ['S2ef24', 'S2ef25', 'S2f024', 'S2f025']:
-            with self.subTest(s=s):
-                with warnings.catch_warnings(record=True) as caught:
-                    warnings.simplefilter('always')
-                    self.assertEqual(s, mirror_symbol(s))
-                self.assertEqual(1, len(caught))
-                self.assertIn('no representable horizontal mirror', str(caught[0].message))
-
-
 class MirrorSymbolCase(unittest.TestCase):
 
     def test_unknown_symbol_passes_through(self):
@@ -941,25 +935,36 @@ class MirrorSymbolCase(unittest.TestCase):
             self.assertEqual(s, mirror_symbol(mirror_symbol(s)))
 
     def test_mirror_is_involution_over_all_symbols(self):
-        # mirror^2 must be the identity for every renderable ISWA symbol.
-        # This guards the per-base override tables against asymmetric
-        # entries (a pair mapped in only one direction).
-        with warnings.catch_warnings():
-            warnings.simplefilter('ignore')
-            for base_value in range(0x100, 0x38c):
-                for fill in range(6):
-                    for rotation in range(16):
-                        symbol = f'S{base_value:x}{fill}{rotation:x}'
-                        if not _symbol_exists(symbol):
-                            continue
+        # Mirrorable keys round-trip to the reviewed key for the same drawing.
+        aliases = {'S2a33d': 'S2a335', 'S2d802': 'S2d822'}
+        errors = set()
+        for base_value in range(0x100, 0x38c):
+            for fill in range(6):
+                for rotation in range(16):
+                    symbol = f'S{base_value:x}{fill}{rotation:x}'
+                    if not _symbol_exists(symbol):
+                        continue
+                    try:
                         mirrored = mirror_symbol(symbol)
-                        self.assertEqual(
-                            symbol, mirror_symbol(mirrored),
-                            f'{symbol} -> {mirrored} -> {mirror_symbol(mirrored)}',
-                        )
+                    except UnmirrorableSymbolError:
+                        errors.add(symbol)
+                        continue
+                    self.assertTrue(_symbol_exists(mirrored), f'{symbol} produced nonexistent {mirrored}')
+                    self.assertEqual(aliases.get(symbol, symbol), mirror_symbol(mirrored), f'{symbol} -> {mirrored}')
+        self.assertEqual(errors, {
+            'S22820', 'S22821', 'S22823', 'S22824', 'S22825', 'S22827',
+            'S22920', 'S22921', 'S22922', 'S22923', 'S22924', 'S22925', 'S22926', 'S22927',
+            'S2a34d', 'S2d82a',
+            'S2ef24', 'S2ef25', 'S2f024', 'S2f025', 'S38112', 'S38113', 'S38114',
+            'S38115', 'S38116', 'S38117', 'S38638', 'S3863c',
+        })
 
 
 class MirrorSignCase(unittest.TestCase):
+
+    def test_sign_with_unmirrorable_symbol_raises(self):
+        with self.assertRaisesRegex(UnmirrorableSymbolError, 'S22823'):
+            mirror_sign('M520x520S10000490x490S22823490x490')
 
     def test_rejects_non_ascii(self):
         with self.assertRaises(ValueError):

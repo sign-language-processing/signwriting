@@ -1,3 +1,3 @@
-from signwriting.utils.mirror.mirror import mirror_sign, mirror_symbol
+from signwriting.utils.mirror.mirror import UnmirrorableSymbolError, mirror_sign, mirror_symbol
 
-__all__ = ["mirror_sign", "mirror_symbol"]
+__all__ = ["UnmirrorableSymbolError", "mirror_sign", "mirror_symbol"]
